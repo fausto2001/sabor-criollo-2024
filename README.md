@@ -1,7 +1,11 @@
-# sabor-criollo-2024
+# Sabor Criollo 2024
 
-Alfa: Fausto Panello
+Bienvenido a **Sabor Criollo 2024**.
 
-Beta: Joel Mahafud
+## Integrantes
 
-Gamma: 
+- Alfa: Fausto Panello
+- Beta: Joel Mahafud
+- Gamma: 
+
+---
