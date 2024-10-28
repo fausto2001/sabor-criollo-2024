@@ -1,5 +1,5 @@
 # 🍔 Sabor Criollo 2024
-![logo](https://github.com/user-attachments/assets/4479d0e8-8f34-4543-b393-0e57b6877884)
+![file](https://github.com/user-attachments/assets/f0c4a06d-5a4b-424d-a2a2-c5bec3bc6777)
 
 Bienvenido a **Sabor Criollo 2024**.
 
