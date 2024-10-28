@@ -9,20 +9,24 @@
       <ion-img src="../../../assets/logo-png.png"></ion-img>
     </ion-row>
     <ion-row>
+
       <form [formGroup]="form" class="auth-form" >
         <ion-row class="ion-justify-content-center slot aux">
           <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+
+
             <ion-item class="custom-input" lines="none">
               <ion-input type="email" autocomplete="email" label="Correo" formControlName='email'
                 labelPlacement="floating">
               </ion-input>
             </ion-item>
-            <div class="error"
+            <div class="error width"
               *ngIf="form.controls?.['email']?.invalid && (form.controls?.['email']?.dirty || form.controls?.['email']?.touched)">
               <div *ngIf="form.controls?.['email']?.errors?.['required']">El correo es requerido</div>
               <div *ngIf="form.controls?.['email']?.errors?.['email']">El correo es inválido</div>
               <div *ngIf="form.controls?.['email']?.errors?.['pattern']">El correo no tiene el formato correcto</div>
             </div>
+
           </ion-col>
 
           <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
@@ -31,7 +35,7 @@
                 labelPlacement="floating">
               </ion-input>
             </ion-item>
-            <div class="error"
+            <div class="error width"
               *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
               <div *ngIf="form.controls?.['password']?.errors?.['minlength']">La contraseña debe tener mínimo 6
                 caracteres</div>
@@ -54,7 +58,8 @@
     <div class="colorFondo">
       <ion-fab vertical="bottom" horizontal="start" slot="fixed">
         <ion-fab-button >
-          <ion-img src="../../../assets/icon/fab-icons/cubiertos-paralelos.png"></ion-img>
+          <ion-icon name="people"></ion-icon>
+          <!-- <ion-img src="../../../assets/icon/fab-icons/cubiertos-paralelos.png"></ion-img> -->
         </ion-fab-button>
         <ion-fab-list side="top">
           <ion-fab-button>
