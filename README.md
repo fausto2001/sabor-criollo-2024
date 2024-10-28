@@ -10,6 +10,9 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ## 📅 Semana 1 (28/10 - 2/11)
 
+### 📓 A Asignar
+    -   ❌ Formulario de ingreso con accesos rápidos
+
 ### α Fausto Panello (Alfa)
     - ✔️ Creación del repositorio
     - ⌛ Creación del readme
@@ -18,13 +21,12 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### β Joel Mahafud (Beta)
     - ✔️ Tareas realizadas
-    - ⌛ Realizando
-    - ❌ Tareas a realizar
+    - ⌛ Implementación firebase
 
 ### γ Tomas Mastrapasqua (Gamma)
-    - ✔️ Tareas realizadas
-    - ⌛ Realizando
-    - ❌ Tareas a realizar
+    - ✔️ Creación del proyecto
+    - ⌛ Splash screens
+    - ⌛ Diseño de ícono
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
