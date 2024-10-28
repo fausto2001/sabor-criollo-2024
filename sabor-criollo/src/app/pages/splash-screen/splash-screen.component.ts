@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-splash-screen',
@@ -12,9 +13,20 @@ import { Router } from '@angular/router';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class SplashScreenComponent  implements OnInit {
+  private router: Router = inject(Router);
 
-  constructor() { }
+  constructor() { 
+    setTimeout( () => {
+      this.router.navigateByUrl('/login');
+    }, 2850);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      SplashScreen.hide({fadeOutDuration: 500}); //500
+    }, 100); //100
+  }
 
 }

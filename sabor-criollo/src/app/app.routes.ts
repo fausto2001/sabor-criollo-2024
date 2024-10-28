@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
+import { SplashScreenComponent } from './pages/splash-screen/splash-screen.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-  {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
+
   {
     path: '',
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   },
-  { path: 'splash-screen',
-    //loadComponent: () => import('./pages/splash-screen/splash-screen.page').then( m => m.SplashScreenPage)
-  },
+  { path: 'splash-screen', component: SplashScreenComponent },
+  { path: 'login', component:LoginComponent },
+
+
 ];
