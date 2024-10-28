@@ -1,3 +1,82 @@
-<p>
-  login works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large">I N G R E S O</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="colorFondo" [fullscreen]="true">
+  <div class="colorFondo" >
+    <ion-row class="icon-img">
+      <ion-img src="../../../assets/logo-png.png"></ion-img>
+    </ion-row>
+    <ion-row>
+      <form [formGroup]="form" class="auth-form" >
+        <ion-row class="ion-justify-content-center slot aux">
+          <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+            <ion-item class="custom-input" lines="none">
+              <ion-input type="email" autocomplete="email" label="Correo" formControlName='email'
+                labelPlacement="floating">
+              </ion-input>
+            </ion-item>
+            <div class="error"
+              *ngIf="form.controls?.['email']?.invalid && (form.controls?.['email']?.dirty || form.controls?.['email']?.touched)">
+              <div *ngIf="form.controls?.['email']?.errors?.['required']">El correo es requerido</div>
+              <div *ngIf="form.controls?.['email']?.errors?.['email']">El correo es inválido</div>
+              <div *ngIf="form.controls?.['email']?.errors?.['pattern']">El correo no tiene el formato correcto</div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+            <ion-item class="custom-input" lines="none">
+              <ion-input type="password" autocomplete="password" label="Contraseña" formControlName='password'
+                labelPlacement="floating">
+              </ion-input>
+            </ion-item>
+            <div class="error"
+              *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
+              <div *ngIf="form.controls?.['password']?.errors?.['minlength']">La contraseña debe tener mínimo 6
+                caracteres</div>
+              <div *ngIf="form.controls?.['password']?.errors?.['required']">La contraseña es requerida</div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-button  expand="full" shape="round" size="large"  [disabled]="form.invalid">Aceptar</ion-button>
+            <div class="contenedor-nuevocliente">
+              <span  class="botonNuevoCliente" id="registro">¿Eres un nuevo cliente? <span (click)="altaClientes()"><u>Regístrese aquí</u></span></span>
+            </div>
+
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-row>
+
+
+    <div class="colorFondo">
+      <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button >
+          <ion-img src="../../../assets/icon/fab-icons/cubiertos-paralelos.png"></ion-img>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/admin.png" (click)="cargarUsuario('dueño')"></ion-img>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/maitre.png" (click)="cargarUsuario('metre')"></ion-img>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/cocinero.png" (click)="cargarUsuario('cocinera')"></ion-img>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/camarera.png" (click)="cargarUsuario('mozo')"></ion-img>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/barman.png" (click)="cargarUsuario('bartender')"></ion-img>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-img class="icon-img" src="../../../assets/botones/avatar.png" (click)="cargarUsuario('cliente')"></ion-img>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </div>
+  </div>
+</ion-content>
