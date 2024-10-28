@@ -1,6 +1,6 @@
 # sabor-criollo-2024
 
-Alfa: 
+Alfa: Fausto Panello
 
 Beta: Joel Mahafud
 
