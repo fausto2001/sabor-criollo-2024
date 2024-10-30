@@ -17,6 +17,7 @@ Bienvenido a **Sabor Criollo 2024**.
 ### α Fausto Panello (Alfa)
     - ✔️ Creación del repositorio
     - ⌛ Creación del readme
+    - ⌛ Alta del cliente
     - ❌ Otras tareas...
 
 
