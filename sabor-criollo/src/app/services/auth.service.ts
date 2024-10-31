@@ -21,11 +21,11 @@ export class AuthService {
   usuario:UsuarioModel | null = null;
 
   constructor() {
-    this.state$.subscribe( userState => {
+    this.state$.subscribe( (userState: { uid: string; } | null) => {
       if(userState != null ){
         if(this.usuario && this.usuario.uid != userState.uid){
           const getUsuario$ = this.usuarioServ.getUsuarioPorUid(userState?.uid!)
-          getUsuario$.subscribe( data => {
+          getUsuario$.subscribe( (data: UsuarioModel | null) => {
             this.usuario = data;
           });
           this.currentUser = userState;

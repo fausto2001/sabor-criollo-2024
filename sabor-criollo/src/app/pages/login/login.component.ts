@@ -27,7 +27,7 @@ export class LoginComponent  implements OnInit {/*
     password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
   });
 
-  constructor(/*private toastService: ToastService*/) { }
+  constructor(/*private toastService: ToastService*/ private router:Router  ) { }
 
   ngOnInit() {
     //this.toastService.presentToast('middle','Login','success',4000)
@@ -106,6 +106,6 @@ export class LoginComponent  implements OnInit {/*
   }
 
   altaClientes(){
-    //this.router.navigateByUrl('/alta-cliente');
+    this.router.navigateByUrl('/alta-cliente');
   }
 }
