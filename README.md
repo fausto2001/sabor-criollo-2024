@@ -15,19 +15,24 @@ Bienvenido a **Sabor Criollo 2024**.
     -   ❌ Formulario de ingreso con accesos rápidos
 
 ### α Fausto Panello (Alfa)
-    - ✔️ Creación del repositorio
-    - ⌛ Creación del readme
+    - ✔️ Creación del repositorio (28/10)
+    - ✔️ Integración con Android (30/10)
+    - ✔️ Creación del readme (28/10)
+    - ⌛ Alta del cliente (Frontend finalizado, falta backend...)
     - ❌ Otras tareas...
 
 
 ### β Joel Mahafud (Beta)
     - ✔️ Tareas realizadas
     - ⌛ Implementación firebase
+    - ⌛ Creación de la base de datos
+    - ⌛ Alta admin/supervisor
 
 ### γ Tomas Mastrapasqua (Gamma)
-    - ✔️ Creación del proyecto
-    - ⌛ Splash screens
-    - ⌛ Diseño de ícono
+    - ✔️ Creación del proyecto (28/10)
+    - ✔️ Splash screens (28/10)
+    - ✔️ Diseño de ícono (28/10)
+    - ⌛ Formulario de ingreso con accesos rápidos
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
@@ -39,17 +44,17 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### 1 - Crear un cliente nuevo
     Tareas: Cargar todos sus datos personales y una foto
-    Responsable: 
-    Fecha de inicio:
-    Fecha de finalización:
+    Responsable: Fausto Panello
+    Fecha de inicio: 30/10
+    Fecha de finalización: ...
 
 ### 2 - Validar todos los campos
     Tareas: - Verificar la lectura del código QR del D.N.I. (varios formatos).
             - Verificar que el pre-registro se visualice en el listado de clientes pendientes de aprobación del dueño o supervisor (push notification *A)
             - Verificar que no se pueda ingresar a la aplicación sin ser aprobado. Informar lo acontecido con un mensaje alusivo.
-    Responsable:
-    Fecha de inicio:
-    Fecha de finalización:
+    Responsable: Fausto Panello
+    Fecha de inicio: 30/10
+    Fecha de finalización: ...
 
 ### 3 - El dueño o supervisor (celular 3) acepta o rechaza al cliente.
     Tareas: - El cliente recibe un correo electrónico informado de la situación de su registro (uno por la aceptación y otro en el caso de rechazo). Los mensajes deben tener el logo de la empresa, mensajes personalizados, fuentes distintas a las que vienen por defecto, etc.
