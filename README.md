@@ -15,9 +15,10 @@ Bienvenido a **Sabor Criollo 2024**.
     -   ❌ Formulario de ingreso con accesos rápidos
 
 ### α Fausto Panello (Alfa)
-    - ✔️ Creación del repositorio
-    - ⌛ Creación del readme
-    - ⌛ Alta del cliente
+    - ✔️ Creación del repositorio (28/10)
+    - ✔️ Integración con Android (30/10)
+    - ✔️ Creación del readme (28/10)
+    - ⌛ Alta del cliente (Frontend finalizado, falta backend...)
     - ❌ Otras tareas...
 
 
@@ -26,9 +27,10 @@ Bienvenido a **Sabor Criollo 2024**.
     - ⌛ Implementación firebase
 
 ### γ Tomas Mastrapasqua (Gamma)
-    - ✔️ Creación del proyecto
-    - ⌛ Splash screens
-    - ⌛ Diseño de ícono
+    - ✔️ Creación del proyecto (28/10)
+    - ✔️ Splash screens (28/10)
+    - ✔️ Diseño de ícono (28/10)
+    - ⌛ Formulario de ingreso con accesos rápidos
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
