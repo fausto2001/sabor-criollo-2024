@@ -23,8 +23,7 @@ Bienvenido a **Sabor Criollo 2024**.
 
 
 ### β Joel Mahafud (Beta)
-    - ✔️ Tareas realizadas
-    - ⌛ Implementación firebase
+    - ✔️ Implementación firebase (28/10)
     - ⌛ Creación de la base de datos
     - ⌛ Alta admin/supervisor
 
