@@ -32,6 +32,8 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Splash screens (28/10)
     - ✔️ Diseño de ícono (28/10)
     - ⌛ Formulario de ingreso con accesos rápidos
+    - ⌛ Alta empleados
+
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
