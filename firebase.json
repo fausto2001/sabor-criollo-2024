@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "sabor-criollo/www",
     "ignore": [
       "firebase.json",
       "**/.*",
