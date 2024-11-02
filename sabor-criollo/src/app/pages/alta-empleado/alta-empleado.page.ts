@@ -39,7 +39,7 @@ export class AltaEmpleadoPage implements OnInit {
     password: new FormControl('', [Validators.required]),
     nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
     apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
-    dni: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+    dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
     cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
     rol: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Validators.required]),
@@ -75,7 +75,7 @@ export class AltaEmpleadoPage implements OnInit {
     if(this.form.valid){
       const foto = await this.camaraServ.tomarFoto();
       const urlFoto = await this.storageServ.subirFotoBase64(this.cuil, 'empleados/', foto);
-      await this.authServ.registrarUsuario(this.email, this.password)
+      await this.authServ.register(this.email, this.password, this.dni)
         .then( (data:any) => {
           const nuevoUsuario = <UsuarioModel>{
             id: '',

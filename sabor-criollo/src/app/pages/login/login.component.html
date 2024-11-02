@@ -8,6 +8,10 @@
     <ion-row class="icon-img">
       <ion-img src="../../../assets/logo-png.png"></ion-img>
     </ion-row>
+    
+    <ion-row class="ion-justify-content-center aux danger">
+      {{error}}
+    </ion-row>
     <ion-row>
 
       <form [formGroup]="form" class="auth-form" >
@@ -58,7 +62,6 @@
     <div class="colorFondo">
       <ion-fab vertical="bottom" horizontal="start" slot="fixed">
         <ion-fab-button >
-          <ion-icon name="people"></ion-icon>
            <ion-img src="../../../assets/cubiertos-paralelos.png"></ion-img>
         </ion-fab-button>
         <ion-fab-list side="top">
@@ -72,13 +75,13 @@
             <ion-img class="icon-img" src="../../../assets/botones/cocinero.png" (click)="cargarUsuario('cocinera')"></ion-img>
           </ion-fab-button>
           <ion-fab-button>
-            <ion-img class="icon-img" src="../../../assets/botones/camarera.png" (click)="cargarUsuario('mozo')"></ion-img>
+            <ion-img class="icon-img" src="../../../assets/botones/mozo.png" (click)="cargarUsuario('mozo')"></ion-img>
           </ion-fab-button>
           <ion-fab-button>
             <ion-img class="icon-img" src="../../../assets/botones/barman.png" (click)="cargarUsuario('bartender')"></ion-img>
           </ion-fab-button>
           <ion-fab-button>
-            <ion-img class="icon-img" src="../../../assets/botones/avatar.png" (click)="cargarUsuario('cliente')"></ion-img>
+            <ion-img class="icon-img" src="../../../assets/botones/cliente.png" (click)="cargarUsuario('cliente')"></ion-img>
           </ion-fab-button>
         </ion-fab-list>
       </ion-fab>

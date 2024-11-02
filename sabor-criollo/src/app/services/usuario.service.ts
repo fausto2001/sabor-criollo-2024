@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, collection, Firestore, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, Firestore, collection, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
 import { map, take } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.component';
 import { Observable } from 'rxjs'; 
@@ -9,19 +9,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  //private db:Firestore = inject(Firestore);
- // private usuariosCollection!:CollectionReference;
 
-  private db = inject(Firestore);
- private usuariosCollection = collection(this.db, 'usuarios');
+  private db: Firestore = inject(Firestore);
+  private usuariosCollection: CollectionReference = collection(this.db, 'usuarios');
+  public personaLogeada: any;
 
-
-  constructor() {
-    //this.usuariosCollection = collection(this.db, 'usuarios');
-  }
-
-
-
+  constructor() {}
   
   getUsuarioPorUid(uid:string){
     let qry = query(
@@ -32,13 +25,21 @@ export class UsuarioService {
       map( usuarios => usuarios[0] as UsuarioModel ));
   }
 
-  getUsuarioPorEmail(email:string){
-    let qry = query(
-      this.usuariosCollection,
-      where('email', '==', email)
-    );
-    return collectionData(qry).pipe( 
-      map( usuarios => usuarios[0] as UsuarioModel ));
+  async getUsuarioPorCorreo(mail: string)
+  {
+    const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', mail));
+    const querySnapshot = await getDocs(userQuery);
+
+    if (!querySnapshot.empty) {
+      const userDoc = querySnapshot.docs[0];
+      const userData = await userDoc.data() as UsuarioModel;
+      this.personaLogeada = userData;
+
+      return this.personaLogeada as UsuarioModel;
+    }
+    else {
+      return null;
+    }
   }
 
   setUsuario(usuario:UsuarioModel){
@@ -108,5 +109,28 @@ export class UsuarioService {
     const registro = doc(this.usuariosCollection, usuario.id!);
     return deleteDoc(registro, { usuario.email });
   }*/
+ 
+  async documentoYaRegistrado(nroDocumento: string)
+  {
+    let ret: boolean = false; 
+    const collections = ['admins', 'pacientes', 'especialistas'];
+    for (const collectionName of collections) {
+      const userQuery = query(collection(this.db, collectionName), where('nroDocumento', '==', nroDocumento));
+      const querySnapshot = await getDocs(userQuery);
+
+      if (!querySnapshot.empty) {
+        return ret = true;
+      }
+    }
+    return ret;
+  }
+
+  usuarioActivo(): boolean {
+    return this.personaLogeada.admitido;
+  }
+
+  borrarPersonaLogeada() {
+    this.personaLogeada = null;
+  }
 
 }
