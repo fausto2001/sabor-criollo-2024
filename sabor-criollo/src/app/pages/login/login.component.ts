@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 
+import { UsuarioService } from '../../services//usuario.service';
+import { UsuarioModel } from '../../models/usuario.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +19,8 @@ import { ToastService } from 'src/app/services/toast.service';
   imports: [IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class LoginComponent  implements OnInit {
+
+  private usuarioServ:UsuarioService = inject(UsuarioService);
 
   error: string = '';
 
@@ -40,6 +45,11 @@ export class LoginComponent  implements OnInit {
       let password: string = this.form.get('password')!.value;
 
       await this.authServ.loguearUsuario(email, password)
+        .then( () => {
+          this.router.navigateByUrl('/home');
+        })
+/*
+      await this.authServ.loguearUsuario(email, password)
         .then( (subs) => {
           subs.subscribe( async (data) => {
             if(data){
@@ -51,7 +61,7 @@ export class LoginComponent  implements OnInit {
         })
         .catch((error) => {
           
-        });
+        });*/
     }
   }
 
@@ -61,8 +71,8 @@ export class LoginComponent  implements OnInit {
 
     switch(user){
       case 'dueño':
-        email = 'knights-code-lks@hotmail.com';
-        contraseña = '123123';
+        email = 'tomasmastrapasqua3@gmail.com';
+        contraseña = '123456';
         break;
       case 'metre':
         email = 'metre@gmail.com';

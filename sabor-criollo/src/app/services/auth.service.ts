@@ -36,11 +36,13 @@ export class AuthService {
   }
 
   async loguearUsuario(email: string, password: string){
+
     try {
       const data = await signInWithEmailAndPassword(this.auth, email, password);
 
       this.currentUser = data.user;
-      return this.usuarioServ.getUsuarioPorUid(data.user.uid!);
+      //return this.usuarioServ.getUsuarioPorUid(data.user.uid!);
+      return this.currentUser;
 
     }
     catch (error) {

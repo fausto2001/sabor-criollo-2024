@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, Firestore, collection, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, collection, Firestore, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
 import { map, take } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.component';
 import { Observable } from 'rxjs'; 
@@ -9,13 +9,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private db:Firestore = inject(Firestore);
-  private usuariosCollection!:CollectionReference;
+  //private db:Firestore = inject(Firestore);
+ // private usuariosCollection!:CollectionReference;
+
+  private db = inject(Firestore);
+ private usuariosCollection = collection(this.db, 'usuarios');
+
 
   constructor() {
-    this.usuariosCollection = collection(this.db, 'usuarios');
+    //this.usuariosCollection = collection(this.db, 'usuarios');
   }
 
+
+
+  
   getUsuarioPorUid(uid:string){
     let qry = query(
       this.usuariosCollection,
