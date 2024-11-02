@@ -20,5 +20,9 @@ export const routes: Routes = [
     // Lazy loading
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
+  },  {
+    path: 'alta-empleado',
+    loadComponent: () => import('./pages/alta-empleado/alta-empleado.page').then( m => m.AltaEmpleadoPage)
   },
+
 ];
