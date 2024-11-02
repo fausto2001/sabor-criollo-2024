@@ -2,10 +2,10 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
-//import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 //import Swal from 'sweetalert2';
-//import { ToastService } from 'src/app/services/toast.service';
+import { ToastService } from 'src/app/services/toast.service';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 
 @Component({
@@ -15,10 +15,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
-export class LoginComponent  implements OnInit {/*
-  private authServ:AuthService = inject(AuthService);
-  private router:Router = inject(Router);
-  private pushNotifServ:NotificationPushService = inject(NotificationPushService);*/
+export class LoginComponent  implements OnInit {
 
   error: string = '';
 
@@ -27,12 +24,16 @@ export class LoginComponent  implements OnInit {/*
     password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
   });
 
-  constructor(/*private toastService: ToastService*/) { }
+  constructor(private toastService: ToastService,
+    private authServ: AuthService,
+    private router: Router
+
+  ) { }
 
   ngOnInit() {
     //this.toastService.presentToast('middle','Login','success',4000)
   }
-/*
+
   async ingresar(){
     if(this.form.valid){
       let email: string = this.form.get('email')!.value;
@@ -49,24 +50,10 @@ export class LoginComponent  implements OnInit {/*
           })
         })
         .catch((error) => {
-          // this.error = '';
-          // this.error = error;
-          console.log(error)
-          Swal.fire({
-            title: "Usuario inexistente",
-            text: "Intentelo nuevamente",
-            background: '#4b4b4b',
-            color: '#ffffff',
-            showConfirmButton: true,
-            confirmButtonText: ' OK',
-            confirmButtonColor: '#ff2a96',
-            icon: 'error',
-            toast: true,
-            position: 'center'
-          });
+          
         });
     }
-  }*/
+  }
 
   cargarUsuario(user:string){
     let email:string = '';

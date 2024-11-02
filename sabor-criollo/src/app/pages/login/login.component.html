@@ -44,7 +44,7 @@
           </ion-col>
 
           <ion-col size="12">
-            <ion-button  expand="full" shape="round" size="large"  [disabled]="form.invalid">Aceptar</ion-button>
+            <ion-button  expand="full" shape="round" size="large"  (click)="ingresar()" [disabled]="form.invalid">Aceptar</ion-button>
             <div class="contenedor-nuevocliente">
               <span  class="botonNuevoCliente" id="registro">¿Es un nuevo cliente? <span (click)="altaClientes()"><u>Regístrese aquí</u></span></span>
             </div>
