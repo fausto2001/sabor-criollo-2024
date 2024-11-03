@@ -2,11 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
-//import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 //import Swal from 'sweetalert2';
 //import { ToastService } from 'src/app/services/toast.service';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
+
+//import { UsuarioService } from '../../services//usuario.service';
+//import { UsuarioModel } from '../../models/usuario.component';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +18,16 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
-export class LoginComponent  implements OnInit {/*
-  private authServ:AuthService = inject(AuthService);
-  private router:Router = inject(Router);
-  private pushNotifServ:NotificationPushService = inject(NotificationPushService);*/
+export class LoginComponent  implements OnInit {
 
-  error: string = '';
+  //private usuarioServ:UsuarioService = inject(UsuarioService);
 
-  form: FormGroup = new FormGroup({
+  protected error: string = '';
+  //private toastService: ToastService = inject(ToastService);
+  private authService: AuthService = inject(AuthService);
+  private router: Router = inject(Router);
+
+  protected form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
   });
@@ -32,41 +37,32 @@ export class LoginComponent  implements OnInit {/*
   ngOnInit() {
     //this.toastService.presentToast('middle','Login','success',4000)
   }
-/*
+
   async ingresar(){
     if(this.form.valid){
       let email: string = this.form.get('email')!.value;
       let password: string = this.form.get('password')!.value;
 
-      await this.authServ.loguearUsuario(email, password)
-        .then( (subs) => {
-          subs.subscribe( async (data) => {
+      await this.authService.login(email, password)
+        .then( (resultadoLogin) => {
+          this.error = resultadoLogin;
+          if(this.error == ''){
+            this.router.navigateByUrl('/home');
+          }
+          /* subs.subscribe( async (data) => {
             if(data){
               this.authServ.usuario = data;
               // await this.pushNotifServ.registerNotifications();
               this.router.navigateByUrl('/home');
+
             }
-          })
+          }) */
         })
         .catch((error) => {
-          // this.error = '';
-          // this.error = error;
-          console.log(error)
-          Swal.fire({
-            title: "Usuario inexistente",
-            text: "Intentelo nuevamente",
-            background: '#4b4b4b',
-            color: '#ffffff',
-            showConfirmButton: true,
-            confirmButtonText: ' OK',
-            confirmButtonColor: '#ff2a96',
-            icon: 'error',
-            toast: true,
-            position: 'center'
-          });
+          console.error(error);
         });
     }
-  }*/
+  }
 
   cargarUsuario(user:string){
     let email:string = '';
@@ -74,14 +70,14 @@ export class LoginComponent  implements OnInit {/*
 
     switch(user){
       case 'dueño':
-        email = 'knights-code-lks@hotmail.com';
-        contraseña = '123123';
+        email = 'tomasmastrapasqua3@gmail.com';
+        contraseña = '123456';
         break;
       case 'metre':
         email = 'metre@gmail.com';
         contraseña = '123456';
         break;
-      case 'cocinera':
+      case 'cocinero':
         email = 'cocinero@gmail.com';
         contraseña = '123456';
         break;
@@ -94,7 +90,7 @@ export class LoginComponent  implements OnInit {/*
         contraseña = '123456';
         break;
       case 'cliente':
-          email = 'nina@gmail.com';
+          email = 'fulano@gmail.com';
           contraseña = '123456';
           break;
     }

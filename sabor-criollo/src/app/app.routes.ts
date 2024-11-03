@@ -20,5 +20,22 @@ export const routes: Routes = [
     path: 'alta-cliente',
     loadComponent: () => import('./pages/alta-cliente/alta-cliente.page').then( m => m.AltaClientePage)
   },
-
+  { 
+    // Lazy loading
+    path: 'home',
+    loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
+  },
+  {
+    path: 'alta-empleado',
+    loadComponent: () => import('./pages/alta-empleado/alta-empleado.page').then( m => m.AltaEmpleadoPage)
+  },
+  {
+    path: 'alta-duenio',
+    loadComponent: () => import('./pages/alta-duenio/alta-duenio.page').then( m => m.AltaDuenioPage)
+  },
+  {
+    path: '**',
+    redirectTo: 'splash-screen',
+    pathMatch: 'full',
+  }
 ];
