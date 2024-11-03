@@ -13,15 +13,13 @@ import { UsuarioModel } from 'src/app/models/usuario.component';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
-  selector: 'app-alta-empleado',
-  templateUrl: './alta-empleado.page.html',
-  styleUrls: ['./alta-empleado.page.scss'],
+  selector: 'app-alta-duenio',
+  templateUrl: './alta-duenio.page.html',
+  styleUrls: ['./alta-duenio.page.scss'],
   standalone: true,
-  imports: [IonList, IonLabel,
-    IonInput, IonSelect, IonSelectOption, IonInputPasswordToggle, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule
-  ]
+  imports: [IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
-export class AltaEmpleadoPage implements OnInit {
+export class AltaDuenioPage implements OnInit {
 
   private usuarioServ:UsuarioService = inject(UsuarioService);
   private authServ:AuthService = inject(AuthService);
@@ -142,4 +140,5 @@ export class AltaEmpleadoPage implements OnInit {
 
   ngOnInit() {
   }
+
 }

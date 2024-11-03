@@ -77,7 +77,7 @@ export class LoginComponent  implements OnInit {
         email = 'metre@gmail.com';
         contraseña = '123456';
         break;
-      case 'cocinera':
+      case 'cocinero':
         email = 'cocinero@gmail.com';
         contraseña = '123456';
         break;

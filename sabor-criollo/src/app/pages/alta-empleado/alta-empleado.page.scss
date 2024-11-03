@@ -28,10 +28,6 @@ ion-input{
     }
 }
 
-ion-fab-button ion-img{
-    background-color: #b4a056;
-}
-
 .slot{
     margin: 8%;
     margin-top: 10px;
@@ -54,4 +50,10 @@ ion-button {
     border-radius: 25px;
     --background: #0db946;
     --color: black;
+  }
+
+  .fab-icon {
+    width: 70%;
+    height: 70%; 
+    object-fit: contain;
   }

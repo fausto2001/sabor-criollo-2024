@@ -46,7 +46,7 @@
             </ion-input>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['confirmPassword']?.invalid && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
-            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">Confirme la contraseña</div>
             <div *ngIf="form.controls?.['confirmPassword']?.errors?.['noCoincide']">La contraseña no coinciden</div>
           </div>
         </ion-col>
@@ -129,10 +129,8 @@
         <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
           <ion-item class="custom-input">
             <ion-select label="Rol" label-placement="floating" required formControlName="rol">
-              <ion-select-option value="mozo">Mozo</ion-select-option>
-              <ion-select-option value="metre">Metre</ion-select-option>
-              <ion-select-option value="cocinero">Cocinero</ion-select-option>
-              <ion-select-option value="bartender">Bartender</ion-select-option>
+              <ion-select-option value="duenio">Dueño</ion-select-option>
+              <ion-select-option value="supervisor">Supervisor</ion-select-option>
             </ion-select>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['rol']?.invalid && (form.controls?.['rol']?.dirty || form.controls?.['rol']?.touched)">
