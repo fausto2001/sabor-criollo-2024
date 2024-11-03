@@ -102,6 +102,6 @@ export class LoginComponent  implements OnInit {
   }
 
   altaClientes(){
-    //this.router.navigateByUrl('/alta-cliente');
+    this.router.navigateByUrl('/alta-cliente');
   }
 }

@@ -1,5 +1,7 @@
 {
   "name": "sabor-criollo",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

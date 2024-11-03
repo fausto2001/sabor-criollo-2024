@@ -34,4 +34,9 @@ export const routes: Routes = [
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   }
+  {
+    path: 'alta-cliente',
+    loadComponent: () => import('./pages/alta-cliente/alta-cliente.page').then( m => m.AltaClientePage)
+  },
+
 ];
