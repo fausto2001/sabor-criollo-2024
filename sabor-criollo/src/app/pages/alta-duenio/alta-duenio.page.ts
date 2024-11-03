@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonInputPasswordToggle, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonContent, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -21,7 +21,7 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class AltaDuenioPage implements OnInit {
 
-  private usuarioServ:UsuarioService = inject(UsuarioService);
+  private usuarioService:UsuarioService = inject(UsuarioService);
   private authServ:AuthService = inject(AuthService);
   private router:Router = inject(Router);
   private storageServ: StorageService = inject(StorageService);
@@ -29,23 +29,33 @@ export class AltaDuenioPage implements OnInit {
   private camaraServ:CamaraService = inject(CamaraService);
   private toastServ:ToastService = inject(ToastService);
   //private toast2Serv:ToastService = inject(ToastService);
+  protected fotoSubida: string = 'false';
 
   protected error: string = '';
 
-  protected form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
-    apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
-    dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
-    cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
-    rol: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
-    }, {
-      validators: [
-        //confirmarClaveValidator(),
-      ]
-  });
+  protected form: FormGroup;
+
+  constructor() {
+
+    this.form = new FormGroup ({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
+      apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
+      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
+      cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+      rol: new FormControl('Supervisor', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+      foto: new FormControl('', [Validators.required]),
+      }, {
+        validators: [
+          //confirmarClaveValidator(),
+        ]
+    });
+
+   }
+
+  
 
   get email(){
     return this.form.get('email')?.value;
@@ -68,49 +78,88 @@ export class AltaDuenioPage implements OnInit {
   get rol(){
     return this.form.get('rol')?.value;
   }
+  get foto(){
+    return this.form.get('foto')?.value;
+  }
+  set foto(value: string){
+    this.form.get('foto')?.setValue(value);
+  }
+
+  async abrirCamara(){
+    this.router.navigateByUrl('/home');
+    const foto = await this.camaraServ.tomarFoto();
+    this.foto = await this.storageServ.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
+    this.switchFotoSubida();
+  }
 
   async registrar(){
+    if(this.password != this.form.get('confirmPassword')?.value){
+      this.error = 'Las contraseñas no coinciden';
+      this.form.markAllAsTouched();
+      return;
+    }
+    if(this.foto == ''){
+      this.error = 'La foto es requerida';
+      this.form.markAllAsTouched();
+      return;
+    }
     if(this.form.valid){
-      const foto = await this.camaraServ.tomarFoto();
-      const urlFoto = await this.storageServ.subirFotoBase64(this.cuil, 'empleados/', foto);
       await this.authServ.register(this.email, this.password, this.dni)
-        .then( (data:any) => {
+        .then((data:any) => {
+
+          if(data == typeof(String)){
+            this.error = data;
+            return;
+          }
+
+
           const nuevoUsuario = <UsuarioModel>{
             id: '',
-            uid: 'data!.uid',
+            uid: data!.uid,
             email: this.email,
-            clave: this.password,
+            //clave: this.password,
             nombre: this.nombre,
             apellido: this.apellido,
             dni: this.dni,
             cuil: this.cuil,
             rol: this.rol,
             enListaDeEspera: null,
-            admitido: true,
-            foto: urlFoto!,
+            admitido: false,
+            foto: this.foto,
             mesa: null,
-            tokenNotification: null,
-          }
-          console.log(nuevoUsuario);
-          this.usuarioServ.setUsuario(nuevoUsuario);
+            //tokenNotification: null,
+          };
+          this.usuarioService.setUsuario(nuevoUsuario).then((ret) => {
+            if(ret instanceof Error){
+              this.error = ret.message;
+              return;
+            }
+            else{
+              Swal.fire({
+                icon: 'success',
+                title: "Alta generada con éxito",
+                //timer: 2000,
+                toast: true,
+                position: 'center'
+              }).then( () => {
+                this.form.reset();
+                this.router.navigateByUrl('/home');
+              });
+            }
+          });
         })
         .catch( (error) => {
-          // this.toastServ.presentToast('bottom', error.message, 'danger', 3000);
-          this.toastServ.presentToast('bottom', error.message, 'red', 3000);
-          console.log(error);
-        })
-        .finally( async () => {
-          await Swal.fire({
-            title: "Redireccionando al menú principal",
-            timer: 2000,
-            toast: true,
-            position: 'center'
-          })
-          .then( () => {
-            this.router.navigateByUrl('/home');
-          });
+          this.error = error.message;
         });
     }
+    else{
+      this.form.markAllAsTouched();
+      this.error = 'Verifique los datos ingresados';
+    }
+  }
+
+  noCoinciden(){
+    return this.password != this.form.get('confirmPassword')?.value && (this.form.get('confirmPassword')?.touched || this.form.get('confirmPassword')?.dirty);
   }
 
   async escanear(){
@@ -141,4 +190,13 @@ export class AltaDuenioPage implements OnInit {
   ngOnInit() {
   }
 
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
+
+  switchFotoSubida(){
+    if(this.foto!=''){
+      this.fotoSubida = 'true';
+    }    
+  }
 }

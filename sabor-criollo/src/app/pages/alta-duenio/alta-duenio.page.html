@@ -1,5 +1,18 @@
 
 <ion-content [fullscreen]="true">
+
+  <ion-row class="ion-align-items-center titulo">
+    <ion-col size="auto">
+      <div class="divBack" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
+    </ion-col>
+
+    <ion-col class="ion-text-center">
+      Alta de dueño/supervisor
+    </ion-col>
+  </ion-row>
+
   <ion-row>
     <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
       <ion-row class="ion-justify-content-center slot aux">
@@ -8,14 +21,14 @@
           <ion-item class="custom-input" lines="none">
             <ion-input
               type="email"
-              label="Email"
+              label="Correo"
               formControlName='email'
               labelPlacement="floating"
               [clearInput]="true"
             ></ion-input>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['email']?.invalid && (form.controls?.['email']?.dirty || form.controls?.['email']?.touched)">
-            <div *ngIf="form.controls?.['email']?.errors?.['required']">El email es requerido</div>
+            <div *ngIf="form.controls?.['email']?.errors?.['required']">El correo es requerido</div>
             <div *ngIf="form.controls?.['email']?.errors?.['email']">Formato inválido</div>
           </div>
         </ion-col>
@@ -31,6 +44,7 @@
           </ion-item>
           <div class="error" *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
             <div *ngIf="form.controls?.['password']?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="form.controls?.['password']?.errors?.['minlength']">Mínimo 6 caracteres</div>
           </div>
         </ion-col>
         <!-- Repetir Clave / Contraseña -->
@@ -45,9 +59,9 @@
             name="confirmPasswordR">
             </ion-input>
           </ion-item>
-          <div class="error" *ngIf="form.controls?.['confirmPassword']?.invalid && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
+          <div class="error" *ngIf="(form.controls?.['confirmPassword']?.invalid || noCoinciden()) && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
             <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">Confirme la contraseña</div>
-            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['noCoincide']">La contraseña no coinciden</div>
+            <div *ngIf="noCoinciden()">Las contraseñas no coinciden</div>
           </div>
         </ion-col>
 
@@ -119,18 +133,17 @@
             </ion-input>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['cuil']?.invalid && (form.controls?.['cuil']?.dirty || form.controls?.['cuil']?.touched)">
-            <div *ngIf="form.controls?.['cuil']?.errors?.['required']">El CUIT es requerido</div>
-            <div *ngIf="form.controls?.['cuil']?.errors?.['minlength']">El CUIT debe tener 11 dígitos</div>
-            <div *ngIf="form.controls?.['cuil']?.errors?.['maxlength']">El CUIT debe tener 11 dígitos</div>
-
+            <div *ngIf="form.controls?.['cuil']?.errors?.['required']">El CUIL es requerido</div>
+            <div *ngIf="form.controls?.['cuil']?.errors?.['minlength']">El CUIL debe tener 11 dígitos</div>
+            <div *ngIf="form.controls?.['cuil']?.errors?.['maxlength']">El CUIL debe tener 11 dígitos</div>
           </div>
         </ion-col>
 
         <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
           <ion-item class="custom-input">
-            <ion-select label="Rol" label-placement="floating" required formControlName="rol">
-              <ion-select-option value="duenio">Dueño</ion-select-option>
+            <ion-select [(ngModel)]="rol" label="Rol" label-placement="floating" required formControlName="rol">
               <ion-select-option value="supervisor">Supervisor</ion-select-option>
+              <ion-select-option value="duenio">Dueño</ion-select-option>
             </ion-select>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['rol']?.invalid && (form.controls?.['rol']?.dirty || form.controls?.['rol']?.touched)">
@@ -143,13 +156,24 @@
 
   </ion-row>
 
+  <ion-row class="ion-justify-content-center aux danger">
+    {{error}}
+  </ion-row>
+
   <ion-row class="ion-justify-content-center btn">
-    <ion-button  expand="full" shape="round" size="large" (click)="registrar()" [disabled]="form.invalid">Registrar</ion-button>
+    <ion-button expand="full" shape="round" size="large" (click)="registrar()">Registrar</ion-button>
+    <!-- <ion-button  expand="full" shape="round" size="large" (click)="registrar()" [disabled]="form.invalid">Registrar</ion-button> -->
   </ion-row>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" >
     <ion-fab-button (click)="escanear()">
       <ion-img src="../../../assets/botones/dni.svg" class="fab-icon"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button [ngClass]="fotoSubida" (click)="abrirCamara()">
+      <ion-img src="../../../assets/botones/camara.svg" class="fab-icon"></ion-img>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

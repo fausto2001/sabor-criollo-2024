@@ -42,7 +42,7 @@ export class UsuarioService {
     }
   }
 
-  setUsuario(usuario:UsuarioModel){
+  async setUsuario(usuario:UsuarioModel){
     debugger;
     if(usuario){
       const tupla = doc(this.usuariosCollection);
@@ -50,7 +50,7 @@ export class UsuarioService {
       return setDoc(tupla, usuario)
     }
     else{
-      throw new Error('No se ha cargado ningun usuario a registrar');
+      return new Error('No se ha cargado ningun usuario a registrar');
     }
   }
   

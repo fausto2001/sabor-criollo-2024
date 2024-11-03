@@ -36,7 +36,7 @@ export class AltaEmpleadoPage implements OnInit {
 
   protected form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
     apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
     dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
@@ -79,7 +79,7 @@ export class AltaEmpleadoPage implements OnInit {
         .then( (data:any) => {
           const nuevoUsuario = <UsuarioModel>{
             id: '',
-            uid: 'data!.uid',
+            uid: data!.uid,
             email: this.email,
             clave: this.password,
             nombre: this.nombre,

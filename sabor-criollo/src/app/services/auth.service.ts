@@ -40,7 +40,8 @@ export class AuthService {
 
     return new Promise<string>((resolve) => {
       createUserWithEmailAndPassword(this.firebaseAuth, mail, password)
-      .then(() => {
+      .then((ret) => {
+        return ret;
         })
         .catch(err => {
           let mensajeError = '';
