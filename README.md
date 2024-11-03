@@ -22,8 +22,9 @@ Bienvenido a **Sabor Criollo 2024**.
 
 
 ### β Joel Mahafud (Beta)
-    - ✔️ Implementación firebase (28/10)
+    - ✔️ Implementación firebase (Hosting, Authentication, Firestore, Storage) (28/10)
     - ✔️ Creación de la base de datos (28/10)
+    - ✔️ Mejoras en componente login y servicios auth y user (1/11)
     - ✔️ Alta admin/supervisor (2/11)
 
 ### γ Tomas Mastrapasqua (Gamma)
