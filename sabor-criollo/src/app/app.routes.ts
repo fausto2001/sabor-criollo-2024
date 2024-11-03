@@ -31,7 +31,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'splash-screen',
+    pathMatch: 'full',
   }
-
 ];

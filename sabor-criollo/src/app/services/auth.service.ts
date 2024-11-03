@@ -40,8 +40,8 @@ export class AuthService {
 
     return new Promise<string>((resolve) => {
       createUserWithEmailAndPassword(this.firebaseAuth, mail, password)
-      .then((ret) => {
-        return ret;
+      .then(() => {
+        resolve('');
         })
         .catch(err => {
           let mensajeError = '';
@@ -89,9 +89,8 @@ export class AuthService {
 
             if(this.usuario?.admitido)
             {
-              console.log('Usuario activo');
               this.currentUserSig.set(this.userService.personaLogeada);
-              this.router.navigate(['/bienvenida']);
+              this.router.navigate(['/home']);
               resolve('');
             } else {
               resolve('Su cuenta no se encuentra habilitada, póngase en contacto con un administrador.');

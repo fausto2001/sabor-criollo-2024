@@ -43,7 +43,6 @@ export class UsuarioService {
   }
 
   async setUsuario(usuario:UsuarioModel){
-    debugger;
     if(usuario){
       const tupla = doc(this.usuariosCollection);
       usuario.id = tupla.id;
@@ -112,17 +111,13 @@ export class UsuarioService {
  
   async documentoYaRegistrado(nroDocumento: string)
   {
-    let ret: boolean = false; 
-    const collections = ['admins', 'pacientes', 'especialistas'];
-    for (const collectionName of collections) {
-      const userQuery = query(collection(this.db, collectionName), where('nroDocumento', '==', nroDocumento));
-      const querySnapshot = await getDocs(userQuery);
+    const userQuery = query(collection(this.db, 'usuarios'), where('dni', '==', nroDocumento));
+    const querySnapshot = await getDocs(userQuery);
 
-      if (!querySnapshot.empty) {
-        return ret = true;
-      }
+    if (!querySnapshot.empty) {
+      return true;
     }
-    return ret;
+    return false;
   }
 
   usuarioActivo(): boolean {

@@ -141,9 +141,9 @@
 
         <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
           <ion-item class="custom-input">
-            <ion-select [(ngModel)]="rol" label="Rol" label-placement="floating" required formControlName="rol">
-              <ion-select-option value="supervisor">Supervisor</ion-select-option>
+            <ion-select label="Rol" label-placement="floating" required formControlName="rol">
               <ion-select-option value="duenio">Dueño</ion-select-option>
+              <ion-select-option value="supervisor">Supervisor</ion-select-option>
             </ion-select>
           </ion-item>
           <div class="error" *ngIf="form.controls?.['rol']?.invalid && (form.controls?.['rol']?.dirty || form.controls?.['rol']?.touched)">

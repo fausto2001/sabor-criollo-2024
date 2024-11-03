@@ -79,7 +79,7 @@ export class AltaEmpleadoPage implements OnInit {
         .then( (data:any) => {
           const nuevoUsuario = <UsuarioModel>{
             id: '',
-            uid: data!.uid,
+            uid: '',//data!.uid,
             email: this.email,
             clave: this.password,
             nombre: this.nombre,
@@ -93,27 +93,26 @@ export class AltaEmpleadoPage implements OnInit {
             mesa: null,
             tokenNotification: null,
           }
-          console.log(nuevoUsuario);
+          //console.log(nuevoUsuario);
           this.usuarioServ.setUsuario(nuevoUsuario);
         })
         .catch( (error) => {
           // this.toastServ.presentToast('bottom', error.message, 'danger', 3000);
           this.toastServ.presentToast('bottom', error.message, 'red', 3000);
-          console.log(error);
-        })
-        .finally( async () => {
-          await Swal.fire({
-            title: "Redireccionando al menú principal",
-            timer: 2000,
-            toast: true,
-            position: 'center'
-          })
-          .then( () => {
-            this.router.navigateByUrl('/home');
-          });
+          console.error(error);
         });
+
+        await Swal.fire({
+          title: "Redireccionando al menú principal",
+          timer: 2000,
+          toast: true,
+          position: 'center'
+        })
+        .then( () => {
+          this.router.navigateByUrl('/home');
+        });
+      }
     }
-  }
 
   async escanear(){
     const result = await this.qrServ.escanearDNI();

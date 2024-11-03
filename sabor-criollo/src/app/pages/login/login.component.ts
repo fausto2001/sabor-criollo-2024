@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabBut
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 //import Swal from 'sweetalert2';
-import { ToastService } from 'src/app/services/toast.service';
+//import { ToastService } from 'src/app/services/toast.service';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 
 //import { UsuarioService } from '../../services//usuario.service';
@@ -22,12 +22,12 @@ export class LoginComponent  implements OnInit {
 
   //private usuarioServ:UsuarioService = inject(UsuarioService);
 
-  error: string = '';
-  private toastService: ToastService = inject(ToastService);
+  protected error: string = '';
+  //private toastService: ToastService = inject(ToastService);
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
 
-  form: FormGroup = new FormGroup({
+  protected form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
   });
@@ -59,7 +59,7 @@ export class LoginComponent  implements OnInit {
           }) */
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
     }
   }
