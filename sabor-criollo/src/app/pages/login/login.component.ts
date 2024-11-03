@@ -32,7 +32,7 @@ export class LoginComponent  implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
   });
 
-  constructor(/*private toastService: ToastService*/ private router:Router  ) { }
+  constructor() { }
 
   ngOnInit() {
     //this.toastService.presentToast('middle','Login','success',4000)
