@@ -18,14 +18,16 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Creación del repositorio (28/10)
     - ✔️ Integración con Android (30/10)
     - ✔️ Creación del readme (28/10)
-    - ⌛ Alta del cliente (Frontend finalizado, falta backend...)
-    - ❌ Otras tareas...
+    - ❌ Alta del cliente
+        ** Mensaje: No llegó a terminar alta del cliente para el 2/11 (solamente frontend). Lo finaliza la siguiente semana. **
 
 
 ### β Joel Mahafud (Beta)
     - ✔️ Implementación firebase (28/10)
-    - ✔️ Creación de la base de datos
-    - ⌛ Alta admin/supervisor
+    - ✔️ Creación de la base de datos (1/11)
+    - ✔️ Puesta en funcionamiento de servicio auth contra firebase auth y firestore (registro, login, logout, etc) (2/11)
+    - ✔️ Alta admin/supervisor (2/11)
+    - ✔️ Alta de cuenta de correo para la empresa (2/11)
 
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Creación del proyecto (28/10)
@@ -37,6 +39,17 @@ Bienvenido a **Sabor Criollo 2024**.
 
 
 ## 📅 Semana 2 (3/11 - 9/11)
+
+### α Fausto Panello (Alfa)
+    - ✔️ (nueva) Función de escaneo de DNI (3/11)
+    - ⌛
+
+### β Joel Mahafud (Beta)
+    - ⌛ Home reactivo a los perfiles de cada usuario
+    - ⌛ Módulo de gestión de aprobación de clientes
+
+### γ Tomas Mastrapasqua (Gamma)
+    - ⌛ Más tareas...
 
 ## 📅 Semana 3 (10/11 - 16/11)
 
