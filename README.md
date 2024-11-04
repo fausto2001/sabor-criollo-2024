@@ -45,7 +45,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ⌛ Alta del cliente (atrasado de la semana anterior).
 
 ### β Joel Mahafud (Beta)
-    - ⌛ Home reactivo a los perfiles de cada usuario
+    - ✔️ Home reactivo a los perfiles de cada usuario (Estructura, falta maquetar homes individuales)
     - ⌛ Módulo de gestión de aprobación de clientes
 
 ### γ Tomas Mastrapasqua (Gamma)
