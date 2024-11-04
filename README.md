@@ -19,7 +19,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Integración con Android (30/10)
     - ✔️ Creación del readme (28/10)
     - ❌ Alta del cliente
-        ** Mensaje: No llegó a terminar alta del cliente para el 2/11 (solamente frontend). Lo finaliza la siguiente semana. **
+        (Mensaje): No llegó a terminar alta del cliente para el 2/11 (solamente frontend). Lo finaliza la siguiente semana.
 
 
 ### β Joel Mahafud (Beta)
@@ -42,7 +42,7 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### α Fausto Panello (Alfa)
     - ✔️ (nueva) Función de escaneo de DNI (3/11)
-    - ⌛
+    - ⌛ Alta del cliente (atrasado de la semana anterior).
 
 ### β Joel Mahafud (Beta)
     - ⌛ Home reactivo a los perfiles de cada usuario
