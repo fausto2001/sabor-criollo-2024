@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
+import { BarcodeScanningService } from 'src/app/services/barcode.service';
+import { UsuarioModel } from 'src/app/models/usuario.component';
+import { CamaraService } from 'src/app/services/camara.service';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -12,6 +15,10 @@ import { Router } from '@angular/router';
   imports: [IonLabel, IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class AltaClientePage implements OnInit {
+
+  private barcodeService:BarcodeScanningService = inject(BarcodeScanningService);
+  private camaraService:CamaraService = inject(CamaraService);
+  scannedCode: any | null = null;
 
   constructor() { }
 
@@ -28,13 +35,14 @@ export class AltaClientePage implements OnInit {
     photo: new FormControl('', [Validators.required])
   }, { validators: this.PasswordsMatchValidator() });
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.form.patchValue({ photo: input.files[0] });
-      this.form.get('photo')?.setErrors(null);
-    } else {
-      this.form.get('photo')?.setErrors({ required: true }); 
+  async sacarFoto() {
+    try {
+      const foto = await this.camaraService.tomarFoto(); 
+      if (foto) {
+        this.form.controls['photo'].setValue(foto);
+      }
+    } catch (error) {
+      alert('Error al sacar foto.');
     }
   }
 
@@ -48,5 +56,33 @@ export class AltaClientePage implements OnInit {
       }
       return null;
     };
+  }
+
+  async startScan() {
+    try {
+      const cameraPermission = await this.barcodeService.requestPermissions();
+      if (cameraPermission !== 'granted') {
+        alert('Se requiere acceso a la cámara para escanear QR. Por favor, permití su acceso en la configuración de tu dispositivo.');
+        return;
+      }
+
+      alert("Starting scan...");
+      const scannedCode:any = await this.barcodeService.scanSingleBarcode();
+
+      if (scannedCode && scannedCode.displayValue) {
+        const dniData = await this.barcodeService.obtenerDatosDNI(scannedCode.displayValue);
+        this.form.patchValue({
+          dni: dniData.dni,
+          apellido: dniData.apellido,
+          nombre: dniData.nombre
+        });
+      } else {
+        alert('No valid scanned code found.');
+      }
+      
+      } catch (error) {
+        console.error('Scan failed:', error);
+        alert('Scan failed: ' + error);
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult } from '@capacitor/barcode-scanner'
+//import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult } from '@capacitor/barcode-scanner'
 
 
 
@@ -10,14 +10,17 @@ export class QrService {
 
   constructor() { }
 
+  /*
   async escanearDNI(){
     return this.obtenerDatosDNI(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
       cameraDirection: 1,
       hint: 5,
       scanOrientation: 3
     }));
-  }
+  }*/
 
+
+  /*
   private obtenerDatosDNI(result:CapacitorBarcodeScannerScanResult){
     const informacion = result.ScanResult.split('@');
     const data = {
@@ -31,20 +34,22 @@ export class QrService {
       fechaVencimientoDni: informacion[7],
     }
     return data;
-  }
+  }*/
 
+    /*
   async escanearQR(){
     return this.obtenerDatosQR(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
       cameraDirection: 1,
       hint: 5,
       scanOrientation: 3
     }));
-  }
+  }*/
 
+    /*
   private obtenerDatosQR(result:CapacitorBarcodeScannerScanResult){
     const informacion = result.ScanResult;
     return informacion;
-  }
+  }*/
 /*
   async escanearQR(){
     return await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
