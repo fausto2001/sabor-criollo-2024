@@ -47,7 +47,7 @@ export class LoginComponent  implements OnInit {
         .then( (resultadoLogin) => {
           this.error = resultadoLogin;
           if(this.error == ''){
-            this.router.navigateByUrl('/home');
+            //this.router.navigateByUrl('/home');
           }
           /* subs.subscribe( async (data) => {
             if(data){

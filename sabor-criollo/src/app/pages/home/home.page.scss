@@ -1,0 +1,40 @@
+ion-content{
+    --background: none;
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.fab-icon {
+    width: 70%;
+    height: 70%; 
+    object-fit: contain;
+  }
+
+  ion-fab-button{
+    --background: #000000
+  }
+
+  .titulo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; 
+    position: relative; 
+  }
+  
+  .divSalir {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%); 
+    cursor: pointer;
+  }
+  
+  .salir {
+    height: 30px;
+    margin-left: 5vw;
+  }
+  
