@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
-import { QrService } from 'src/app/services/qr.service';
+//import { QrService } from 'src/app/services/qr.service';
 import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
@@ -24,7 +24,7 @@ export class AltaDuenioPage implements OnInit {
   private authService:AuthService = inject(AuthService);
   private router:Router = inject(Router);
   private storageServ: StorageService = inject(StorageService);
-  private qrServ:QrService = inject(QrService);
+  //private qrServ:QrService = inject(QrService);
   private camaraServ:CamaraService = inject(CamaraService);
   protected fotoSubida: string = 'false';
 
@@ -118,7 +118,6 @@ export class AltaDuenioPage implements OnInit {
           this.form.reset();
           this.router.navigateByUrl('/home');
         });
-        
       });
     }
   }
@@ -140,15 +139,19 @@ export class AltaDuenioPage implements OnInit {
       return ret;
     }
     return true;
-  }   
+  }
 
 
   noCoinciden(){
     return this.password != this.form.get('confirmPassword')?.value && (this.form.get('confirmPassword')?.touched || this.form.get('confirmPassword')?.dirty);
   }
 
+<<<<<<< HEAD
   /*
   async escanear(){
+=======
+  /* async escanear(){
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     const result = await this.qrServ.escanearDNI();
 
     this.form.patchValue({
@@ -156,7 +159,11 @@ export class AltaDuenioPage implements OnInit {
       apellido: result.apellido,
       dni: result.dni
     });
+<<<<<<< HEAD
   }*/
+=======
+  } */
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;

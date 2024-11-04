@@ -10,18 +10,28 @@ export class QrService {
 
   constructor() { }
 
+<<<<<<< HEAD
   /*
   async escanearDNI(){
+=======
+  /* async escanearDNI(){
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     return this.obtenerDatosDNI(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
       cameraDirection: 1,
       hint: 5,
       scanOrientation: 3
     }));
+<<<<<<< HEAD
   }*/
 
 
   /*
   private obtenerDatosDNI(result:CapacitorBarcodeScannerScanResult){
+=======
+  } */
+
+  /* private obtenerDatosDNI(result:CapacitorBarcodeScannerScanResult){
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     const informacion = result.ScanResult.split('@');
     const data = {
       nroTramite: informacion[0],
@@ -34,15 +44,22 @@ export class QrService {
       fechaVencimientoDni: informacion[7],
     }
     return data;
+<<<<<<< HEAD
   }*/
 
     /*
   async escanearQR(){
+=======
+  } */
+
+  /* async escanearQR(){
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     return this.obtenerDatosQR(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
       cameraDirection: 1,
       hint: 5,
       scanOrientation: 3
     }));
+<<<<<<< HEAD
   }*/
 
     /*
@@ -50,6 +67,16 @@ export class QrService {
     const informacion = result.ScanResult;
     return informacion;
   }*/
+=======
+  } */
+
+  /* private obtenerDatosQR(result:CapacitorBarcodeScannerScanResult){
+    const informacion = result.ScanResult;
+    return informacion;
+  } */
+
+    
+>>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
 /*
   async escanearQR(){
     return await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
