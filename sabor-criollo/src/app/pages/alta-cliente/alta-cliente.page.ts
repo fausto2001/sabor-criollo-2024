@@ -81,7 +81,7 @@ export class AltaClientePage implements OnInit {
       }
       
       } catch (error) {
-        console.error('Scan failed:', error);
+        console.error('Scan failed:', error); 
         alert('Scan failed: ' + error);
     }
   }
