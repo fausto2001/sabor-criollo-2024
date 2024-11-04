@@ -114,7 +114,7 @@ export class AltaEmpleadoPage implements OnInit {
       }
     }
 
-  async escanear(){
+  /* async escanear(){
     const result = await this.qrServ.escanearDNI();
 
     this.form.patchValue({
@@ -122,7 +122,7 @@ export class AltaEmpleadoPage implements OnInit {
       apellido: result.apellido,
       dni: result.dni
     });
-  }
+  } */
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;
