@@ -146,12 +146,8 @@ export class AltaDuenioPage implements OnInit {
     return this.password != this.form.get('confirmPassword')?.value && (this.form.get('confirmPassword')?.touched || this.form.get('confirmPassword')?.dirty);
   }
 
-<<<<<<< HEAD
   /*
   async escanear(){
-=======
-  /* async escanear(){
->>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     const result = await this.qrServ.escanearDNI();
 
     this.form.patchValue({
@@ -159,11 +155,7 @@ export class AltaDuenioPage implements OnInit {
       apellido: result.apellido,
       dni: result.dni
     });
-<<<<<<< HEAD
   }*/
-=======
-  } */
->>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;

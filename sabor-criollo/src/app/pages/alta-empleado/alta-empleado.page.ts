@@ -116,7 +116,6 @@ export class AltaEmpleadoPage implements OnInit {
       }
     }
 
-<<<<<<< HEAD
     async escanear() {
       try {
           const cameraPermission = await this.barcodeService.requestPermissions();
@@ -143,9 +142,6 @@ export class AltaEmpleadoPage implements OnInit {
 
     /*
   async escanear(){
-=======
-  /* async escanear(){
->>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     const result = await this.qrServ.escanearDNI();
 
     this.form.patchValue({
@@ -153,11 +149,7 @@ export class AltaEmpleadoPage implements OnInit {
       apellido: result.apellido,
       dni: result.dni
     });
-<<<<<<< HEAD
   }*/
-=======
-  } */
->>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;

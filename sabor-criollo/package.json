@@ -24,10 +24,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
-<<<<<<< HEAD
     "@capacitor-mlkit/barcode-scanning": "^6.2.0",
-=======
->>>>>>> 4b912a0fbee83b87691916d173a203dd8224d767
     "@capacitor/android": "^6.1.2",
     "@capacitor/app": "6.0.1",
     "@capacitor/camera": "^6.1.0",
