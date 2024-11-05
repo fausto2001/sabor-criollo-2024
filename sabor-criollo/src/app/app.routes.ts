@@ -64,9 +64,15 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/alta-mesa/alta-mesa.page').then( m => m.AltaMesaPage)
   },
   {
+    path: 'test-page',
+    loadComponent: () => import('./pages/test-page/test-page.page').then( m => m.TestPagePage)
+  },
+  {
     path: '**',
     redirectTo: 'splash-screen',
     pathMatch: 'full',
-  },
+  }
+
+
 
 ];

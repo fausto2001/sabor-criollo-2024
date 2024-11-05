@@ -1,4 +1,5 @@
 ion-content{
+    visibility: visible;
     --background: none;
     background-color: #01be62;
     background-image: url('../../../assets/fondo-login-2.jpg')!important;
@@ -130,3 +131,21 @@ ion-content{
     --background-color: #01be62 !important; 
     color: black !important; 
   }
+
+body.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+ion-content.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+ion-header.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}

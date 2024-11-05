@@ -95,11 +95,9 @@ export class AltaEmpleadoPage implements OnInit {
             mesa: null,
             tokenNotification: null,
           }
-          //console.log(nuevoUsuario);
           this.usuarioServ.setUsuario(nuevoUsuario);
         })
         .catch( (error) => {
-          // this.toastServ.presentToast('bottom', error.message, 'danger', 3000);
           this.toastServ.presentToast('bottom', error.message, 'red', 3000);
           console.error(error);
         });
