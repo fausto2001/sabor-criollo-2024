@@ -5,6 +5,42 @@ ion-content{
     background-size: cover;
   }
 
+/*
+  ion-content {
+    --background: none;
+  }
+  
+  .fondoSinQR {
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg') !important;
+    background-size: cover;
+  }
+  
+  .fondoConQR {
+    background-image: none !important;  
+
+    --background: transparent!important;
+    --ion-background-color: transparent!important;
+    background-color: transparent;
+
+
+
+  }*/
+/*
+  .altaCliente{
+    --background: none;
+    background-size: cover;
+  }
+
+  .qrScanner{
+    --background: transparent!important;
+    --ion-background-color: transparent!important;
+    background-color: transparent;
+
+
+    display: grid;
+    place-content: center;
+  }*/
   .auth-form {
     margin-top: 20px;
     width: 100%;

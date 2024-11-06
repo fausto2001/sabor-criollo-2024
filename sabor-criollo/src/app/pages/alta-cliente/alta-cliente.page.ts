@@ -1,28 +1,40 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonList, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel, IonText } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { BarcodeScanningService } from 'src/app/services/barcode.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { CamaraService } from 'src/app/services/camara.service';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController } from '@ionic/angular';
+import { QrService } from 'src/app/services/qr.service';
 
 @Component({
   selector: 'app-alta-cliente',
   templateUrl: './alta-cliente.page.html',
   styleUrls: ['./alta-cliente.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [IonText, IonLabel, IonInput, IonCol, IonList, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class AltaClientePage implements OnInit {
 
-  private barcodeService:BarcodeScanningService = inject(BarcodeScanningService);
   private camaraService:CamaraService = inject(CamaraService);
-  scannedCode: any | null = null;
+  private qrService:QrService = inject(QrService);
 
-  constructor() { }
+  scannedCode: any | null = null;
+  qrScanner: boolean = false;
+  datos: Barcode[] = []
+
+  isSupported = false;
+  barcodes: Barcode[] = [];
+
+  constructor(private alertController: AlertController) {}
 
   ngOnInit() {
+
+    BarcodeScanner.isSupported().then((result) => {
+      this.isSupported = result.supported;
+    });
   }
 
   form: FormGroup = new FormGroup({
@@ -58,31 +70,84 @@ export class AltaClientePage implements OnInit {
     };
   }
 
-  async startScan() {
-    try {
-      const cameraPermission = await this.barcodeService.requestPermissions();
-      if (cameraPermission !== 'granted') {
-        alert('Se requiere acceso a la cámara para escanear QR. Por favor, permití su acceso en la configuración de tu dispositivo.');
+  ///////////////* SCANER *///////////////
+
+  async escanear(){
+    this.datos = await this.qrService.scan(); 
+    //const informacion = result.ScanResult.split('@');
+
+    this.form.patchValue({
+      apellido: this.datos[1],
+      nombre: this.datos[2],
+      dni: this.datos[4]
+    });
+  }
+/*
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.presentAlert();
+      return;
+    }
+    const { barcodes } = await BarcodeScanner.scan();
+    
+    this.barcodes.push(...barcodes);
+    const informacion = this.barcodes[0].split('@'); // Extrae y divide el primer código
+
+    
+
+  }*/
+
+    async scan(): Promise<void> {
+      const granted = await this.requestPermissions();
+      if (!granted) {
+        this.presentAlert();
         return;
       }
-
-      alert("Starting scan...");
-      const scannedCode:any = await this.barcodeService.scanSingleBarcode();
-
-      if (scannedCode && scannedCode.displayValue) {
-        const dniData = await this.barcodeService.obtenerDatosDNI(scannedCode.displayValue);
-        this.form.patchValue({
-          dni: dniData.dni,
-          apellido: dniData.apellido,
-          nombre: dniData.nombre
-        });
+      this.barcodes = []; 
+      const { barcodes } = await BarcodeScanner.scan();
+      this.barcodes.push(...barcodes);
+  
+      if (this.barcodes.length > 0) {
+          const informacion = this.barcodes[0].format.split('@'); 
+  
+          this.form.patchValue({
+              apellido: informacion[1],
+              nombre: informacion[2],
+              dni: informacion[4]
+          });
       } else {
-        alert('No valid scanned code found.');
+          console.warn('No se encontró ningún código en el escaneo.');
       }
-      
-      } catch (error) {
-        console.error('Scan failed:', error); 
-        alert('Scan failed: ' + error);
-    }
   }
+  
+  
+
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
+
+  async presentAlert(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Permission denied',
+      message: 'Please grant camera permission to use the barcode scanner.',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  /*
+      <ion-list>
+        <ion-item *ngFor="let barcode of barcodes">
+          <ion-label position="stacked">{{ barcode.format }}</ion-label>
+          <ion-input type="text" [value]="barcode.rawValue"></ion-input>
+        </ion-item>
+      </ion-list>
+
+  */
+
+
+
+
 }

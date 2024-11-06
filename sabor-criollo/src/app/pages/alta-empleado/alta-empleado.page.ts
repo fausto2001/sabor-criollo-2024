@@ -11,7 +11,6 @@ import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { ToastService } from 'src/app/services/toast.service';
-import { BarcodeScanningService } from 'src/app/services/barcode.service';
 
 @Component({
   selector: 'app-alta-empleado',
@@ -31,7 +30,6 @@ export class AltaEmpleadoPage implements OnInit {
   private qrServ:QrService = inject(QrService);
   private camaraServ:CamaraService = inject(CamaraService);
   private toastServ:ToastService = inject(ToastService);
-  private barcodeService:BarcodeScanningService = inject(BarcodeScanningService);
   //private toast2Serv:ToastService = inject(ToastService);
 
   protected error: string = '';
@@ -115,41 +113,6 @@ export class AltaEmpleadoPage implements OnInit {
         });
       }
     }
-
-    async escanear() {
-      try {
-          const cameraPermission = await this.barcodeService.requestPermissions();
-          if (cameraPermission !== 'granted') {
-            alert('Se requiere acceso a la cámara para escanear QR. Por favor, permití su acceso en la configuración de tu dispositivo.');
-            return;
-          }
-    
-          alert("Starting scan...");
-          const scannedCode:any = await this.barcodeService.scanSingleBarcode();
-    
-          if (scannedCode && scannedCode.displayValue) {
-            const dniData = await this.barcodeService.obtenerDatosDNI(scannedCode.displayValue);
-            this.form.patchValue({
-              dni: dniData.dni,
-              apellido: dniData.apellido,
-              nombre: dniData.nombre
-            });
-          }
-        } catch (error) {
-        console.error('Error al escanear: ', error);
-      }
-    }
-
-    /*
-  async escanear(){
-    const result = await this.qrServ.escanearDNI();
-
-    this.form.patchValue({
-      nombre: result.nombre,
-      apellido: result.apellido,
-      dni: result.dni
-    });
-  }*/
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;
