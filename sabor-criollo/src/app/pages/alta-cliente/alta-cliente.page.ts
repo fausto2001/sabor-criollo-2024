@@ -109,8 +109,7 @@ export class AltaClientePage implements OnInit {
       this.barcodes.push(...barcodes);
   
       if (this.barcodes.length > 0) {
-          const informacion = this.barcodes[0].format.split('@'); 
-  
+          const informacion = JSON.stringify(this.barcodes[0]).split('@');
           this.form.patchValue({
               apellido: informacion[1],
               nombre: informacion[2],

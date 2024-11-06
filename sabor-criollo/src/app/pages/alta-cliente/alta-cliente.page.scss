@@ -1,168 +1,132 @@
 ion-content{
-    --background: none;
-    background-color: #01be62;
-    background-image: url('../../../assets/fondo-login-2.jpg')!important;
-    background-size: cover;
+  --background: none;
+  background-color: #01be62;
+  background-image: url('../../../assets/fondo-login-2.jpg')!important;
+  background-size: cover;
+}
+
+.auth-form {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.custom-input {
+  --border-color: #e0e0e0;
+  --border-radius: 15px;
+  --border-style: solid;
+  --border-width: 1px;
+
+  ion-label {
+      position: relative;
+      bottom: 2px;
   }
 
-/*
-  ion-content {
-    --background: none;
+  .eye-icon {
+      position: relative;
+      top: 13px;
   }
-  
-  .fondoSinQR {
-    background-color: #01be62;
-    background-image: url('../../../assets/fondo-login-2.jpg') !important;
-    background-size: cover;
-  }
-  
-  .fondoConQR {
-    background-image: none !important;  
+}
 
-    --background: transparent!important;
-    --ion-background-color: transparent!important;
-    background-color: transparent;
-
-
-
-  }*/
-/*
-  .altaCliente{
-    --background: none;
-    background-size: cover;
+.error{
+  background-color: #f24c58;
+  border-radius: 8px;
+  border: 1px solid black;
+  height: auto;
+  font-size:14px;
+  position: absolute;
+  div{
+      color: white;
+      margin-left: 5px;
   }
 
-  .qrScanner{
-    --background: transparent!important;
-    --ion-background-color: transparent!important;
-    background-color: transparent;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 97%;
+}
 
+.camera-container {
+  position: relative;
+  display: inline-block;
+}
 
-    display: grid;
-    place-content: center;
-  }*/
-  .auth-form {
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-  }
+.camera-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
 
-  .custom-input {
-    --border-color: #e0e0e0;
-    --border-radius: 15px;
-    --border-style: solid;
-    --border-width: 1px;
-  
-    ion-label {
-        position: relative;
-        bottom: 2px;
-    }
-  
-    .eye-icon {
-        position: relative;
-        top: 13px;
-    }
-  }
+.camera-image:hover {
+  transform: scale(1.1);
+}
 
-  .error{
-    background-color: #f24c58;
-    border-radius: 8px;
-    border: 1px solid black;
-    height: auto;
-    font-size:14px;
-    position: absolute;
-    div{
-        color: white;
-        margin-left: 5px;
-    }
+.camera-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
 
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 97%;
-  }
-  
-  .camera-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .camera-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .camera-image:hover {
-    transform: scale(1.1);
-  }
-  
-  .camera-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .camera-text {
-    margin-top: 5px;
-    font-size: 16px;
-    color: #ffffff;
-  }
-  
-  .input-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .camera-container, .qr-container {
-    flex: 1;
-    margin: 0 15px;
-    text-align: center;
-  }
-  
-  .qr-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .qr-image:hover {
-    transform: scale(1.1);
-  }
-  
-  .qr-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .qr-text {
-    margin-top: 5px; 
-    font-size: 16px;
-    color: #ffffff;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
-  
-  ion-button {
-    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-    --ripple-color: deeppink;
-    --padding-top: 20px;
-    --padding-bottom: 20px;
-  
-    height: 5vh;
-    margin-top: 10px;
-    border-radius: 25px;
-    --background: #01be62;
-    --color: black;
-    opacity: 1; 
-    --background-color: #01be62 !important; 
-    color: black !important; 
-  }
+.camera-text {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.camera-container, .qr-container {
+  flex: 1;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.qr-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.qr-image:hover {
+  transform: scale(1.1);
+}
+
+.qr-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.qr-text {
+  margin-top: 5px; 
+  font-size: 16px;
+  color: #ffffff;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+ion-button {
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+  --ripple-color: deeppink;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+
+  height: 5vh;
+  margin-top: 10px;
+  border-radius: 25px;
+  --background: #01be62;
+  --color: black;
+  opacity: 1; 
+  --background-color: #01be62 !important; 
+  color: black !important; 
+}
