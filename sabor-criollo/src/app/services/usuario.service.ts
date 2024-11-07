@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, Firestore, collection, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, Firestore, onSnapshot, collection, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
 import { map, take } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.component';
 import { Observable } from 'rxjs'; 
@@ -52,18 +52,43 @@ export class UsuarioService {
       return new Error('No se ha cargado ningun usuario a registrar');
     }
   }
-  
-  getUsuariosNoAdmitidos(): Observable<UsuarioModel[]> {
-    let qry = query(
-      this.usuariosCollection,
-      where('rol', '==', 'cliente'),
-      where('admitido', '==', null),
-    );
-    return collectionData(qry).pipe(
-      map(usuarios => usuarios as UsuarioModel[])
-    );
 
-  }
+/*
+    async getUsuariosNoAdmitidos(): Promise<UsuarioModel[]> {
+      const userQuery = query(collection(this.db, 'usuarios'), where('admitido', '==', null));
+      const querySnapshot = await getDocs(userQuery);
+    
+      const usuarios: UsuarioModel[] = [];
+      
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach(doc => {
+          const userData = doc.data() as UsuarioModel;
+          usuarios.push(userData);
+        });
+      }
+      
+      return usuarios;
+    }*/
+
+
+      getUsuariosNoAdmitidos(): Observable<UsuarioModel[]> {
+        return new Observable<UsuarioModel[]>(observer => {
+          const userQuery = query(collection(this.db, 'usuarios'), where('admitido', '==', null));
+      
+          const unsubscribe = onSnapshot(userQuery, (querySnapshot) => {
+            const usuarios: UsuarioModel[] = [];
+            querySnapshot.forEach(doc => {
+              usuarios.push(doc.data() as UsuarioModel);
+            });
+            observer.next(usuarios);
+          }, (error) => {
+            observer.error(error);
+          });
+      
+          return () => unsubscribe();
+        });
+      }
+    
 
   getUsuariosEnListaDeEspera(): Observable<UsuarioModel[]> {
     let qry = query(

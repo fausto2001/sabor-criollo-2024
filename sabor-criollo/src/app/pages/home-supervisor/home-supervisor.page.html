@@ -6,4 +6,23 @@
 
 <ion-content [fullscreen]="true">
   Perfil Supervisor
+
+  <!--<ng-container *ngIf="usuario.rol == 'admin' || usuario.rol == 'supervisor' "> -->
+    <ion-row>
+      <ion-col size="12" >
+          <ion-button routerLink="/listado-clientes-pendientes" expand="block" shape="round" class="btnMenu">
+            <img slot="start" src="../../assets/botones/cliente-pendiente.png" class="button-icon"/>
+            Listado de clientes pendientes
+          </ion-button>
+          <ion-button routerLink="/alta-empleado" expand="block" shape="round" class="btnMenu">
+            <img slot="start" src="../../assets/botones/alta-empleado.png" class="button-icon"/>
+            Alta empleado
+          </ion-button>
+          <ion-button  routerLink="/alta-duenio" expand="block" shape="round" class="btnMenu">
+            <img slot="start" src="../../assets/botones/alta-supervisor.png" class="button-icon"/>
+            Alta supervisor
+          </ion-button>
+      </ion-col>
+    </ion-row>
+ <!--  </ng-container> -->
 </ion-content>
