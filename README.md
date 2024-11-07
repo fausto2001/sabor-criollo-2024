@@ -47,11 +47,11 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### β Joel Mahafud (Beta)
     - ✔️ Home reactivo a los perfiles de cada usuario (Estructura, falta maquetar homes individuales)
-    - ⌛ Módulo de gestión de aprobación de clientes
+    - ⌛ Más tareas...
 
 ### γ Tomas Mastrapasqua (Gamma)
-    - ✔️ Listado de clientes pendientes (6/11)
-    - ⌛ Lista de espera (cliente/metre)
+    - ✔️ Módulo de gestión de aprobación de clientes (6/11)
+    - ⌛ Lista de espera y asignacion de mesa (cliente/metre)
     - ⌛ Más tareas...
 
 ## 📅 Semana 3 (10/11 - 16/11)
