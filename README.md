@@ -51,6 +51,7 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Listado de clientes pendientes (6/11)
+    - ⌛ Lista de espera (cliente/metre)
     - ⌛ Más tareas...
 
 ## 📅 Semana 3 (10/11 - 16/11)
