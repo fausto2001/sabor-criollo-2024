@@ -20,7 +20,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Creación del repositorio (28/10)
     - ✔️ Integración con Android (30/10)
     - ✔️ Creación del readme (28/10)
-    - ⌛ Alta del cliente 
+    - ⌛ Alta del cliente (Terminado la siguiente semana)
 
 
 ### β Joel Mahafud (Beta)
