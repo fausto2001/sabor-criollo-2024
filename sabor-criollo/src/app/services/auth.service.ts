@@ -29,8 +29,7 @@ export class AuthService {
     });
   }
 
-  // Registro más robusto, corrobora que el usuario no esté registrado previamente por DNI, 
-  // maneja errores y traduce al usuario el motivo del error
+
   async register(mail: string, password: string, nroDocumento: string): Promise<string> {
 
     if(await this.userService.documentoYaRegistrado(nroDocumento))

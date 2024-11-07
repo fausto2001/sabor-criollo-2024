@@ -1,5 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>NUEVO EMPLEADO</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-row>
     <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
       <ion-row class="ion-justify-content-center slot aux">
@@ -31,6 +37,7 @@
           </ion-item>
           <div class="error" *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
             <div *ngIf="form.controls?.['password']?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="form.controls?.['password']?.errors?.['minlength']">Mínimo 6 caracteres</div>
           </div>
         </ion-col>
         <!-- Repetir Clave / Contraseña -->
@@ -45,9 +52,9 @@
             name="confirmPasswordR">
             </ion-input>
           </ion-item>
-          <div class="error" *ngIf="form.controls?.['confirmPassword']?.invalid && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
-            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">La contraseña es requerida</div>
-            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['noCoincide']">La contraseña no coinciden</div>
+          <div class="error" *ngIf="(form.controls?.['confirmPassword']?.invalid || noCoinciden()) && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
+            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">Confirme la contraseña</div>
+            <div *ngIf="noCoinciden()">Las contraseñas no coinciden</div>
           </div>
         </ion-col>
 
@@ -122,7 +129,6 @@
             <div *ngIf="form.controls?.['cuil']?.errors?.['required']">El CUIL es requerido</div>
             <div *ngIf="form.controls?.['cuil']?.errors?.['minlength']">El CUIL debe tener 11 dígitos</div>
             <div *ngIf="form.controls?.['cuil']?.errors?.['maxlength']">El CUIL debe tener 11 dígitos</div>
-
           </div>
         </ion-col>
 
@@ -145,13 +151,23 @@
 
   </ion-row>
 
-  <ion-row class="ion-justify-content-center btn">
-    <ion-button  expand="full" shape="round" size="large" (click)="registrar()" [disabled]="form.invalid">Registrar</ion-button>
+  <ion-row class="ion-justify-content-center aux danger">
+    {{error}}
   </ion-row>
 
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-row class="ion-justify-content-center btn">
+    <ion-button expand="full" shape="round" size="large" (click)="registrar()">Registrar</ion-button>
+  </ion-row>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" >
     <ion-fab-button>
       <ion-img src="../../../assets/botones/dni.svg" class="fab-icon"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button [ngClass]="fotoSubida" (click)="abrirCamara()">
+      <ion-img src="../../../assets/botones/camara.svg" class="fab-icon"></ion-img>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

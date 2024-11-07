@@ -102,7 +102,7 @@ export class AltaDuenioPage implements OnInit {
           cuil: this.cuil,
           rol: this.rol,
           enListaDeEspera: null,
-          admitido: false,
+          admitido: true,
           foto: this.foto,
           mesa: null,
           tokenNotification: null,

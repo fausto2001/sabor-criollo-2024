@@ -14,8 +14,17 @@ ion-input{
     --border-radius: 15px;
     --border-style: solid;
     --border-width: 1px;
-}
-
+  
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
+  
+    .eye-icon {
+        position: relative;
+        top: 13px;
+    }
+  }
 .error{
     width: 96%;
     background-color: rgb(200, 90, 0);
