@@ -26,6 +26,8 @@ export class HomeSupervisorPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.pushNotifServ.sendNotification("Hola :)", "esta es una notificación de prueba!!");
+    this.pushNotifServ.checkAndPromptForSubscription().then(() => {
+      this.pushNotifServ.sendNotification("Hola :)", "esta es una notificación de prueba!!");
+    });
   }
 }
