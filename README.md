@@ -13,13 +13,14 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### 📓 A Asignar
     -   ❌ Envio de mails
+    -   ❌ Envio de Push Notifications
+    
 
 ### α Fausto Panello (Alfa)
     - ✔️ Creación del repositorio (28/10)
     - ✔️ Integración con Android (30/10)
     - ✔️ Creación del readme (28/10)
-    - ❌ Alta del cliente
-        (Mensaje): No llegó a terminar alta del cliente para el 2/11 (solamente frontend). Lo finaliza la siguiente semana.
+    - ⌛ Alta del cliente (Terminado la siguiente semana)
 
 
 ### β Joel Mahafud (Beta)
@@ -35,20 +36,22 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Diseño de ícono (28/10)
     - ✔️ login y formulario de ingreso con accesos rápidos (28/10)
     - ✔️ Alta empleados (2/11)
-    - ❌ Listado de clientes pendientes
+
 
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
 ### α Fausto Panello (Alfa)
     - ✔️ (nueva) Función de escaneo de DNI (3/11)
-    - ⌛ Alta del cliente (atrasado de la semana anterior).
-
+    - ✔️ Alta del cliente (atrasado de la semana anterior). (6/11)
+    
 ### β Joel Mahafud (Beta)
     - ✔️ Home reactivo a los perfiles de cada usuario (Estructura, falta maquetar homes individuales)
-    - ⌛ Módulo de gestión de aprobación de clientes
+    - ⌛ Más tareas...
 
 ### γ Tomas Mastrapasqua (Gamma)
+    - ✔️ Módulo de gestión de aprobación de clientes (6/11)
+    - ⌛ Lista de espera y asignacion de mesa (cliente/metre)
     - ⌛ Más tareas...
 
 ## 📅 Semana 3 (10/11 - 16/11)
