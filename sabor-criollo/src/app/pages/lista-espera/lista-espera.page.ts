@@ -47,9 +47,7 @@ export class ListaEsperaPage implements OnInit {
     this.mesaAsignada = false;
     this.userService.getUsuarioPorUid(uid).subscribe(async (user: UsuarioModel) => {
       if (user) {
-        ///////console.log(user);
         const numeroDeMesa = await this.asignarMesaUsuario(user);
-        console.log(numeroDeMesa);
         if (numeroDeMesa !== null) {
           user.mesa = numeroDeMesa.toString();
           user.enListaDeEspera = false;
