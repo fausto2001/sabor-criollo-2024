@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>lista-espera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- <table *ngIf="hayUsuarios && usuariosNoAdmitidos.length > 0">
+    <thead>
+      <tr>
+        <th>Mail</th>
+        <th>Aprobar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuariosNoAdmitidos; index as i">
+        <td>{{ usuario.email }}</td>
+        <td>
+            <ion-img class="icon-back" src="../../../assets/botones/aprobado.png" name="aprobado" (click)="aceptarUsuario(usuario.email, true, usuario.nombre)"></ion-img>
+        </td>
+
+      </tr>
+    </tbody>
+  </table> -->
+  <ng-container *ngFor="let usuario of usuariosNoAdmitidos; index as i">
+    <ion-card>
+      <ion-text color="primary">
+        <h1 style="color: black; margin-left: 20px; font-weight: bold;"> {{usuario.email}}</h1>
+      </ion-text>
+      <ion-card-content>
+        <ion-img class="icon-back" src="../../../assets/botones/aprobado.png" name="aprobado" (click)="aceptarUsuario(usuario.uid, true, usuario.nombre)"></ion-img>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  
+  <div *ngIf="hayUsuarios == false" class="contenedor-imagen">
+    <ion-img src="../../../assets/no-hay-usuarios.png" alt="No hay usuarios pendientes"></ion-img>
+  </div>
+</ion-content>
