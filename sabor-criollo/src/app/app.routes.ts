@@ -68,10 +68,16 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/listado-clientes-pendientes/listado-clientes-pendientes.page').then( m => m.ListadoClientesPendientesPage)
   },
   {
+    path: 'lista-espera',
+    loadComponent: () => import('./pages/lista-espera/lista-espera.page').then( m => m.ListaEsperaPage)
+  },
+  {
     path: '**',
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   },
+
+
 
 
 
