@@ -43,8 +43,8 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### α Fausto Panello (Alfa)
     - ✔️ (nueva) Función de escaneo de DNI (3/11)
-    - ⌛ Alta del cliente (atrasado de la semana anterior).
-
+    - ✔️ Alta del cliente (atrasado de la semana anterior). (6/11)
+    
 ### β Joel Mahafud (Beta)
     - ✔️ Home reactivo a los perfiles de cada usuario (Estructura, falta maquetar homes individuales)
     - ⌛ Más tareas...
