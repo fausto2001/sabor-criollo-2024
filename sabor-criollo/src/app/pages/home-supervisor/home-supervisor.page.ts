@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { QrService } from 'src/app/services/qr.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+import { PushNotificationService } from 'src/app/services/push-notification.service';
 @Component({
   selector: 'app-home-supervisor',
   templateUrl: './home-supervisor.page.html',
@@ -20,9 +21,11 @@ import Swal from 'sweetalert2';
 })
 export class HomeSupervisorPage implements OnInit {
 
+  private pushNotifServ: PushNotificationService = inject(PushNotificationService);
+
   constructor() { }
 
   ngOnInit() {
+    this.pushNotifServ.sendNotification("Hola :)", "esta es una notificación de prueba!!");
   }
-
 }
