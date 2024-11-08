@@ -1,9 +1,25 @@
+
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>ESTO NO SE VE</ion-title>
+    <ion-title>BIENVENIDO METRE!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  Perfil Metre
+  <ion-row>
+    <ion-img class="icon-back" src="../../assets/botones/codigo-qr-2.png" name="logout"></ion-img>
+    <ion-col size="12" >
+      <!-- <div *ngIf="usuario.enListaDeEspera == false || usuario.enListaDeEspera == null"> -->
+        <ion-button  expand="block" shape="round" class="btnMenu" routerLink="/lista-espera">
+          <img slot="start" src="../../assets/botones/escanear-qr.png" class="button-icon"/>
+          Lista de espera
+        </ion-button>
+
+        
+        
+      <!-- </div> -->
+
+    </ion-col>
+  </ion-row>
 </ion-content>

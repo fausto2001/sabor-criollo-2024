@@ -1,9 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>ESTO NO SE VE</ion-title>
+    <ion-title>BIENVENIDO CLIENTE!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  Perfil Cliente
+  <ion-row>
+    <ion-img class="icon-back" src="../../assets/botones/codigo-qr-2.png" name="logout"></ion-img>
+    <ion-col size="12" >
+      <!-- <div *ngIf="usuario.enListaDeEspera == false || usuario.enListaDeEspera == null"> -->
+        <ion-button *ngIf="usuario?.enListaDeEspera == null" expand="block" shape="round" class="btnMenu" (click)="scan()">
+          <img slot="start" src="../../assets/botones/escanear-qr.png" class="button-icon"/>
+          Escanear QR para ingresar al local
+        </ion-button>
+        <ion-button *ngIf="usuario?.enListaDeEspera == false" expand="block" shape="round" class="btnMenu" routerLink="/">
+          <img slot="start" src="../../assets/botones/mesa-del-comedor.png" class="button-icon"/>
+          Escanear QR de la mesa
+        </ion-button>
+        <ion-button *ngIf="usuario?.enListaDeEspera == true" expand="block" shape="round" class="btnMenu" (click)="scan()">
+          Ya estas en la lista de espera, toca esperar!!!
+        </ion-button>
+        
+        
+      <!-- </div> -->
+
+    </ion-col>
+  </ion-row>
 </ion-content>

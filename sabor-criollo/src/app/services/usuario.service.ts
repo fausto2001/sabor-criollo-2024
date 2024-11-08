@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { CollectionReference, Firestore, onSnapshot, collection, deleteDoc, getDocs, collectionData, doc, query, setDoc, where, updateDoc } from '@angular/fire/firestore';
-import { map, take } from 'rxjs';
+import { map, take, from, Observable } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.component';
-import { Observable } from 'rxjs'; 
 
 
 @Injectable({
@@ -40,6 +39,20 @@ export class UsuarioService {
     else {
       return null;
     }
+  }
+
+  getUsuarioPorCorreoObservable(mail: string): Observable<UsuarioModel | null> {
+    const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', mail));
+    return from(getDocs(userQuery).then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const userDoc = querySnapshot.docs[0];
+        const userData = userDoc.data() as UsuarioModel;
+        this.personaLogeada = userData;
+        return this.personaLogeada as UsuarioModel;
+      } else {
+        return null;
+      }
+    }));
   }
 
   async setUsuario(usuario:UsuarioModel){
