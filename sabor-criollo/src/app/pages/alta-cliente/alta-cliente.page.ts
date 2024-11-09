@@ -156,6 +156,10 @@ export class AltaClientePage implements OnInit {
       dni: this.datos[4]
     });
   }
+
+  entrarAnonimo(){
+    this.router.navigateByUrl('/home-cliente');
+  }
 /*
   async scan(): Promise<void> {
     const granted = await this.requestPermissions();

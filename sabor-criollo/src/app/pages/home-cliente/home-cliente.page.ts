@@ -53,7 +53,7 @@ export class HomeClientePage implements OnInit {
     });
   }
 
-
+  // Esto hay que reformularlo para que no tenga problema con los clientes anónimos
   //verificar que esta escaneando su mesa asignada
   async scan(): Promise<void> {
 
@@ -81,21 +81,19 @@ export class HomeClientePage implements OnInit {
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
     }
-}
+  }
 
-async requestPermissions(): Promise<boolean> {
-  const { camera } = await BarcodeScanner.requestPermissions();
-  return camera === 'granted' || camera === 'limited';
-}
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
 
-async presentAlert(): Promise<void> {
-  /*const alert = await this.alertController.create({
-    header: 'Permission denied',
-    message: 'Please grant camera permission to use the barcode scanner.',
-    buttons: ['OK'],
-  });
-  await alert.present();*/
-}
-
-
+  async presentAlert(): Promise<void> {
+    /*const alert = await this.alertController.create({
+      header: 'Permission denied',
+      message: 'Please grant camera permission to use the barcode scanner.',
+      buttons: ['OK'],
+    });
+    await alert.present();*/
+  }
 }

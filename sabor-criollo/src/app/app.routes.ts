@@ -34,7 +34,7 @@ export const routes: Routes = [
   {
     path: 'home-cliente',
     loadComponent: () => import('./pages/home-cliente/home-cliente.page').then( m => m.HomeClientePage)
-  },
+  },/* 
   {
     path: 'home-duenio',
     loadComponent: () => import('./pages/home-duenio/home-duenio.page').then( m => m.HomeDuenioPage)
@@ -58,7 +58,7 @@ export const routes: Routes = [
   {
     path: 'home-metre',
     loadComponent: () => import('./pages/home-metre/home-metre.page').then( m => m.HomeMetrePage)
-  },
+  }, */
   {
     path: 'alta-mesa',
     loadComponent: () => import('./pages/alta-mesa/alta-mesa.page').then( m => m.AltaMesaPage)
