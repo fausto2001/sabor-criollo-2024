@@ -55,7 +55,7 @@ export class HomeClientePage implements OnInit {
 
   // Esto hay que reformularlo para que no tenga problema con los clientes anónimos
   //verificar que esta escaneando su mesa asignada
-  async scan(): Promise<void> {
+  async pedirMesaScan(): Promise<void> {
 
     this.usuario!.enListaDeEspera = true;
     this.usuarioServ.setUsuario(this.usuario!);
@@ -81,6 +81,11 @@ export class HomeClientePage implements OnInit {
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
     }
+  }
+
+  async scanMesa()
+  {
+    /* ... */
   }
 
   async requestPermissions(): Promise<boolean> {

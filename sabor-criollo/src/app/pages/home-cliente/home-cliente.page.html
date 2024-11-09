@@ -13,11 +13,11 @@
           <img slot="start" src="../../assets/botones/medalla.svg" class="fab-icon"/>
           Ver nuestras calificaciones
         </ion-button>
-        <ion-button *ngIf="usuario?.enListaDeEspera == null" expand="block" shape="round" class="btnMenu" (click)="scan()">
+        <ion-button *ngIf="usuario?.enListaDeEspera == null" expand="block" shape="round" class="btnMenu" (click)="pedirMesaScan()">
           <img slot="start" src="../../assets/botones/qr.svg" class="fab-icon"/>
           Escanear QR para que se le asigne mesa
         </ion-button>
-        <ion-button *ngIf="usuario?.enListaDeEspera == false" expand="block" shape="round" class="btnMenu" (click)="scan()">
+        <ion-button *ngIf="usuario?.enListaDeEspera == false" expand="block" shape="round" class="btnMenu" (click)="scanMesa()">
           <img slot="start" src="../../assets/botones/qr.svg" class="fab-icon"/>
           Escanear menu
         </ion-button>
