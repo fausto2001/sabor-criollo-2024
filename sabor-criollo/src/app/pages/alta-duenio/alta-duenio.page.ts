@@ -6,10 +6,12 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
-//import { QrService } from 'src/app/services/qr.service';
+import { QrService } from 'src/app/services/qr.service';
 import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-alta-duenio',
@@ -23,27 +25,43 @@ export class AltaDuenioPage implements OnInit {
   private usuarioService:UsuarioService = inject(UsuarioService);
   private authService:AuthService = inject(AuthService);
   private router:Router = inject(Router);
-  private storageServ: StorageService = inject(StorageService);
-  //private qrServ:QrService = inject(QrService);
-  private camaraServ:CamaraService = inject(CamaraService);
-  protected fotoSubida: string = 'false';
-
+  private storageService: StorageService = inject(StorageService);
+  private qrService:QrService = inject(QrService);
+  private camaraService:CamaraService = inject(CamaraService);
+  protected fotoSubida: string = 'false';  
+  
   protected error: string = '';
 
   protected form: FormGroup;
+
+  protected scannedCode: any | null = null;
+  protected qrScanner: boolean = false;
+  protected datos: Barcode[] = []
+
+  protected isSupported = false;
+  protected barcodes: Barcode[] = [];
+  private alertController: AlertController = inject(AlertController);
 
   constructor() {
     this.form = new FormGroup ({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
       apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
       dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
       cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
       rol: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required]),
       foto: new FormControl('', [Validators.required]),
     });
+  }
+
+  ngOnInit() {
+
+    BarcodeScanner.isSupported().then((result) => {
+      this.isSupported = result.supported;
+    });
+
   }
 
   get email(){
@@ -75,8 +93,8 @@ export class AltaDuenioPage implements OnInit {
   }
 
   async abrirCamara(){
-    const foto = await this.camaraServ.tomarFoto();
-    this.foto = await this.storageServ.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
+    const foto = await this.camaraService.tomarFoto();
+    this.foto = await this.storageService.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
     this.switchFotoSubida();
   }
 
@@ -126,7 +144,7 @@ export class AltaDuenioPage implements OnInit {
     let ret = false
     this.error = '';
     this.form.markAllAsTouched();
-    if(this.password != this.form.get('confirmPassword')?.value){
+    if(this.noCoinciden()){
       this.error = 'Las contraseñas no coinciden';
       return ret;
     }
@@ -146,16 +164,16 @@ export class AltaDuenioPage implements OnInit {
     return this.password != this.form.get('confirmPassword')?.value && (this.form.get('confirmPassword')?.touched || this.form.get('confirmPassword')?.dirty);
   }
 
-  /*
+  
   async escanear(){
-    const result = await this.qrServ.escanearDNI();
+    const result = await this.qrService.scan();
 
     this.form.patchValue({
-      nombre: result.nombre,
-      apellido: result.apellido,
-      dni: result.dni
+      apellido: this.datos[1],
+      nombre: this.datos[2],
+      dni: this.datos[4]
     });
-  }*/
+  }
 
   validateNumber(event: KeyboardEvent) {
     const char = event.key;
@@ -170,9 +188,6 @@ export class AltaDuenioPage implements OnInit {
     if (!/^\d+$/.test(pastedData)) {
       event.preventDefault();
     }
-  }
-
-  ngOnInit() {
   }
 
   goHome(){
