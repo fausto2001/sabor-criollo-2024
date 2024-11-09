@@ -20,13 +20,6 @@ import Swal from 'sweetalert2';
   imports: [IonImg, IonRow, IonCol, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, FormsModule, CommonModule],
 })
 
-@Component({
-  selector: 'app-home-metre',
-  templateUrl: './home-metre.page.html',
-  styleUrls: ['./home-metre.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
-})
 export class HomeMetrePage implements OnInit {
 
   constructor() { }

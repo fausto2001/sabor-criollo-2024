@@ -18,7 +18,7 @@ export class PushNotificationService {
    * Resolves only after OneSignal is ready to be used.
    */
   public initializeOneSignal(): Promise<void> {
-    Log.d("initializeOneSignal called"); // Debugging log
+    //Log.d("initializeOneSignal called"); // Debugging log
     return new Promise((resolve) => {
       const checkOneSignal = setInterval(() => {
         console.log("Checking for OneSignal SDK...");
