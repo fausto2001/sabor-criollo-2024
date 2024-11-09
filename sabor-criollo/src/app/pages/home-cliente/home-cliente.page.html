@@ -29,6 +29,14 @@
           <img slot="start" src="../../assets/botones/mozo.svg" class="fab-icon"/>
           Consulta al mozo
         </ion-button>
+        <ion-button *ngIf="usuario?.enListaDeEspera == false" expand="block" shape="round" class="btnMenu">
+          <img slot="start" src="../../assets/botones/cuenta.svg" class="fab-icon"/>
+          Pedir la cuenta
+        </ion-button>
+        <ion-button *ngIf="usuario?.enListaDeEspera == false" expand="block" shape="round" class="btnMenu">
+          <img slot="start" src="../../assets/botones/opinion.svg" class="fab-icon"/>
+          Danos tu opinión
+        </ion-button>
         
         
       <!-- </div> -->
