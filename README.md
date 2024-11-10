@@ -62,11 +62,22 @@ Bienvenido a **Sabor Criollo 2024**.
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Módulo de gestión de aprobación de clientes (6/11)
     - ✔️ Lista de espera y asignacion de mesa de cliente/metre (7/11)
-    - ⌛ Ver listado de productos y realizarr pedido
-    - ⌛ Bartender/Cocinero/Mozo ven sus respectivas tareas al momento de preparar y/o entregar el pedido
-    - ⌛ Consulta al mozo
+    - ✔️ Ver listado de productos y realizar pedido (9/11)
+    - ✔️ Consulta al mozo (9/11)
 
 ## 📅 Semana 3 (10/11 - 16/11)
+
+### α Fausto Panello (Alfa)
+    - ⌛ Más tareas...
+    
+### β Joel Mahafud (Beta)
+    - ⌛ Más tareas...
+    
+### γ Tomas Mastrapasqua (Gamma)
+    - ✔️ Bartender/Cocinero/Mozo visualizan sus tareas correspondientes (10/11)
+    - ⌛ Solicitar mesa y escaneo de la misma (validaciones)
+    - ⌛ Más tareas...
+
 
 ## 📅 Semana 4 (17/11 - 23/11)
 
