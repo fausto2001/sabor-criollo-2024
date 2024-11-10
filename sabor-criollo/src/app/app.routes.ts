@@ -91,11 +91,17 @@ export const routes: Routes = [
     path: 'estado-mesas',
     loadComponent: () => import('./pages/estado-mesas/estado-mesas.page').then( m => m.EstadoMesasPage)
   },
+  {
+    path: 'graficos',
+    loadComponent: () => import('./pages/graficos/graficos.page').then( m => m.GraficosPage)
+  },
   {// crear componente de error
     path: '**',
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   },
+
+
 
 
 ];

@@ -1,0 +1,18 @@
+
+.color{
+    background-color: aliceblue;
+}
+.margen{
+  margin-top: 20%;
+}
+
+.ion-justify-content-center{
+  display: flex;
+}
+
+ion-content{
+    --background: none;
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+    background-size: cover;
+}
