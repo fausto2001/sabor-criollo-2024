@@ -12,12 +12,11 @@ Bienvenido a **Sabor Criollo 2024**.
 ## 📅 Semana 1 (28/10 - 2/11)
 
 ### 📓 A Asignar
-<<<<<<< HEAD
-=======
+
     -   ❌ Envio de mails
     -   ❌ Envio de Push Notifications
     
->>>>>>> b369c65b7dc9f093b19d674abb2d3e36b98ad113
+
 
 ### α Fausto Panello (Alfa)
     - ✔️ Creación del repositorio (28/10)
@@ -27,18 +26,12 @@ Bienvenido a **Sabor Criollo 2024**.
 
 
 ### β Joel Mahafud (Beta)
-<<<<<<< HEAD
-    - ✔️ Implementación firebase (Hosting, Authentication, Firestore, Storage) (28/10)
-    - ✔️ Creación de la base de datos (28/10)
-    - ✔️ Mejoras en componente login y servicios auth y user (1/11)
-    - ✔️ Alta admin/supervisor (2/11)
-=======
     - ✔️ Implementación firebase (28/10)
     - ✔️ Creación de la base de datos (1/11)
     - ✔️ Puesta en funcionamiento de servicio auth contra firebase auth y firestore (registro, login, logout, etc) (2/11)
     - ✔️ Alta admin/supervisor (2/11)
     - ✔️ Alta de cuenta de correo para la empresa (2/11)
->>>>>>> b369c65b7dc9f093b19d674abb2d3e36b98ad113
+
 
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Creación del proyecto (28/10)
@@ -62,11 +55,22 @@ Bienvenido a **Sabor Criollo 2024**.
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Módulo de gestión de aprobación de clientes (6/11)
     - ✔️ Lista de espera y asignacion de mesa de cliente/metre (7/11)
-    - ⌛ Ver listado de productos y realizarr pedido
-    - ⌛ Bartender/Cocinero/Mozo ven sus respectivas tareas al momento de preparar y/o entregar el pedido
-    - ⌛ Consulta al mozo
+    - ✔️ Ver listado de productos y realizar pedido (9/11)
+    - ✔️ Consulta al mozo (9/11)
 
 ## 📅 Semana 3 (10/11 - 16/11)
+
+### α Fausto Panello (Alfa)
+    - ⌛ Más tareas...
+    
+### β Joel Mahafud (Beta)
+    - ⌛ Más tareas...
+    
+### γ Tomas Mastrapasqua (Gamma)
+    - ✔️ Bartender/Cocinero/Mozo visualizan sus tareas correspondientes (10/11)
+    - ⌛ Solicitar mesa y escaneo de la misma (validaciones)
+    - ⌛ Más tareas...
+
 
 ## 📅 Semana 4 (17/11 - 23/11)
 
