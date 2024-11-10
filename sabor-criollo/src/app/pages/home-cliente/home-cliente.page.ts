@@ -57,9 +57,6 @@ export class HomeClientePage implements OnInit {
   //verificar que esta escaneando su mesa asignada
   async pedirMesaScan(): Promise<void> {
 
-    this.usuario!.enListaDeEspera = true;
-    //this.usuarioServ.setUsuario(this.usuario!);
-
     const granted = await this.requestPermissions();
     if (!granted) {
       this.presentAlert();
@@ -77,12 +74,6 @@ export class HomeClientePage implements OnInit {
       }else{
         alert('ERROR, QR INCORRECTO');
       }
-        /*const informacion = JSON.stringify(this.barcodes[0]).split('@');
-        this.form.patchValue({
-            apellido: informacion[1],
-            nombre: informacion[2],
-            dni: informacion[4]
-        });*/
 
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
@@ -91,7 +82,34 @@ export class HomeClientePage implements OnInit {
 
   async scanMesa()
   {
-    /* ... */
+
+    this.usuario!.enListaDeEspera = false;
+    this.usuarioServ.updateUsuario(this.usuario!);
+
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.presentAlert();
+      return;
+    }
+    this.barcodes = []; 
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
+
+    if (this.barcodes.length > 0) {
+
+      if(this.barcodes[0].rawValue == this.usuario?.mesa){
+        this.usuario!.enListaDeEspera = false;
+        this.usuarioServ.updateUsuario(this.usuario!);
+        this.router.navigateByUrl('/home-pedido');
+      }else{
+        alert('QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa);
+        this.usuario!.enListaDeEspera = false;
+        this.usuarioServ.updateUsuario(this.usuario!);
+      }
+
+    } else {
+        console.warn('No se encontró ningún código en el escaneo.');
+    }
   }
 
   async requestPermissions(): Promise<boolean> {
