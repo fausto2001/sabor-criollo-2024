@@ -11,5 +11,6 @@ export interface PedidoModel {
     estadoCocinero: string;
     estadoBartender: string;
     fecha: Date | null;
-      
+     
+    
 }

@@ -19,6 +19,7 @@ export class PedidoService {
   }
 
 
+  
   getPedidos(): Observable<PedidoModel[]> {
     let qry = query(
       this.pedidosCollection,

@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TStoDatePipe } from "../../pipes/tsto-date.pipe";
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 
+
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.page.html',

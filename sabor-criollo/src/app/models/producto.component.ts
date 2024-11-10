@@ -10,4 +10,5 @@ export interface ProductoModel {
     descripcion: string;
     cantidad: number;
     tiempoelavoracion: number; //Esta mal escrito, no le hagas caso
+    
 }

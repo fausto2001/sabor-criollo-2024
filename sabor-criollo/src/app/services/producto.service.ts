@@ -16,6 +16,7 @@ export class ProductoService {
     this.productosCollection = collection(this.db, 'productos');
   }
 
+  
 
   getProductos(): Observable<ProductoModel[]> {
     let qry = query(

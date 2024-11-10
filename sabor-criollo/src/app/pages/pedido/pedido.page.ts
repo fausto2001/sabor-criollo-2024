@@ -238,6 +238,7 @@ mostrarPedido() {
     });
   }
 
+  
 
   setImage(value:number){
     let result = this.currentImg + value;

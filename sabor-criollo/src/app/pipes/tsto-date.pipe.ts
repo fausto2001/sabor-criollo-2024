@@ -18,4 +18,5 @@ export class TStoDatePipe implements PipeTransform {
     return format(fechaRecibida, 'dd/MM/yyyy HH:mm')
   }
 
+  
 }
