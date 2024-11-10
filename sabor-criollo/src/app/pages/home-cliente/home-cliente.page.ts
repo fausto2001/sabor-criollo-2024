@@ -58,7 +58,7 @@ export class HomeClientePage implements OnInit {
   async pedirMesaScan(): Promise<void> {
 
     this.usuario!.enListaDeEspera = true;
-    this.usuarioServ.setUsuario(this.usuario!);
+    //this.usuarioServ.setUsuario(this.usuario!);
 
     const granted = await this.requestPermissions();
     if (!granted) {
@@ -70,14 +70,20 @@ export class HomeClientePage implements OnInit {
     this.barcodes.push(...barcodes);
 
     if (this.barcodes.length > 0) {
+
+      if(this.barcodes[0].rawValue == 'espera'){
+        this.usuario!.enListaDeEspera = true;
+        this.usuarioServ.updateUsuario(this.usuario!);
+      }else{
+        alert('ERROR, QR INCORRECTO');
+      }
         /*const informacion = JSON.stringify(this.barcodes[0]).split('@');
         this.form.patchValue({
             apellido: informacion[1],
             nombre: informacion[2],
             dni: informacion[4]
         });*/
-        this.usuario!.enListaDeEspera = true;
-        this.usuarioServ.updateUsuario(this.usuario!);
+
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
     }

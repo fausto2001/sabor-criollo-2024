@@ -1,0 +1,144 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home-pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+        <!-- NO HAY PEDIDO ANTERIOR -->
+      <ng-container *ngIf="!pedido">
+        <ion-row>
+          <ion-col size="12" >
+            <p class="ion-justify-content-center">BIENVENIDO A ENCUENTRO DE SABORES</p>
+            <ion-button routerLink="/pedido" expand="block" shape="round" class="btnMenu">
+              REALIZAR PEDIDO
+            </ion-button>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS DE OTROS CLIENTES
+            </ion-button>
+            <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+              CONSULTAR AL MOZO
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <div *ngIf="pedido"> 
+      <!-- PENDIENTE -->
+      <ng-container *ngIf="pedido.estado == 'pendiente'">
+        <p>EL ESTADO DE SU PEDIDO ES: <br> PENDIENTE</p>
+        <ion-row>
+          <ion-col size="12" >
+            <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+              CONSULTAR AL MOZO
+            </ion-button>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS DE OTROS CLIENTES
+            </ion-button>
+            <ion-button expand="block" shape="round" class="btnMenu">
+              VER ESTADO DEL PEDIDO
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <!-- En proceso -->
+      <ng-container *ngIf="pedido.estado == 'En proceso'">
+        <ion-row>
+          <ion-col size="12" >
+            <p>EL ESTADO DE SU PEDIDO ES: <br> EN PREPARACION</p>
+            <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+              CONSULTAR AL MOZO
+            </ion-button>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS DE OTROS CLIENTES
+            </ion-button>
+            <ion-button  expand="block" shape="round" class="btnMenu">
+              VER ESTADO DEL PEDIDO
+            </ion-button>
+            <ion-button routerLink="/encuesta-cliente" expand="block" shape="round" class="btnMenu">
+              REALIZAR ENCUESTA
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <!-- FINALIZADO -->
+      <ng-container *ngIf="pedido.estado == 'Finalizado'">
+        <ion-row>
+          <ion-col size="12" >
+            <p>EL ESTADO DE SU PEDIDO ES: <br> FINALIZADO</p>
+            <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+              CONSULTAR AL MOZO
+            </ion-button>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS DE OTROS CLIENTES
+            </ion-button>
+            <ion-button routerLink="/encuesta-cliente" expand="block" shape="round" class="btnMenu">
+              REALIZAR ENCUESTA
+            </ion-button>  
+            <ion-button expand="block" shape="round" class="btnMenu">
+              VER ESTADO DEL PEDIDO
+            </ion-button>  
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <!-- ENTREGADO -->
+      <ng-container *ngIf="pedido.estado == 'Entregado'">
+        <ion-row>
+          <ion-col size="12" >
+            <p>EL ESTADO DE SU PEDIDO ES: <br> ENTREGADO</p>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS ANTERIORES
+            </ion-button>
+            <ion-button routerLink="/encuesta-cliente" expand="block" shape="round" class="btnMenu">
+              REALIZAR ENCUESTA
+            </ion-button>
+            <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+              CONSULTAR AL MOZO
+            </ion-button>  
+            <ion-button routerLink="/cuenta" expand="block" shape="round" class="btnMenu">
+              PAGAR
+            </ion-button>  
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <!-- PAGADO -->
+      <ng-container *ngIf="pedido.estado == 'Pagado'">
+        <ion-row>
+          <ion-col size="12" >
+            <p>EL ESTADO DE SU PEDIDO ES: <br> PAGADO</p>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS ANTERIORES
+            </ion-button>
+            <ion-button routerLink="/encuesta-cliente" expand="block" shape="round" class="btnMenu">
+              REALIZAR ENCUESTA
+            </ion-button>
+            <!-- <ion-button routerLink="/listado-pedidos-pendientes" expand="block" shape="round" class="btnMenu">
+              REALIZAR PEDIDO
+            </ion-button> -->
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+      <ng-container *ngIf="pedido.estado == 'Cobrado'">
+        <ion-row>
+          <ion-col size="12" >
+            <p>EL ESTADO DE SU ULTIMO PEDIDO ES: <br> COBRADO</p>
+            <ion-button routerLink="/grafico-barra" expand="block" shape="round" class="btnMenu">
+              VER ENCUESTAS ANTERIORES
+            </ion-button>
+            <ion-button routerLink="/encuesta-cliente" expand="block" shape="round" class="btnMenu">
+              REALIZAR ENCUESTA
+            </ion-button>
+            <ion-button routerLink="/pedido" expand="block" shape="round" class="btnMenu">
+              REALIZAR PEDIDO
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      </div>
+</ion-content>

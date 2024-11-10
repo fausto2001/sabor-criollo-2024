@@ -35,51 +35,6 @@ export class ChatPage implements OnInit, AfterViewInit {
   constructor(){
     this.usuario = this.authServ.usuario!
   }
-  ngAfterViewInit(): void {
-    this.scrollToBottom();
-
-  }
- 
-  sendMensaje:string = '';
-  @ViewChild(IonContent, { static: false }) content!: IonContent;
-
-  scrollToBottom() {
-    setTimeout(() => {
-      this.content.scrollToBottom(0);
-    }, 10);
-  }
-
-  determinarClaseMensaje(mensaje: Chat): string {
-    return mensaje.uid_usuario === this.usuario!.uid ? 'send' : 'received';
-  }
-
-  determinarUsuarioMensaje(mensaje: Chat): boolean {
-    return mensaje.uid_usuario === this.usuario!.uid ? true : false;
-  }
-
-
-  enviarMensaje(){
-    if(this.sendMensaje != ''){
-      const nuevoMensaje:Chat = <Chat>{
-        uid_usuario: this.usuario!.uid,
-        nombre: this.usuario!.nombre,
-        rol: this.usuario!.rol,
-        mensaje: this.sendMensaje,
-        fecha: new Date(),
-        mesa: this.usuario?.rol == 'cliente'? this.usuario.mesa : null
-      }
-      this.chatServ.guardarMensaje(nuevoMensaje);
-      if(this.usuario?.rol == 'cliente'){
-        //this.pushNotifServ.emitPushNotificationPorRol('Nuevo mensaje - Mesa: ' + this.usuario!.mesa, this.sendMensaje, 'mozo');
-      }
-      
-      setTimeout(() => {
-        this.sendMensaje = "";
-        this.scrollToBottom();
-      }, 10);
-    }
-  }
-
 
   ngOnInit() {
     this.id_mesa = this.actRoute.snapshot.params['id_mesa'];
@@ -98,5 +53,60 @@ export class ChatPage implements OnInit, AfterViewInit {
       });
     }
   }
+  ngAfterViewInit(): void {
+    this.scrollToBottom();
+
+  }
+ 
+  sendMensaje:string = '';
+  @ViewChild(IonContent, { static: false }) content!: IonContent;
+
+  scrollToBottom() {
+    setTimeout(() => {
+      this.content.scrollToBottom(0);
+    }, 10);
+  }
+/*
+  determinarClaseMensaje(mensaje: Chat): string {
+    return mensaje.uid_usuario === this.usuario!.uid ? 'send' : 'received';
+  }
+
+  determinarUsuarioMensaje(mensaje: Chat): boolean {
+    return mensaje!.uid_usuario === this.usuario!.uid ? true : false;
+  }*/
+
+    determinarClaseMensaje(mensaje: Chat): string {
+      return mensaje.email === this.usuario!.email ? 'send' : 'received';
+    }
+  
+    determinarUsuarioMensaje(mensaje: Chat): boolean {
+      return mensaje!.email === this.usuario!.email ? true : false;
+    }
+
+  enviarMensaje(){
+    if(this.sendMensaje != ''){
+      const nuevoMensaje:Chat = <Chat>{
+        uid_usuario: this.usuario!.uid,
+        nombre: this.usuario!.nombre,
+        rol: this.usuario!.rol,
+        mensaje: this.sendMensaje,
+        fecha: new Date(),
+        mesa: this.usuario?.rol == 'cliente'? this.usuario.mesa : null,
+        email: this.usuario!.email
+      }
+      this.chatServ.guardarMensaje(nuevoMensaje);
+      if(this.usuario?.rol == 'cliente'){
+        //this.pushNotifServ.emitPushNotificationPorRol('Nuevo mensaje - Mesa: ' + this.usuario!.mesa, this.sendMensaje, 'mozo');
+      }
+      
+      setTimeout(() => {
+        this.sendMensaje = "";
+        this.scrollToBottom();
+      }, 10);
+    }
+  }
+
+
+
   
 }

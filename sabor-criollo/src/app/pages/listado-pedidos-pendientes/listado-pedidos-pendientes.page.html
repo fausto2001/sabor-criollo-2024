@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>listado-pedidos-pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid fixed>
+  <ion-row class="estado-mesa">
+    <ng-container *ngFor="let mesa of mesas">
+      <ion-card class="info-mesa">
+        <ion-card-content>
+          <div class="card-btn">
+            <h2 style="text-decoration:dotted; font-weight: bold;">MESA: {{mesa.numero}}</h2>
+            <ng-container *ngIf="mesa.estado === 'Disponible'">
+              <ion-button routerLink="/listado-pedidos-pendientes" expand="block" shape="round" class="btnMenu">
+                MESA VACIA
+              </ion-button>
+            </ng-container>
+            <ng-container *ngIf="mesa.estado === 'Ocupada'">
+              <ng-container *ngFor="let pedido of pedidos">
+                <ng-container *ngIf="pedido.idMesa === mesa.numero">
+                <ng-container *ngIf="usuario.rol === 'cocinero'">
+                  <ion-button *ngIf="pedido.estadoCocinero === 'En proceso'" (click)="prepararPedido(pedido)" expand="block" shape="round" class="btnMenu">
+                    PREPARAR
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estadoCocinero === 'Finalizado' && pedido.estado == 'En proceso'" (click)="prepararPedido(pedido)" expand="block" shape="round" class="btnMenu">
+                    PREPARADO
+                  </ion-button>
+                </ng-container>
+
+                <ng-container *ngIf="usuario.rol === 'bartender'">
+                  <ion-button *ngIf="pedido.estadoBartender === 'En proceso'" (click)="prepararPedido(pedido)" expand="block" shape="round" class="btnMenu">
+                    PREPARAR
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estadoBartender === 'Finalizado' && pedido.estado == 'En proceso'" (click)="prepararPedido(pedido)" expand="block" shape="round" class="btnMenu">
+                    PREPARADO
+                  </ion-button>
+                </ng-container>
+
+
+                  <ion-button *ngIf="pedido.estado === 'pendiente'" expand="block" shape="round" class="btnMenu">
+                    PENDIENTE
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Finalizado'" expand="block" shape="round" class="btnMenu">
+                    PEDIDO PREPARADO
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Entregado'" expand="block" shape="round" class="btnMenu">
+                    PEDIDO ENTREGADO
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Pagado'" expand="block" shape="round" class="btnMenu">
+                    PEDIDO ENTREGADO
+                  </ion-button>
+
+                  <ion-button *ngIf="pedido.estado === 'Cobrado'" expand="block" shape="round" class="btnMenu">
+                    MESA VACIA
+                  </ion-button>
+                </ng-container>
+
+
+
+              </ng-container>
+            </ng-container>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ion-row>
+</ion-grid>

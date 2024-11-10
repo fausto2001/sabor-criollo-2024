@@ -5,5 +5,5 @@ export interface Chat {
   mensaje: string,
   mesa: string | null
   fecha: Date
-  
+  email: string
 }

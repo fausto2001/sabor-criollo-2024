@@ -71,6 +71,7 @@ export class PedidoPage implements OnInit {
           if (data) {
             this.userService.getUsuarioPorCorreo(data.email!).then((usuario) => {
               this.usuario = usuario!;
+              this.pedido.idMesa = usuario!.mesa;
             });
           }
         });

@@ -44,7 +44,7 @@ ion-card{
     display: flex;
     justify-content: flex-end!important;
     ion-card{
-        --background: rgba(254, 221, 88, 0.85)!important;
+        --background: #32d184!important;
         --color: black;
 
     }
@@ -70,8 +70,10 @@ ion-card{
 }
 
 
-ion-content{
-    margin-bottom: 70px;
+.chat-content {
     background-color: #01be62;
-    background-image: url('../../../assets/fondo-login-2.jpg')!important;
-}
+    background-image: url('../../../assets/camara.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  

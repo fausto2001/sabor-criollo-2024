@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Estado mesas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid fixed>
+  <ion-row class="estado-mesa">
+    <ng-container *ngFor="let mesa of mesas">
+      <ion-card class="info-mesa">
+        <ion-card-content>
+          <div class="card-btn">
+            <h2 style="text-decoration:dotted; font-weight: bold;">MESA: {{mesa.numero}}</h2>
+            <ng-container *ngIf="mesa.estado === 'Disponible'">
+              <ion-button  expand="block" shape="round" class="btnMenu">
+                MESA VACIA
+              </ion-button>
+            </ng-container>
+            <ng-container *ngIf="mesa.estado === 'Ocupada'">
+              <ng-container *ngFor="let pedido of pedidos">
+                <ng-container *ngIf="pedido.idMesa === mesa.numero">       
+                  <ion-button (click)="tomarPedido(pedido)" *ngIf="pedido.estado === 'pendiente'"  expand="block" shape="round" class="btnMenu">
+                    TOMAR PEDIDO
+                  </ion-button>           
+                  <ion-button *ngIf="pedido.estado === 'En proceso'"  expand="block" shape="round" class="btnMenu">
+                    EN PREPARACION
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Finalizado'" (click)="entregarPedido(pedido)" expand="block" shape="round" class="btnMenu">
+                    ENTREGAR PEDIDO
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Entregado'"  expand="block" shape="round" class="btnMenu">
+                    ENTREGADO
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Pagado'" (click)="cobrarPedido(pedido, mesa)"  expand="block" shape="round" class="btnMenu">
+                    COBRAR PEDIDO
+                  </ion-button>
+                  <ion-button *ngIf="pedido.estado === 'Cobrado'" (click)="cobrarPedido(pedido, mesa)"  expand="block" shape="round" class="btnMenu">
+                    MESA VACIA
+                  </ion-button>
+                </ng-container>
+
+
+              </ng-container>
+            </ng-container>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ion-row>
+</ion-grid>

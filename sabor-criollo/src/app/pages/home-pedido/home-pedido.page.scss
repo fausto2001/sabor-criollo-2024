@@ -1,0 +1,22 @@
+.btnMenu{
+    margin: 15px;
+    padding: 5px;
+    height: auto;
+    --background: #01be62;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  p{
+    color:#01be62;
+    font-size: 35px;
+    font-weight: bold;
+
+  }
+
+  ion-content{
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+}
+

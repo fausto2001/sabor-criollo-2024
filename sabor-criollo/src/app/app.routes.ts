@@ -80,6 +80,18 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/pedido/pedido.page').then( m => m.PedidoPage)
   },
   {
+    path: 'home-pedido',
+    loadComponent: () => import('./pages/home-pedido/home-pedido.page').then( m => m.HomePedidoPage)
+  },
+  {
+    path: 'listado-pedidos-pendientes',
+    loadComponent: () => import('./pages/listado-pedidos-pendientes/listado-pedidos-pendientes.page').then( m => m.ListadoPedidosPendientesPage)
+  },
+  {
+    path: 'estado-mesas',
+    loadComponent: () => import('./pages/estado-mesas/estado-mesas.page').then( m => m.EstadoMesasPage)
+  },
+  {// crear componente de error
     path: '**',
     redirectTo: 'splash-screen',
     pathMatch: 'full',

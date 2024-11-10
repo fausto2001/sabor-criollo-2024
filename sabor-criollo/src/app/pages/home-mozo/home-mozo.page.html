@@ -4,6 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  Perfil Mozo
+<ion-content>
+
+
+<ng-container>
+  <ion-row>
+    <ion-col size="12" >
+      <ion-button routerLink="/estado-mesas" expand="block" shape="round" class="btnMenu">
+        <img slot="start" src="../../assets/botones/nuevo-cliente.png" class="button-icon"/>
+        VER ESTADO DE LAS MESAS
+      </ion-button>
+      <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
+        <img slot="start" src="../../assets/botones/chat.png" class="button-icon"/>
+        RESPONDER CONSULTAS
+      </ion-button>
+      <ion-button  expand="block" shape="round" class="btnMenu">
+        <img slot="start" src="../../assets/botones/lista-de-comida.png" class="button-icon"/>
+        MENU
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ng-container>
 </ion-content>
