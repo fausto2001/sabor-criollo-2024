@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
+    <h3> IMPORTE TOTAL: ${{pedido.importeTotal}} </h3> <br>
+  </ion-button>
+  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
+    TIEMPO ELABORACIÓN: {{pedido.tiempoTotal}} minutos
+  </ion-button>
+  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
+    💬 CONSULTAR CON EL MOZO
+  </ion-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="mostrarPedido()">
+    <ion-fab-button color="tertiary">
+      <ion-img src="../../../assets/botones/lista-de-comida.png" ></ion-img>
+      <!-- <ion-label>Importe Total: ${{importeTotal}}</ion-label> -->
+    </ion-fab-button>
+  </ion-fab>
+
+  
+
+   @if(productos && productos.length > 0){
+   
+    <ion-grid fixed>
+      <ion-row class="productos">
+        <!-- <ion-col size="12" *ngFor="let item of fotosLindas"> -->
+          @for(producto of productos; track producto)
+          {
+          <ion-card >
+            <img #some [src]="producto.imagen[this.currentImg]" alt="fotoProducto">
+            
+             <ion-button class="cambiar-imagen"color="success" expand="block" shape="round" (click)="setImage(-1)">
+              🢀
+            </ion-button>
+            <ion-button class="cambiar-iamgen" color="success" expand="block" shape="round" (click)="setImage(1)">
+              🢂
+            </ion-button> -
+            <ion-card-header>
+              <div class="line"></div>
+
+               <h2 class="descripcion-producto">{{producto.nombre}} </h2> 
+              <ion-card-subtitle class="descripcion-producto"> ${{producto.precio}}</ion-card-subtitle>
+              <ion-card-subtitle class="descripcion-producto">{{producto.descripcion}}</ion-card-subtitle>
+              <ion-card-subtitle class="descripcion-producto">Tiempo: {{producto.tiempoelavoracion}} mins</ion-card-subtitle>
+
+              <div class="line"></div>
+
+            </ion-card-header>
+
+            <ion-card-content>
+
+              <div class="card-btn">
+              </div>
+              <div class="card-btn">
+                <ion-button color="success" expand="block" shape="round" class="circular-button" (click)="actualizarCantidadPedido(producto, true)">
+                  +
+                </ion-button>
+                <ion-text>
+                  <h5 class="cantidad">{{producto.cantidad}} </h5>
+                </ion-text>
+                <ion-button color="danger" expand="block" shape="round" class="circular-button" (click)="actualizarCantidadPedido(producto, false)">
+                  -
+                </ion-button>
+
+
+                  <ion-button class="agregar" color="primary"  expand="block"  shape="round" (click)="actualizarPedido(producto)">
+                    CONFIRMAR
+                  </ion-button>
+                
+
+
+
+                
+
+              </div>
+            </ion-card-content>
+          </ion-card>
+       <!--  </ion-col> -->
+      }
+      </ion-row>
+    </ion-grid>
+    
+  
+  
+
+  }
+</ion-content>

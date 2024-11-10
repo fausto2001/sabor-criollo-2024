@@ -107,7 +107,9 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [
+              "node_modules/onesignal-cordova-plugin/dist/OneSignalSDK.js"
+            ]
           },
           "configurations": {
             "ci": {

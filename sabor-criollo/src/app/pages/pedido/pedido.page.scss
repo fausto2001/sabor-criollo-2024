@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+
+
+.icon-img{
+    width: 30px;
+    background-color: #9a72d9;  
+    border-radius: 40px;
+}
+
+ion-content{
+    --background: #01be62!important;
+}
+
+.card-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.fotos{
+    display: flex;
+    justify-content: center;
+}
+
+.votos-positivos{
+    color: #01be62;
+}
+
+.votos-negativos{
+    color: #007aff;
+}
+
+ion-fab{
+    background-color: rgba(54, 54, 54, 0.623);
+    border-radius: 35px;
+}
+
+ion-fab-button{
+    border-radius: 50px;
+}
+
+ion-card{
+    border-radius: 20px;
+    margin: 0;
+}
+
+.icon-back{
+    width: 50px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+  }
+  .line::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #407AF4;
+    padding: 0 15px;
+  }
+
+  .descripcion-producto{
+    font-family: url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+  }
+
+  .circular-button {
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-button.circular-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --min-height: 40px; 
+    --max-width: 40px; 
+  }

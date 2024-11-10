@@ -1,0 +1,76 @@
+ion-img{
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+ion-fab-button{
+    --background: #121212
+}
+
+ion-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 70px;
+}
+
+ion-textarea{
+    margin-left: 10px;
+}
+
+.mensaje{
+    width: 80%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerMensaje{
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+ion-card{
+    margin-bottom: 5px;
+}
+
+.send{
+    display: flex;
+    justify-content: flex-end!important;
+    ion-card{
+        --background: rgba(254, 221, 88, 0.85)!important;
+        --color: black;
+
+    }
+}
+
+.received{
+    display: flex;
+    justify-content: flex-start!important;
+    ion-card{
+        --background: rgba(32, 35, 36, 0.85)!important;  
+        --color: white;
+
+    }
+}
+
+.titleMensaje{
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.contentMensaje{
+    font-size: 18px;
+}
+
+ion-content{
+    margin-bottom: 70px;
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+}

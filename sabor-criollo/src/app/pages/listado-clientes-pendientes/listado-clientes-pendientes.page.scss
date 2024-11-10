@@ -1,0 +1,55 @@
+/* Estilo para la tabla y celdas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ebd248;
+    padding: 8px;
+    text-align: left;
+    background-color: #030303;
+
+  }
+  
+  th {
+    background-color: #030303;
+  }
+  
+  .icon-back{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 40px;
+}
+
+ion-content{
+  --background: none;
+  background-color: #01be62;
+  background-image: url('../../../assets/fondo-login-2.jpg')!important;
+  // background-size: cover;
+}
+
+.contenedor-imagen {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa el 100% del alto de la pantalla */
+}
+
+.contenedor-imagen img {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  max-height: 100%; /* Ajusta el tamaño máximo de la imagen */
+}
+
+ion-card{
+  color: white;
+  --background: #01be62;
+  border-radius: 15px;
+}
+
+ion-card-content{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}

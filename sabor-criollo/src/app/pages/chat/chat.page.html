@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+  <ng-container *ngFor="let item of mensajes">
+    <div [ngClass]="determinarClaseMensaje(item)">
+      <ion-card class="mensaje" >
+        <ion-card-header *ngIf="!determinarUsuarioMensaje(item)">
+          <ion-card-subtitle class="titleMensaje" *ngIf="item.rol == 'cliente'">Mesa: {{item.mesa}}</ion-card-subtitle>
+          <ion-card-subtitle class="titleMensaje" *ngIf="item.rol != 'cliente'">{{item.nombre}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content class="contentMensaje">
+          {{item.mensaje}}
+        </ion-card-content>
+        <span class="footerMensaje">{{item.fecha | tStoDate }}</span>
+      </ion-card>
+    </div>
+  </ng-container>
+</ion-content>
+
+
+<ion-footer>
+  <ion-textarea maxlength="75" class="mensaje" type="text" placeholder="Mensaje" [(ngModel)]="sendMensaje"></ion-textarea>
+  <ion-fab-button>
+    <ion-img name="add" src="../../../assets/botones/enviar.png" (click)="enviarMensaje()"></ion-img>
+  </ion-fab-button>
+</ion-footer>

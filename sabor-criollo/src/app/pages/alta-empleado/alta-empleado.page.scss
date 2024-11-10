@@ -2,6 +2,7 @@ ion-content{
     --background: none;
     background-color: #01be62;
     background-image: url('../../../assets/fondo-login-2.jpg')!important;
+    background-size: cover;
 }
 
 ion-input{
@@ -13,8 +14,17 @@ ion-input{
     --border-radius: 15px;
     --border-style: solid;
     --border-width: 1px;
-}
-
+  
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
+  
+    .eye-icon {
+        position: relative;
+        top: 13px;
+    }
+  }
 .error{
     width: 96%;
     background-color: rgb(200, 90, 0);
@@ -26,10 +36,6 @@ ion-input{
         color: white;
         margin-left: 5px;
     }
-}
-
-ion-fab-button ion-img{
-    background-color: #b4a056;
 }
 
 .slot{
@@ -54,4 +60,10 @@ ion-button {
     border-radius: 25px;
     --background: #0db946;
     --color: black;
+  }
+
+  .fab-icon {
+    width: 70%;
+    height: 70%; 
+    object-fit: contain;
   }

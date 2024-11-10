@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CLIENTES PENDIENTES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <table *ngIf="hayUsuarios && usuariosNoAdmitidos.length > 0">
+
+    <ng-container *ngFor="let usuario of usuariosNoAdmitidos; index as i">
+      <ion-card>
+        <ion-text color="primary">
+          <h1 style="color: black; margin-left: 20px; font-weight: bold;"> {{usuario.email}}</h1>
+        </ion-text>
+        <ion-card-content>
+          <ion-img class="icon-back" src="../../../assets/botones/aprobado.png" name="aprobado" (click)="aceptarRechazarUsuario(usuario.email, true, usuario.nombre)"></ion-img>
+            <ion-img class="icon-back" src="../../../assets/botones/rechazado.png" name="rechazado" (click)="aceptarRechazarUsuario(usuario.email, false, usuario.nombre)"></ion-img>        
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </table>
+  
+  <div *ngIf="hayUsuarios == false" class="contenedor-imagen">
+    <ion-img src="../../../assets/no-hay-usuarios.png" alt="No hay usuarios pendientes"></ion-img>
+  </div>
+</ion-content>

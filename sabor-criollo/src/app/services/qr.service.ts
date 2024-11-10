@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult } from '@capacitor/barcode-scanner'
-
+//import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult } from '@capacitor/barcode-scanner'
+import { Component, OnInit } from '@angular/core';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController } from '@ionic/angular';
 
 
 @Injectable({
@@ -8,54 +10,40 @@ import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarco
 })
 export class QrService {
 
-  constructor() { }
+  isSupported = false;
+  barcodes: Barcode[] = [];
 
-  async escanearDNI(){
-    return this.obtenerDatosDNI(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
-      cameraDirection: 1,
-      hint: 5,
-      scanOrientation: 3
-    }));
-  }
+  constructor(private alertController: AlertController) {}
 
-  private obtenerDatosDNI(result:CapacitorBarcodeScannerScanResult){
-    const informacion = result.ScanResult.split('@');
-    const data = {
-      nroTramite: informacion[0],
-      apellido: informacion[1],
-      nombre: informacion[2],
-      genero: informacion[3],
-      dni: informacion[4],
-      ejemplar: informacion[5],
-      fechaNacimiento: informacion[6],
-      fechaVencimientoDni: informacion[7],
-    }
-    return data;
-  }
-
-  async escanearQR(){
-    return this.obtenerDatosQR(await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
-      cameraDirection: 1,
-      hint: 5,
-      scanOrientation: 3
-    }));
-  }
-
-  private obtenerDatosQR(result:CapacitorBarcodeScannerScanResult){
-    const informacion = result.ScanResult;
-    return informacion;
-  }
-/*
-  async escanearQR(){
-    return await CapacitorBarcodeScanner.scanBarcode(<CapacitorBarcodeScannerOptions>{
-      cameraDirection: 1,
-      hint: 17,
-      scanOrientation: 3
-    }).then( (res:CapacitorBarcodeScannerScanResult) => {
-      return res.ScanResult;
+  ngOnInit() {
+    BarcodeScanner.isSupported().then((result) => {
+      this.isSupported = result.supported;
     });
   }
 
+  async scan(): Promise<any> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.presentAlert();
+      return;
+    }
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
+    return barcodes;
+  }
 
-  }*/
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
+
+  async presentAlert(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Permission denied',
+      message: 'Please grant camera permission to use the barcode scanner.',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
 }

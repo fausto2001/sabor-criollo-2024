@@ -1,0 +1,27 @@
+@import '../home/home.page.scss';
+
+.btnMenu{
+    margin: 15px;
+    padding: 5px;
+    height: auto;
+    --background: #ffdf58;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .metre{
+    margin-top: 250px;
+  }
+  
+  .supervisor{
+    margin-top: 240px;
+  }
+  
+  
+  .button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px; /* Ajusta este valor según tus necesidades */
+    vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+  }
