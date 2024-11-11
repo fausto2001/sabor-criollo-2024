@@ -27,7 +27,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Implementación firebase (28/10)
     - ✔️ Creación de la base de datos (1/11)
     - ✔️ Puesta en funcionamiento de servicio auth contra firebase auth y firestore (registro, login, logout, etc) (2/11)
-    - ✔️ Alta admin/supervisor (2/11)
+    - ✔️ Alta dueño/supervisor (2/11)
     - ✔️ Alta de cuenta de correo para la empresa (2/11)
 
 
