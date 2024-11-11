@@ -6,7 +6,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Observable, Subscription } from 'rxjs';
-//import { EmailService } from 'src/app/services/email.service';
+import { EmailService } from 'src/app/services/email.service';
 //import { Toast2Service } from 'src/app/services/toast2.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 
@@ -18,9 +18,9 @@ import { UsuarioModel } from 'src/app/models/usuario.component';
   imports: [IonCardContent, IonCard, IonText, IonImg, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class ListadoClientesPendientesPage implements OnInit {
-  //private toast2Serv:Toast2Service = inject(Toast2Service);
+  private emailService:EmailService = inject(EmailService);
   usuariosNoAdmitidos: UsuarioModel[] = [];
-hayUsuarios: boolean = true;
+  hayUsuarios: boolean = true;
   
   getUsuario$!:Subscription;
   getAdmitidos$!:Subscription;
@@ -48,11 +48,11 @@ hayUsuarios: boolean = true;
     
         if (user) {
           user.admitido = admitido;
-    
+
           this.userService.updateUsuario(user)
             .then(() => {
-              if (admitido) {
-                // this.emailService.enviandoEmail(nombre, email, '¡Genial! Has sido aprobado exitosamente');
+              if (admitido) {//COMENTADO PORQUE HAY LIMITE DE EMAILS
+                 //this.emailService.enviandoEmail(nombre, email, '¡Genial! Has sido aprobado exitosamente');
               } else {
                 // this.emailService.enviandoEmail(nombre, email, '¡Vaya! Tu solicitud ha sido rechazada');
               }

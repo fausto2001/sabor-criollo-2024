@@ -3,7 +3,8 @@ export interface Chat {
   nombre: string,
   rol: string,
   mensaje: string,
-  mesa: string | null
-  fecha: Date
-  email: string
+  mesa: string | null,
+  fecha: Date,
+  email: string,
+  id_usuario: string
 }
