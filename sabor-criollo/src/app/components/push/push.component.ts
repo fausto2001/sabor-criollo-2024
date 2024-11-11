@@ -174,11 +174,11 @@ export class PushComponent  implements OnInit {
   async createUserAndLogin() {
     try {
       const randomNumber = this.generateRandomString(20);
-      console.log('stored number: ', randomNumber);
+      console.log('Número almacenado: ', randomNumber);
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
       this.onesignal.login(randomNumber);
-      alert('User created in onesignal');
+      alert('Usuario creado en onesignal');
     } catch(e) {
       throw(e);
     }
@@ -210,12 +210,12 @@ export class PushComponent  implements OnInit {
     try {
       const data = await this.getStorage('auth');
       if(!data?.value) return;
-      console.log('external id: ', data.value);
+      console.log('ID externo: ', data.value);
       const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
       const { identity } = response;
-      console.log('identity: ', identity);
+      console.log('Identidad: ', identity);
       await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
-      alert('User deleted from onesignal');
+      alert('Usuario eliminado de onesignal');
     } catch(e) {
       console.log(e);
     }
@@ -232,8 +232,8 @@ export class PushComponent  implements OnInit {
       if (data?.value) {
         await lastValueFrom(
           this.onesignal.sendNotification(
-            'This is a test message',
-            'Test message',
+            'Este es un mensaje de prueba para usuarios específicos',
+            'Mensaje de prueba',
             { type: 'user1' },
             [data.value]//aca va el id del usuario
           )
@@ -249,8 +249,8 @@ export class PushComponent  implements OnInit {
     try {
       await lastValueFrom(
         this.onesignal.sendNotification(
-          'This is a test message to all users',
-          'Test message for users',
+          'Este es un mensaje de prueba para todo el mundo',
+          'Mensaje de prueba',
           { type: 'user12' }
         )
       );
@@ -263,8 +263,8 @@ export class PushComponent  implements OnInit {
     try {
       await lastValueFrom(
         this.onesignal.sendNotification(
-          'This is a test message',
-          'Test message',
+          'Esto es una prueba',
+          'Mensaje de prueba',
           { type: 'user1' },
           [
             'coHcnUkQifwJunY37EgT',

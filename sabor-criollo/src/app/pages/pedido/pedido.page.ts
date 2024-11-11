@@ -154,7 +154,6 @@ export class PedidoPage implements OnInit {
       this.pedido.importeTotal = this.pedido.pedidos.reduce((total, pedidoProducto) => {
         return total + pedidoProducto.producto.precio * pedidoProducto.cantidad;
       }, 0);
-  
       this.pedido.tiempoTotal = Math.max(...this.pedido.pedidos.map(p => p.producto.tiempoelavoracion));
     }
 

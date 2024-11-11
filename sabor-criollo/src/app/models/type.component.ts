@@ -1,4 +1,4 @@
-export type Roles = 'admin' | 'supervisor' | 'metre' | 'cocinero' | 'mozo' | 'repartidor' | 'bartender' | 'cliente';
+export type Roles = 'dueño' | 'supervisor' | 'metre' | 'cocinero' | 'mozo' | 'repartidor' | 'bartender' | 'cliente';
 
 export type EstadoMesa = 'libre' | 'ocupada';
 
