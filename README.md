@@ -16,8 +16,6 @@ Bienvenido a **Sabor Criollo 2024**.
     -   ❌ Envio de mails
     -   ❌ Envio de Push Notifications
     
-
-
 ### α Fausto Panello (Alfa)
     - ✔️ Creación del repositorio (28/10)
     - ✔️ Integración con Android (30/10)
@@ -60,6 +58,13 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ## 📅 Semana 3 (10/11 - 16/11)
 
+### 📓 A Asignar
+
+    -   ❌ Envio de mails
+    -   ❌ Envio de Push Notifications
+    -   ❌ Alta de encuestas
+    -   ❌ Pagar la cuenta y escaneo QR de descuentos
+
 ### α Fausto Panello (Alfa)
     - ⌛ Más tareas...
     
@@ -68,7 +73,8 @@ Bienvenido a **Sabor Criollo 2024**.
     
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Bartender/Cocinero/Mozo visualizan sus tareas correspondientes (10/11)
-    - ⌛ Solicitar mesa y escaneo de la misma (validaciones)
+    - ✔️ Graficos de torta y barra (10/11)
+    - ✔️ Solicitar mesa y escaneo de la misma (validaciones) (10/11)
     - ⌛ Más tareas...
 
 
