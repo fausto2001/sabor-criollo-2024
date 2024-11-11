@@ -9,6 +9,5 @@ export interface ProductoModel {
     imagen: string[];
     descripcion: string;
     cantidad: number;
-    tiempoElaboracion: number; //Esta mal escrito, no le hagas caso
-    
+    tiempoelavoracion: number; //Esta mal escrito, no le hagas caso
 }

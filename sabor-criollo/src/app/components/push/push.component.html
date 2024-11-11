@@ -19,13 +19,18 @@
             <img slot="start" src="../../assets/botones/alta-empleado.png" class="button-icon"/>
             ELIMINAR USUARIO
           </ion-button>
-          <ion-button (click)="sendNotificationtoSpecificDevice()" expand="block" shape="round" class="btnMenu">
+          <ion-button (click)="sendNotificationtoSpecificDevice('')" expand="block" shape="round" class="btnMenu">
             <img slot="start" src="../../assets/botones/alta-supervisor.png" class="button-icon"/>
             ENVIAR NOTIFICACION A UN DISPOSITIVO ESPECIFICO
           </ion-button>
           <ion-button (click)="sendNotificationtoAllUsers()" expand="block" shape="round" class="btnMenu">
             <img slot="start"  class="button-icon"/>
             ENVIAR NOTIFICACION A TODOS
+          </ion-button>
+
+          <ion-button (click)="sendNotificationtoAllUsers()"  expand="block" shape="round" class="btnMenu">
+            <img slot="start"  class="button-icon"/>
+            ENVIAR NOTIFICACION A UN DISPOSITIVO ESPECIFICO desde la web
           </ion-button>
       </ion-col>
     </ion-row>
