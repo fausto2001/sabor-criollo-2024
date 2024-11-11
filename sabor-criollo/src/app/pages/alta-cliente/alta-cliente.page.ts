@@ -119,7 +119,7 @@ export class AltaClientePage implements OnInit {
             apellido: this.apellido,
             dni: this.dni,
             rol: 'cliente',
-            enListaDeEspera: false,
+            enListaDeEspera: null,
             admitido: null,
             foto: urlFoto!,
             mesa: null,

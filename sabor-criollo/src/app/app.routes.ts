@@ -103,7 +103,15 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'splash-screen',
     pathMatch: 'full',
+  },  {
+    path: 'cuenta',
+    loadComponent: () => import('./pages/cuenta/cuenta.page').then( m => m.CuentaPage)
   },
+  {
+    path: 'encuesta',
+    loadComponent: () => import('./pages/encuesta/encuesta.page').then( m => m.EncuestaPage)
+  },
+
 
 
 
