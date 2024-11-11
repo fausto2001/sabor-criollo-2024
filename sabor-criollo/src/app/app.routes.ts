@@ -95,6 +95,10 @@ export const routes: Routes = [
     path: 'graficos',
     loadComponent: () => import('./pages/graficos/graficos.page').then( m => m.GraficosPage)
   },
+  {
+    path: 'push',
+    loadComponent: () => import('./components/push/push.component').then( m => m.PushComponent)
+  },
   {// crear componente de error
     path: '**',
     redirectTo: 'splash-screen',

@@ -8,22 +8,21 @@
   <!--<ng-container *ngIf="usuario.rol == 'admin' || usuario.rol == 'supervisor' "> -->
     <ion-row>
       <ion-col size="12" >
-          <ion-button routerLink="/listado-clientes-pendientes" expand="block" shape="round" class="btnMenu">
+          <ion-button (click)="createOneSignalUser()"expand="block" shape="round" class="btnMenu">
             <img slot="start" src="../../assets/botones/cliente-pendiente.png" class="button-icon"/>
-            Listado de clientes pendientes
+            CREAR ONESIGNAL USER
           </ion-button>
-          <ion-button routerLink="/alta-empleado" expand="block" shape="round" class="btnMenu">
+          <ion-button (click)="deleteOneSignalUser()"expand="block" shape="round" class="btnMenu">
             <img slot="start" src="../../assets/botones/alta-empleado.png" class="button-icon"/>
-            Alta empleado
+            ELIMINAR USUARIO
           </ion-button>
-          <ion-button  routerLink="/alta-duenio" expand="block" shape="round" class="btnMenu">
+          <ion-button (click)="sendNotificationtoSpecificDevice()"expand="block" shape="round" class="btnMenu">
             <img slot="start" src="../../assets/botones/alta-supervisor.png" class="button-icon"/>
-            Alta supervisor
+            ENVIAR NOTIFICACION A UN DISPOSITIVO ESPECIFICO
           </ion-button>
-
-          <ion-button  routerLink="/push" expand="block" shape="round" class="btnMenu">
+          <ion-button (click)="sendNotificationtoAllUsers()"  expand="block" shape="round" class="btnMenu">
             <img slot="start"  class="button-icon"/>
-            PROBAR NOTIFICACIONES
+            ENVIAR NOTIFICACION A TODOS
           </ion-button>
       </ion-col>
     </ion-row>

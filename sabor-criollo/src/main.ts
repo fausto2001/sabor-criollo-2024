@@ -32,5 +32,6 @@ bootstrapApplication(AppComponent, {
     provideAuth(() => getAuth()), 
     provideFirestore(() => getFirestore()), 
     provideStorage(() => getStorage()), 
+    provideHttpClient(),
   ],
 });
