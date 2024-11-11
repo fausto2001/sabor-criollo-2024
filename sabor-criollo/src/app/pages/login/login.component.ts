@@ -158,23 +158,23 @@ export class LoginComponent  implements OnInit {
   async createOneSignalUser() {
     try {
       const data = await this.getStorage('auth');
-      console.log('stored data: ', data);
+      console.log('Datos almacenados: ', data);
       if(!data || !data?.value) {
         this.createUserAndLogin();
         return;
       }
-      console.log('external id: ', data.value);
+      console.log('ID Externa: ', data.value);
       const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
       if(!response) {
         this.createUserAndLogin();
       } else {
         const { identity } = response;
-        console.log('identity: ', identity);
+        console.log('Identidad: ', identity);
         if(!identity?.external_id) {
           this.createUserAndLogin();
         } else {
           this.onesignal.login(identity?.external_id);
-          alert('User already registered in onesignal');
+          alert('Usuario ya existe en onesignal');
         }
       }
     } catch(e) {
@@ -185,11 +185,11 @@ export class LoginComponent  implements OnInit {
   async createUserAndLogin() {
     try {
       const randomNumber = this.generateRandomString(20);
-      console.log('stored number: ', randomNumber);
+      console.log('número almacenado: ', randomNumber);
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
       this.onesignal.login(randomNumber);
-      alert('User created in onesignal');
+      alert('Usuario creado en onesignal');
     } catch(e) {
       throw(e);
     }
@@ -221,12 +221,12 @@ export class LoginComponent  implements OnInit {
     try {
       const data = await this.getStorage('auth');
       if(!data?.value) return;
-      console.log('external id: ', data.value);
+      console.log('ID externo: ', data.value);
       const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
       const { identity } = response;
-      console.log('identity: ', identity);
+      console.log('Identidad: ', identity);
       await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
-      alert('User deleted from onesignal');
+      alert('Usuario eliminado de onesignal');
     } catch(e) {
       console.log(e);
     }
@@ -243,8 +243,8 @@ export class LoginComponent  implements OnInit {
       if (data?.value) {
         await lastValueFrom(
           this.onesignal.sendNotification(
-            'This is a test message',
-            'Test message',
+            'Este es un mensaje de prueba',
+            'Mensaje de prueba',
             { type: 'user1' },
             [data.value]
           )
@@ -260,8 +260,8 @@ export class LoginComponent  implements OnInit {
     try {
       await lastValueFrom(
         this.onesignal.sendNotification(
-          'This is a test message to all users',
-          'Test message for users',
+          'Este es un mensaje para todo el mundo',
+          'Mensaje de prueba',
           { type: 'user12' }
         )
       );
@@ -274,8 +274,8 @@ export class LoginComponent  implements OnInit {
     try {
       await lastValueFrom(
         this.onesignal.sendNotification(
-          'This is a test message',
-          'Test message',
+          'Este es un mensaje de prueba',
+          'Mensaje de prueba',
           { type: 'user1' },
           [
             'coHcnUkQifwJunY37EgT',

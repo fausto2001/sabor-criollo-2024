@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!--<ng-container *ngIf="usuario.rol == 'admin' || usuario.rol == 'supervisor' "> -->
+  <!--<ng-container *ngIf="usuario.rol == 'dueño' || usuario.rol == 'supervisor' "> -->
     <ion-row>
       <ion-col size="12" >
           <ion-button routerLink="/listado-clientes-pendientes" expand="block" shape="round" class="btnMenu">
@@ -22,7 +22,7 @@
           </ion-button>
 
           <ion-button  routerLink="/push" expand="block" shape="round" class="btnMenu">
-            <img slot="start"  class="button-icon"/>
+            <img slot="start" src="../../assets/botones/medalla.svg" class="button-icon"/>
             PROBAR NOTIFICACIONES
           </ion-button>
       </ion-col>
