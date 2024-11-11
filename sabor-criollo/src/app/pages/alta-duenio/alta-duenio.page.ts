@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel, IonRadio, IonList  } from '@ionic/angular/standalone';
+import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -11,14 +11,13 @@ import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-alta-duenio',
   templateUrl: './alta-duenio.page.html',
   styleUrls: ['./alta-duenio.page.scss'],
   standalone: true,
-  imports: [ IonList, IonSelect, IonRadio, IonLabel, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class AltaDuenioPage implements OnInit {
 
@@ -40,7 +39,6 @@ export class AltaDuenioPage implements OnInit {
 
   protected isSupported = false;
   protected barcodes: Barcode[] = [];
-  private alertController: AlertController = inject(AlertController);
 
   constructor() {
     this.form = new FormGroup ({
@@ -61,7 +59,6 @@ export class AltaDuenioPage implements OnInit {
     BarcodeScanner.isSupported().then((result) => {
       this.isSupported = result.supported;
     });
-
   }
 
   get email(){
@@ -93,9 +90,14 @@ export class AltaDuenioPage implements OnInit {
   }
 
   async abrirCamara(){
-    const foto = await this.camaraService.tomarFoto();
-    this.foto = await this.storageService.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
-    this.switchFotoSubida();
+    if(this.form.get('cuil')?.valid){
+      this.error = '';
+      const foto = await this.camaraService.tomarFoto();
+      this.foto = await this.storageService.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
+      this.switchFotoSubida();
+    }else{
+      this.error = 'Primero ingrese un CUIL válido';
+    }
   }
 
   async registrar(){
@@ -159,11 +161,9 @@ export class AltaDuenioPage implements OnInit {
     return true;
   }
 
-
   noCoinciden(){
     return this.password != this.form.get('confirmPassword')?.value && (this.form.get('confirmPassword')?.touched || this.form.get('confirmPassword')?.dirty);
   }
-
   
   async escanear(){
     const result = await this.qrService.scan();

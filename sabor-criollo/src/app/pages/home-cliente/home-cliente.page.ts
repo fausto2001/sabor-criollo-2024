@@ -133,4 +133,8 @@ export class HomeClientePage implements OnInit {
   verEstadisticas(){
     this.router.navigateByUrl('/graficos');
   }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 }

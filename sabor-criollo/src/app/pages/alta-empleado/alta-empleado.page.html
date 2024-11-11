@@ -1,10 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>NUEVO EMPLEADO</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title class="titulo">NUEVO EMPLEADO</ion-title>
+      <div class="divSalir" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
+    </ion-toolbar>
+  </ion-header>
 
   <ion-row>
     <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
@@ -160,7 +162,7 @@
   </ion-row>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" >
-    <ion-fab-button (click)="abrirCamara()">
+    <ion-fab-button class="true" (click)="abrirCamara()">
       <ion-img src="../../../assets/botones/dni.svg" class="fab-icon"></ion-img>
     </ion-fab-button>
   </ion-fab>
