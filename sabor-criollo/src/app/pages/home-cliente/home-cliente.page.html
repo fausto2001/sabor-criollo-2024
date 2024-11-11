@@ -48,15 +48,20 @@
           Escanear QR de la mesa {{usuario?.mesa}}
         </ion-button> 
 
-        <ion-button *ngIf="usuario?.enListaDeEspera == true"  expand="block" shape="round" class="btnMenu">
+        <ion-button *ngIf="usuario?.enListaDeEspera == true" expand="block" shape="round" class="btnMenu">
           <img slot="start" src="../../assets/botones/opinion.svg" class="fab-icon"/>
           Debes esperar a que el metre te acepte
         </ion-button> 
 
-         <ion-button expand="block" shape="round" class="btnMenu">
-          <img slot="start" src="../../assets/botones/medalla.svg" class="fab-icon"/>
-          Ver nuestras calificaciones
-        </ion-button>
+        <ion-button expand="block" shape="round" class="btnMenu" (click)="verEstadisticas()">
+         <img slot="start" src="../../assets/botones/medalla.svg" class="fab-icon"/>
+         Ver nuestras calificaciones
+       </ion-button>
+
+       <ion-button expand="block" shape="round" class="btnMenu" (click)="goChat()">
+        <img slot="start" src="../../assets/botones/mozo.svg" class="fab-icon"/>
+        Consultar al mozo
+      </ion-button>
         
         
       <!-- </div> -->

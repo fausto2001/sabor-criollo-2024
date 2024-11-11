@@ -182,4 +182,8 @@ export class PushComponent  implements OnInit {
       console.log(e);
     }
   }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }  
 }

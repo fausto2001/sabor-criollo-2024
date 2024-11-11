@@ -104,8 +104,4 @@ export const routes: Routes = [
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   },
-
-
-
-
 ];

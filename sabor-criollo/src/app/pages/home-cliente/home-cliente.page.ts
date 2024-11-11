@@ -125,4 +125,12 @@ export class HomeClientePage implements OnInit {
     });
     await alert.present();*/
   }
+
+  goChat(){
+    this.router.navigateByUrl('/chat');
+  }
+
+  verEstadisticas(){
+    this.router.navigateByUrl('/graficos');
+  }
 }

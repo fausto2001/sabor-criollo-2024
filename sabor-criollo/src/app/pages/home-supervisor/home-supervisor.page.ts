@@ -12,6 +12,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 //import { PushNotificationService } from 'src/app/services/push-notification.service';
+
 @Component({
   selector: 'app-home-supervisor',
   templateUrl: './home-supervisor.page.html',
@@ -22,6 +23,7 @@ import Swal from 'sweetalert2';
 export class HomeSupervisorPage implements OnInit {
 
   //private pushNotifServ: PushNotificationService = inject(PushNotificationService);
+  router: Router = inject(Router);
 
   constructor() { }
 
@@ -29,5 +31,9 @@ export class HomeSupervisorPage implements OnInit {
     //this.pushNotifServ.checkAndPromptForSubscription().then(() => {
      // this.pushNotifServ.sendNotification("Hola :)", "esta es una notificación de prueba!!");
    // });
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
   }
 }

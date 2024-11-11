@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonFooter, IonInput, IonImg, IonFab, IonFabButton, IonIcon, IonCard, IonCardContent, IonCardSubtitle, IonCardHeader, IonCardTitle, IonText, IonTextarea  } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonFooter, IonInput, IonImg, IonFab, IonFabButton, IonIcon, IonCard, IonCardContent, IonCardSubtitle, IonCardHeader, IonCardTitle, IonText, IonTextarea, IonRow } from '@ionic/angular/standalone';
 import { ChatService } from 'src/app/services/chat.service';
 import { Chat } from 'src/app/models/chat.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -17,7 +17,7 @@ import { TStoDatePipe } from "../../pipes/tsto-date.pipe";
     templateUrl: './chat.page.html',
     styleUrls: ['./chat.page.scss'],
     standalone: true,
-    imports: [IonText, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCardContent, IonCard, IonIcon, IonFabButton, IonFab, IonImg, IonInput, IonFooter, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonTextarea, TStoDatePipe]
+    imports: [IonRow, IonText, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCardContent, IonCard, IonIcon, IonFabButton, IonFab, IonImg, IonInput, IonFooter, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonTextarea, TStoDatePipe]
 })
 export class ChatPage implements OnInit, AfterViewInit {
   private chatServ:ChatService = inject(ChatService);
@@ -106,7 +106,7 @@ export class ChatPage implements OnInit, AfterViewInit {
     }
   }
 
-
-
-  
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }  
 }

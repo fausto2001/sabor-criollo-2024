@@ -1,18 +1,22 @@
+ @import "./../home/home.page.scss";
 
 .color{
-    background-color: aliceblue;
+    background-color: rgba(50, 209, 132,0.9);
+    color: black;
 }
 .margen{
-  margin-top: 20%;
+  margin-top: 5%;
 }
 
 .ion-justify-content-center{
   display: flex;
 }
 
-ion-content{
-    --background: none;
-    background-color: #01be62;
-    background-image: url('../../../assets/fondo-login-2.jpg')!important;
-    background-size: cover;
+ion-card {
+  max-height: 44vh;
+}
+
+app-vertical-bar-chart,
+app-torta-chart {
+  max-height: fit-content;
 }

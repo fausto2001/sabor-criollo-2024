@@ -20,7 +20,7 @@ import { PedidoModel } from 'src/app/models/pedido.component';
   styleUrls: ['./home-pedido.page.scss'],
   standalone: true,
   imports: [IonGrid, IonContent, IonHeader, IonTitle, IonRow, IonCol, 
-    IonButton, IonToolbar, CommonModule, FormsModule, RouterLink]
+    IonButton, IonToolbar, CommonModule, FormsModule, RouterLink, IonIcon, IonImg]
 })
 export class HomePedidoPage implements OnInit {
   private authServ:AuthService = inject(AuthService)
@@ -63,5 +63,7 @@ export class HomePedidoPage implements OnInit {
     this.router.navigate([path]);
   }
 
-
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 }
