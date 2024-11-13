@@ -89,7 +89,7 @@ export class AltaClientePage implements OnInit {
     if(this.form.get('dni')?.valid){
       this.error = '';
       const foto = await this.camaraService.tomarFoto();
-      this.foto = await this.storageService.subirFotoBase64(this.dni, 'duenios-supervisores/', foto);
+      this.foto = await this.storageService.subirFotoBase64(this.dni, 'clientes/', foto);
       this.switchFotoSubida();
     }else{
       this.error = 'Primero ingrese un DNI válido';
@@ -117,7 +117,7 @@ export class AltaClientePage implements OnInit {
           dni: this.dni,
           rol: this.rol,
           enListaDeEspera: null,
-          admitido: true,
+          admitido: null,
           foto: this.foto,
           mesa: null,
           tokenNotification: null,
