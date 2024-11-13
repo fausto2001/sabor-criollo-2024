@@ -85,16 +85,16 @@ Bienvenido a **Sabor Criollo 2024**.
 ### 1 - Crear un cliente nuevo
     Tareas: Cargar todos sus datos personales y una foto
     Responsable: Fausto Panello
-    Fecha de inicio: 30/10
-    Fecha de finalización: ...
+	
+(./sabor-criollo/src/assets/readme_fotos/fn1.png)
 
 ### 2 - Validar todos los campos
     Tareas: - Verificar la lectura del código QR del D.N.I. (varios formatos).
             - Verificar que el pre-registro se visualice en el listado de clientes pendientes de aprobación del dueño o supervisor (push notification *A)
             - Verificar que no se pueda ingresar a la aplicación sin ser aprobado. Informar lo acontecido con un mensaje alusivo.
-    Responsable: Fausto Panello
-    Fecha de inicio: 30/10
-    Fecha de finalización: ...
+	
+(./sabor-criollo/src/assets/readme_fotos/fn2.png)
+(./sabor-criollo/src/assets/readme_fotos/fn3.png)
 
 ### 3 - El dueño o supervisor (celular 3) acepta o rechaza al cliente.
     Tareas: - El cliente recibe un correo electrónico informado de la situación de su registro (uno por la aceptación y otro en el caso de rechazo). Los mensajes deben tener el logo de la empresa, mensajes personalizados, fuentes distintas a las que vienen por defecto, etc.
