@@ -195,6 +195,7 @@ export class EstadoMesasPage implements OnInit {
   }
 
   cobrarPedido(pedido: PedidoModel, mesa: MesaModel){
+
     let pedidoText = '';
     if (pedido.pedidos.length > 0) {
       pedido.pedidos.forEach(pedidoProducto => {
@@ -237,16 +238,17 @@ export class EstadoMesasPage implements OnInit {
         mesa.cliente = null;
         this.mesaService.updateMesa(mesa);
 
+
         this.userService.getUsuarioPorId(pedido.idCliente).subscribe( data => {
           if(data){
             
             data.mesa = null;
             this.userService.updateUsuario(data);
-    
+            pedido.estado = 'Cobrado';
+            this.pedidoService.updatePedido(pedido);
+
           }
         });
-        this.pedido.estado = 'Cobrado';
-        this.pedidoService.updatePedido(pedido);
 
       }
     });
