@@ -36,12 +36,13 @@ export class HomePedidoPage implements OnInit {
 
   ngOnInit() {
     this.usuario = this.authServ.usuario!;
-    if(!this.usuario){
-      this.authServ.user$.subscribe( (data)=> {
-        this.usuarioServ.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-          this.cargarUltimoPedido(this.usuario.id);
-        });
+    if (!this.usuario) {
+      this.authServ.user$.subscribe((data) => {
+        if (data) {
+          this.usuarioServ.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+          });
+        }
       });
     }
     this.cargarUltimoPedido(this.usuario.id);

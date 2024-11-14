@@ -43,16 +43,18 @@ export class PedidoService {
 
   }
 
-  getUltimoPedidoUsuario(cliente:string){
+  getUltimoPedidoUsuario(cliente: string) {
     let qry = query(
       this.pedidosCollection,
       where('idCliente', '==', cliente),
-      //orderBy('fecha', 'desc'),
+      //orderBy('fecha', 'desc'), 
       //limit(1) 
     );
     return collectionData(qry).pipe(
-      map(usuarios => usuarios as PedidoModel[]))
+      map((pedidos) => pedidos as PedidoModel[])
+    );
   }
+  
 
 
 

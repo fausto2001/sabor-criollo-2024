@@ -52,19 +52,24 @@ export class CuentaPage implements OnInit {
 
   ngOnInit() {
     this.usuario = this.authService.usuario!;
-    if(!this.usuario){
-      this.authService.user$.subscribe( (data)=> {
-        this.userService.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-        });
+    if (!this.usuario) {
+      this.authService.user$.subscribe((data) => {
+        if (data) {
+          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+            alert(this.usuario.id);
+            this.cargarUltimoPedido(this.usuario.id);
+
+          });
+        }
       });
     }
-    this.cargarUltimoPedido(this.usuario.id);
 
   }
 
   cargarUltimoPedido(id: string): void {
     console.log('id del usuario: ' + id);
+    //alert(id);
     this.pedidoService.getUltimoPedidoUsuario(id).subscribe(
       (pedido) => {
         //this.pedido = pedido;

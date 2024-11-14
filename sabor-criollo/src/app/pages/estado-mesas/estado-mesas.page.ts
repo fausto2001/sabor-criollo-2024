@@ -50,11 +50,13 @@ export class EstadoMesasPage implements OnInit {
   ngOnInit() {
 
     this.usuario = this.authService.usuario!;
-    if(!this.usuario){
-      this.authService.user$.subscribe( (data)=> {
-        this.userService.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-        });
+    if (!this.usuario) {
+      this.authService.user$.subscribe((data) => {
+        if (data) {
+          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+          });
+        }
       });
     }
 
@@ -193,6 +195,7 @@ export class EstadoMesasPage implements OnInit {
   }
 
   cobrarPedido(pedido: PedidoModel, mesa: MesaModel){
+
     let pedidoText = '';
     if (pedido.pedidos.length > 0) {
       pedido.pedidos.forEach(pedidoProducto => {
@@ -235,16 +238,17 @@ export class EstadoMesasPage implements OnInit {
         mesa.cliente = null;
         this.mesaService.updateMesa(mesa);
 
+
         this.userService.getUsuarioPorId(pedido.idCliente).subscribe( data => {
           if(data){
             
             data.mesa = null;
             this.userService.updateUsuario(data);
-    
+            pedido.estado = 'Cobrado';
+            this.pedidoService.updatePedido(pedido);
+
           }
         });
-        this.pedido.estado = 'Cobrado';
-        this.pedidoService.updatePedido(pedido);
 
       }
     });

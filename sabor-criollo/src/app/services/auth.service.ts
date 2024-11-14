@@ -21,7 +21,7 @@ export class AuthService {
   constructor() {
     authState(this.firebaseAuth).subscribe(async (userState) => {
       if (userState) {
-        const usuario = await firstValueFrom(this.userService.getUsuarioPorUid(userState.uid));
+        const usuario = await firstValueFrom(this.userService.getUsuarioPor_Uid(userState.uid));
         this.currentUserSig.set(usuario || null);
       } else {
         this.currentUserSig.set(null);

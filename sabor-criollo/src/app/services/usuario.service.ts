@@ -15,7 +15,7 @@ export class UsuarioService {
 
   constructor() {}
   
-  getUsuarioPorUid(uid:string){
+  getUsuarioPor_Uid(uid:string){
     let qry = query(
       this.usuariosCollection,
       where('uid', '==', uid)
@@ -25,6 +25,22 @@ export class UsuarioService {
   }
 
   
+      async getUsuarioPorUid(uid: string)
+      {
+        const userQuery = query(collection(this.db, 'usuarios'), where('uid', '==', uid));
+        const querySnapshot = await getDocs(userQuery);
+    
+        if (!querySnapshot.empty) {
+          const userDoc = querySnapshot.docs[0];
+          const userData = await userDoc.data() as UsuarioModel;
+          this.personaLogeada = userData;
+    
+          return this.personaLogeada as UsuarioModel;
+        }
+        else {
+          return null;
+        }
+      }
 
   async getUsuarioPorCorreo(mail: string)
   {
