@@ -30,6 +30,7 @@ export class EncuestaPage {
 
   constructor(private router:Router)
   {
+
     addIcons({ //tuve que meterle esto para que funcionen los íconos de ionic
       'thumbs-up-outline': thumbsUpOutline,
       'thumbs-down-outline': thumbsDownOutline,
@@ -72,7 +73,7 @@ export class EncuestaPage {
   }
 
   onPuntajeChange(event: any) {
-    const value = event.detail.value;
+    const value = event.target.value;
     this.form.controls['puntaje'].setValue(value);
   }
 

@@ -15,7 +15,7 @@
   }
 
   .error-card {
-    background-color: #f8d7da;
+    background-color: #650008;
   }
 
   ion-item {
@@ -27,15 +27,13 @@
   ion-checkbox {
     --color-checked: var(--ion-color-primary);
   }
-
-  ion-range {
-    --bar-background: linear-gradient(
-      to right,
-      #ff0000,
-      #ff8c00,
-      #ffd700,
-      #adff2f,
-      #00ff00
-    );
-    --bar-background-active: black;
+  
+  .custom-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, red, yellow, green);
+    height: 8px; /* Thickness of the slider track */
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
   }
