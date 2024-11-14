@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { thumbsUpOutline, thumbsDownOutline } from 'ionicons/icons';
+import { thumbsUpOutline, thumbsDownOutline, sadOutline, happyOutline, helpOutline, alertCircleOutline } from 'ionicons/icons';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonRow, IonCol, IonItem, IonCardHeader, IonCard, IonLabel, IonCardTitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonRow, IonCol, IonItem, IonCardHeader, IonCard, IonLabel, IonCardTitle, IonCardContent, IonIcon, IonList, IonRadio, IonRadioGroup, IonTextarea, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,35 +11,53 @@ import { Router } from '@angular/router';
   templateUrl: './encuesta.page.html',
   styleUrls: ['./encuesta.page.scss'],
   standalone: true,
-  imports: [IonCard, IonCardHeader, IonCol, IonRow, IonImg,  IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, 
+  imports: [IonButton, IonTextarea, IonRadioGroup, IonRadio, IonList, IonCard, IonCardHeader, IonCol, IonRow, IonImg,  IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, 
     IonLabel, IonCardTitle, IonCardContent, IonItem, ReactiveFormsModule, IonIcon]
 })
-export class EncuestaPage implements OnInit {
+export class EncuestaPage {
 
   protected form: FormGroup;
-  puntaje: number = 1;
+  opinion: string = '';
+  fotos: string[] = [];
+  enviado:boolean=false;
 
   constructor(private router:Router)
   {
     addIcons({ //tuve que meterle esto para que funcionen los íconos de ionic
       'thumbs-up-outline': thumbsUpOutline,
-      'thumbs-down-outline': thumbsDownOutline      
+      'thumbs-down-outline': thumbsDownOutline,
+      'happy-outline': happyOutline,
+      'sad-outline': sadOutline,
+      'help-outline': alertCircleOutline
     })
 
     this.form = new FormGroup ({
-      
+      puntaje: new FormControl('', [Validators.required]),
+      mesaOrdenada: new FormControl('', [Validators.required]),
+      opinion: new FormControl('', [Validators.required]),
+      quejas: new FormControl('', [Validators.required])
     });
-  }
-
-  ngOnInit() {
   }
 
   goHome(){
     this.router.navigateByUrl('/home');
   }
 
+  onFileSelected(event: any) {
+    const files = event.target.files;
+
+    this.fotos = [];
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.fotos.push(e.target.result);
+      };
+      reader.readAsDataURL(files[i]);
+    }
+  }
+
   registrarEncuesta(){
-    
+    this.enviado = true;
   }
 
 }

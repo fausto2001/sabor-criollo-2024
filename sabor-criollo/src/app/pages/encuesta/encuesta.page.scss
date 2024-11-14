@@ -8,13 +8,18 @@
 
   ion-card {
     width: 100%;
-    margin-top: 10px;
-    border-radius: 16px;
+    margin-bottom: 20px;
+    border-radius: 30px;
     overflow: hidden;
     box-sizing:border-box;
   }
 
+  .error-card {
+    background-color: #f8d7da;
+  }
+
   ion-item {
+    font-size: 1em;
     display: flex;
     align-items: center;
   }
@@ -26,11 +31,11 @@
   ion-range {
     --bar-background: linear-gradient(
       to right,
-      #ff0000,       /* Red at the start */
-      #ff8c00,       /* Orange */
-      #ffd700,       /* Yellow */
-      #adff2f,       /* Green-yellow */
-      #00ff00        /* Lime green at the end */
+      #ff0000,
+      #ff8c00,
+      #ffd700,
+      #adff2f,
+      #00ff00
     );
     --bar-background-active: black;
   }
