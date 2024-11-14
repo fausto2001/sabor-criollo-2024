@@ -9,13 +9,14 @@ import { Observable, Subscription } from 'rxjs';
 import { EmailService } from 'src/app/services/email.service';
 //import { Toast2Service } from 'src/app/services/toast2.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-clientes-pendientes',
   templateUrl: './listado-clientes-pendientes.page.html',
   styleUrls: ['./listado-clientes-pendientes.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCard, IonText, IonImg, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardContent, IonCard, IonText, IonImg, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule ]
 })
 export class ListadoClientesPendientesPage implements OnInit {
   private emailService:EmailService = inject(EmailService);
@@ -25,6 +26,7 @@ export class ListadoClientesPendientesPage implements OnInit {
   getUsuario$!:Subscription;
   getAdmitidos$!:Subscription;
 
+  router: Router = inject(Router);
 
   constructor(private userService: UsuarioService, private authService: AuthService, 
     private toastService: ToastService/*, private emailService: EmailService*/) { }
@@ -79,5 +81,9 @@ export class ListadoClientesPendientesPage implements OnInit {
   ngOnDestroy(): void {
       this.getUsuario$.unsubscribe();
       this.getAdmitidos$.unsubscribe();
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
   }
 }

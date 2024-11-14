@@ -86,7 +86,6 @@ export class CuentaPage implements OnInit {
   async escanearQRPropina() {
     try {
      // this.propina = Number.parseInt(await this.qrServ.escanearQR());
-      
       this.total_propina = (this.pedido.importeTotal * this.propina) / 100
       
       this.pedido.importeTotal = this.subtotal + this.total_propina;

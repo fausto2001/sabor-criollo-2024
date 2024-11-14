@@ -47,8 +47,10 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Alta del cliente (atrasado de la semana anterior). (6/11)
     
 ### β Joel Mahafud (Beta)
-    - ✔️ Home reactivo a los perfiles de cada usuario (Estructura, falta maquetar homes individuales)
-    - ⌛ Más tareas...
+    - ✔️ Home reactivo a los perfiles de cada usuario (3/11)
+    - ✔️ Fixes varios en módulos de alta (3/11)
+    - ✔️ Fix error en compilación (9/11)
+    - ✔️ Maquetado de menús (9/11)
 
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Módulo de gestión de aprobación de clientes (6/11)
@@ -69,6 +71,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ⌛ Más tareas...
     
 ### β Joel Mahafud (Beta)
+    - ✔️ Unificado en estilos y lógica de los módulos de alta (11/11)
     - ⌛ Más tareas...
     
 ### γ Tomas Mastrapasqua (Gamma)
@@ -85,16 +88,16 @@ Bienvenido a **Sabor Criollo 2024**.
 ### 1 - Crear un cliente nuevo
     Tareas: Cargar todos sus datos personales y una foto
     Responsable: Fausto Panello
-    Fecha de inicio: 30/10
-    Fecha de finalización: ...
+	
+![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn1.png)
 
 ### 2 - Validar todos los campos
     Tareas: - Verificar la lectura del código QR del D.N.I. (varios formatos).
             - Verificar que el pre-registro se visualice en el listado de clientes pendientes de aprobación del dueño o supervisor (push notification *A)
             - Verificar que no se pueda ingresar a la aplicación sin ser aprobado. Informar lo acontecido con un mensaje alusivo.
-    Responsable: Fausto Panello
-    Fecha de inicio: 30/10
-    Fecha de finalización: ...
+	
+![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2.png)
+![revision-usuario](./sabor-criollo/src/assets/readme_fotos/fn3.png)
 
 ### 3 - El dueño o supervisor (celular 3) acepta o rechaza al cliente.
     Tareas: - El cliente recibe un correo electrónico informado de la situación de su registro (uno por la aceptación y otro en el caso de rechazo). Los mensajes deben tener el logo de la empresa, mensajes personalizados, fuentes distintas a las que vienen por defecto, etc.

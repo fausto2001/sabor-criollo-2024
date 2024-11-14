@@ -57,6 +57,4 @@ export class VerticalBarChartComponent  implements OnInit {
   onSelect(event:any) {
     console.log(event);
   }
-
-
 }

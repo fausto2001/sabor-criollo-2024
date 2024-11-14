@@ -64,3 +64,35 @@ ion-content{
     margin-right: 8px; 
     vertical-align: middle; 
   }
+
+
+
+
+
+
+  .back{
+    height: 30px;
+  }
+  
+  .divBack {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  ion-button {
+    margin: 0;
+    padding: 0;
+    border-radius: 25px;
+    --background: #0db946;
+    --color: black;
+  }
+
+  ion-fab-button{
+    &.false{
+      --background: #ed2553
+    }
+    &.true{
+      --background: #0db946
+    }
+  }

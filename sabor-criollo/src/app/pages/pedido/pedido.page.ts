@@ -253,6 +253,8 @@ mostrarPedido() {
       
   }
 
-
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 
 }

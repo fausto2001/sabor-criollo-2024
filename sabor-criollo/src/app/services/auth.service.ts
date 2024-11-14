@@ -92,8 +92,15 @@ export class AuthService {
               this.router.navigate(['/home']);
               resolve('');
             } else {
-              resolve('Su cuenta no se encuentra habilitada, póngase en contacto con un administrador.');
-              this.logout();
+              if(this.usuario?.admitido == false)
+              {
+                resolve('Su solicitud de registro ha sido rechazado.');
+                this.logout();
+              }else
+              {
+                resolve('Su cuenta se encuentra pendiente de aprobación.');
+                this.logout();
+              }
             }
           }
         })

@@ -1,18 +1,14 @@
 
 <ion-content [fullscreen]="true">
-
-  <ion-row class="ion-align-items-center titulo">
-    <ion-col size="auto">
-      <div class="divBack" (click)="goHome()">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title class="titulo">NUEVO DUEÑO/SUPERVISOR</ion-title>
+      <div class="divSalir" (click)="goHome()">
         <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
       </div>
-    </ion-col>
-
-    <ion-col class="ion-text-center">
-      Alta de dueño/supervisor
-    </ion-col>
-  </ion-row>
-
+    </ion-toolbar>
+  </ion-header>
+  
   <ion-row>
     <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
       <ion-row class="ion-justify-content-center slot aux">
@@ -165,7 +161,7 @@
   </ion-row>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" >
-    <ion-fab-button (click)="escanear()">
+    <ion-fab-button class="true" (click)="escanear()">
       <ion-img src="../../../assets/botones/dni.svg" class="fab-icon"></ion-img>
     </ion-fab-button>
   </ion-fab>

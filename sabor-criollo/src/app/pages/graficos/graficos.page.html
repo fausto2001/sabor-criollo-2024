@@ -1,28 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Graficos</ion-title>
+    <ion-title class="titulo">ESTADÍSTICAS</ion-title>
+    <div class="divSalir" (click)="goHome()">
+      <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <!-- Gráfico Barra -->
   <ion-card *ngIf="this.ok" class="color margen">
-    <h1 class="ion-justify-content-center">Estadística de Barra </h1>
-    <app-vertical-bar-chart
-    [view]="view"
-    [encuestasMalas]="this.encuentasMalas"
-    [encuestasRegular]="this.encuentasRegular"
-    [encuestasBuenas]="this.encuentasBuenas"
-    ></app-vertical-bar-chart>
+    <div class="divCard">
+      <!-- <h1 class="ion-justify-content-center">Gráfico de Barra </h1> -->
+      <app-vertical-bar-chart
+      [view]="view"
+      [encuestasMalas]="this.encuentasMalas"
+      [encuestasRegular]="this.encuentasRegular"
+      [encuestasBuenas]="this.encuentasBuenas"
+      ></app-vertical-bar-chart>
+    </div>
   </ion-card>
   <!-- Gráfico Torta -->
   <ion-card *ngIf="this.ok" class="color margen">
-    <h1 class="ion-justify-content-center">Estadística de Torta </h1>
-    <app-torta-chart
-    [view]="view"
-    [encuestasMalas]="this.encuentasMalas"
-    [encuestasRegular]="this.encuentasRegular"
-    [encuestasBuenas]="this.encuentasBuenas"
-    ></app-torta-chart>
+    <div class="divCard">
+      <!-- <h1 class="ion-justify-content-center">Gráfico de Torta </h1> -->
+      <app-torta-chart
+      [view]="view"
+      [encuestasMalas]="this.encuentasMalas"
+      [encuestasRegular]="this.encuentasRegular"
+      [encuestasBuenas]="this.encuentasBuenas"
+      ></app-torta-chart>
+    </div>
   </ion-card>
 </ion-content>

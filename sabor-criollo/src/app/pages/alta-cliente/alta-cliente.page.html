@@ -1,140 +1,148 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>NUEVO CLIENTE</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">NUEVO CLIENTE</ion-title>
+      <ion-title class="titulo">NUEVO CLIENTE</ion-title>
+      <div class="divSalir" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
     </ion-toolbar>
   </ion-header>
-  <form [formGroup]="form" class="auth-form" >
-    <ion-row class="ion-justify-content-center slot aux">
 
-        <ion-col size="5.5" sizeSm="12" class="subslot">
+  <ion-row>
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
+      <ion-row class="ion-justify-content-center slot aux">
+
+        <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
           <ion-item class="custom-input" lines="none">
-            <ion-input autocomplete="nombre" label="Nombre" formControlName='nombre' labelPlacement="floating">
-            </ion-input>
+            <ion-input
+              type="email"
+              label="Correo"
+              formControlName='email'
+              labelPlacement="floating"
+              [clearInput]="true"
+            ></ion-input>
           </ion-item>
-          <div class="error width"
-               *ngIf="form.controls?.['nombre']?.invalid && (form.controls?.['nombre']?.dirty || form.controls?.['nombre']?.touched)">
-            <div *ngIf="form.controls?.['nombre']?.errors?.['required']">Se requiere nombre</div>
-            <div *ngIf="form.controls?.['nombre']?.errors?.['pattern'] || form.controls?.['nombre']?.errors?.['minlength']">El nombre es inválido</div>
+          <div class="error" *ngIf="form.controls?.['email']?.invalid && (form.controls?.['email']?.dirty || form.controls?.['email']?.touched)">
+            <div *ngIf="form.controls?.['email']?.errors?.['required']">El correo es requerido</div>
+            <div *ngIf="form.controls?.['email']?.errors?.['email']">Formato inválido</div>
           </div>
         </ion-col>
-    
-        <ion-col size="5.5" sizeSm="12" class="subslot">
+        <!-- Contraseña -->
+        <ion-col size="6" sizeLg="6" sizeSm="6" class="subslot">
           <ion-item class="custom-input" lines="none">
-            <ion-input autocomplete="apellido" label="Apellido"  formControlName='apellido' labelPlacement="floating">
+            <ion-input
+              type="password"
+              label="Contraseña"
+              formControlName='password'
+              labelPlacement="floating"
+            ></ion-input>
+          </ion-item>
+          <div class="error" *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
+            <div *ngIf="form.controls?.['password']?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="form.controls?.['password']?.errors?.['minlength']">Mínimo 6 caracteres</div>
+          </div>
+        </ion-col>
+        <!-- Repetir Clave / Contraseña -->
+        <ion-col size="6" sizeLg="6" sizeSm="6" class="subslot">
+          <ion-item class="custom-input" lines="none" >
+            <ion-input
+            type="password"
+            autocomplete="password"
+            label="Confirmar"
+            formControlName='confirmPassword'
+            labelPlacement="floating"
+            name="confirmPasswordR">
             </ion-input>
           </ion-item>
-          <div class="error width"
-               *ngIf="form.controls?.['apellido']?.invalid && (form.controls?.['apellido']?.dirty || form.controls?.['apellido']?.touched)">
-            <div *ngIf="form.controls?.['apellido']?.errors?.['required']">Se requiere apellido</div>
-            <div *ngIf="form.controls?.['apellido']?.errors?.['pattern'] || form.controls?.['apellido']?.errors?.['minlength']">El nombre es inválido</div>
+          <div class="error" *ngIf="(form.controls?.['confirmPassword']?.invalid || noCoinciden()) && (form.controls?.['confirmPassword']?.dirty || form.controls?.['confirmPassword']?.touched)">
+            <div *ngIf="form.controls?.['confirmPassword']?.errors?.['required']">Confirme la contraseña</div>
+            <div *ngIf="noCoinciden()">Las contraseñas no coinciden</div>
           </div>
         </ion-col>
 
-    <ion-col size="11" sizeLg="12" sizeSm="6" class="subslot" style="margin-top:20px;">
-    <ion-item class="custom-input" lines="none">
-      <ion-input type="email" autocomplete="email" label="Correo" formControlName='email'
-        labelPlacement="floating">
-      </ion-input>
-    </ion-item>
-
-      <div class="error width"
-      *ngIf="form.controls?.['email']?.invalid && (form.controls?.['email']?.dirty || form.controls?.['email']?.touched)">
-      <div *ngIf="form.controls?.['email']?.errors?.['required']">El correo es requerido</div>
-      <div *ngIf="form.controls?.['email']?.errors?.['email'] || form.controls?.['email']?.errors?.['pattern']">El formato del correo es inválido</div>
-      </div>
-
-    </ion-col>
-
-    <ion-col size="11" sizeLg="12" sizeSm="6" class="subslot" style="margin-top:20px;">
-      <ion-item class="custom-input" lines="none">
-        <ion-input type="password" autocomplete="password" label="Contraseña" formControlName='password'
-          labelPlacement="floating">
-        </ion-input>
-      </ion-item>
-      <div class="error width"
-        *ngIf="form.controls?.['password']?.invalid && (form.controls?.['password']?.dirty || form.controls?.['password']?.touched)">
-        <div *ngIf="form.controls?.['password']?.errors?.['minlength']">La contraseña debe tener mínimo 6
-          caracteres</div>
-        <div *ngIf="form.controls?.['password']?.errors?.['required']">La contraseña es requerida</div>
-      </div>
-    </ion-col>
-
-    <ion-col size="11" sizeLg="12" sizeSm="6" class="subslot" style="margin-top:20px;">
-      <ion-item class="custom-input" lines="none">
-        <ion-input type="password" autocomplete="password" label="Confirmar Contraseña" 
-          formControlName='passwordConfirm' labelPlacement="floating">
-        </ion-input>
-      </ion-item>
-      <div class="error width"      *ngIf="form.errors?.['mismatch'] && (form.controls?.['password']?.dirty || form.controls?.['passwordConfirm']?.dirty)">
-        <div>Las contraseñas no coinciden</div>
-        <div *ngIf="form.controls?.['passwordConfirm']?.errors?.['required']">La contraseña es requerida</div>
-        <div *ngIf="form.controls?.['passwordConfirm']?.errors?.['mismatch']">Las contraseñas no coinciden</div>
-      </div>
-    </ion-col>
-
-    <ion-col size="11" sizeLg="12" sizeSm="6" class="subslot" style="margin-top:20px;">
-      <ion-item class="custom-input" lines="none">
-        <ion-input type="text" label="DNI" formControlName="dni" labelPlacement="floating">
-        </ion-input>
-      </ion-item>
-      <div
-        class="error width"
-        *ngIf="form.controls?.['dni']?.errors && (form.controls?.['dni']?.dirty || form.controls?.['dni']?.touched)">
-        <div *ngIf="form.controls?.['dni']?.errors?.['required']">El DNI es requerido</div>
-        <div *ngIf="form.controls?.['dni']?.errors?.['pattern']">Formato del DNI incorrecto.</div>
-        <div *ngIf="form.controls?.['dni']?.errors?.['minlength']">El DNI debe tener al menos 7 dígitos</div>
-        <div *ngIf="form.controls?.['dni']?.errors?.['maxlength']">El DNI no puede tener más de 8 dígitos</div>
-      </div>
-    </ion-col>
-
-    <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot" style="margin-top:20px;">
-      <div class="input-container">
-        <div class="camera-container">
-          <label (click)="sacarFoto()" class="camera-label">
-            <img src="../../../assets/camara.png" alt="Camera" class="camera-image" />
-            <span *ngIf="form.controls?.['photo']?.value; else crossEmoji" class="camera-text">Foto ✅</span>
-            <ng-template #crossEmoji>
-              <span class="camera-text">Foto ❌</span>
-            </ng-template>
-          </label>
-          <!-- Hidden file input element -->
-          <input type="file" id="photo-input" accept="image/*" style="display: none;" />
-          <div class="error width" 
-               *ngIf="form.controls?.['photo']?.invalid && (form.controls?.['photo']?.dirty || form.controls?.['photo']?.touched)">
-            <div *ngIf="form.controls?.['photo']?.errors?.['required']">Se requiere una foto</div>
+        <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+          <ion-item class="custom-input" lines="none">
+            <ion-input
+              type="text"
+              label="Nombre"
+              formControlName='nombre'
+              labelPlacement="floating"
+              [clearInput]="true"
+            ></ion-input>
+          </ion-item>
+          <div class="error" *ngIf="form.controls?.['nombre']?.invalid && (form.controls?.['nombre']?.dirty || form.controls?.['nombre']?.touched)">
+            <div *ngIf="form.controls?.['nombre']?.errors?.['required']">El nombre es requerido</div>
+            <div *ngIf="form.controls?.['nombre']?.errors?.['pattern']">Únicamente letras y espacios</div>
           </div>
-        </div>
-        
-        <div class="qr-container">
-          <label for="qr-input" class="qr-label">
-            <img 
-              src="../../../assets/qr.png" 
-              alt="Código QR" 
-              class="qr-image" 
-              (click)="scan()" 
-              style="cursor: pointer;" />
-            <span class="qr-text">Código QR</span>
-          </label>
-        </div>        
-      </div>
-    </ion-col>
+        </ion-col>
 
-    <ion-col size="12">
-      <ion-button  expand="full" shape="round" size="large"  [disabled]="form.invalid" (click)="registrar()">Aceptar</ion-button>
-    </ion-col>
+        <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+          <ion-item class="custom-input" lines="none">
+            <ion-input
+              type="text"
+              label="Apellido"
+              formControlName='apellido'
+              labelPlacement="floating"
+              [clearInput]="true"
+              >
+            </ion-input>
+          </ion-item>
+          <div class="error" *ngIf="form.controls?.['apellido']?.invalid && (form.controls?.['apellido']?.dirty || form.controls?.['apellido']?.touched)">
+            <div *ngIf="form.controls?.['apellido']?.errors?.['required']">El apellido es requerido</div>
+            <div *ngIf="form.controls?.['apellido']?.errors?.['pattern']">Únicamente letras y espacios</div>
+          </div>
+        </ion-col>
 
-    <ion-col size="12">
-      <ion-button  expand="full" shape="round" size="large" (click)="entrarAnonimo()">Entrar como anónimo</ion-button>
-    </ion-col>
-    
+        <ion-col size="12" sizeLg="12" sizeSm="6" class="subslot">
+          <ion-item class="custom-input" lines="none">
+            <ion-input
+              (keypress)="validateNumber($event)"
+              type="text"
+              label="DNI"
+              formControlName='dni'
+              labelPlacement="floating"
+              maxlength="8"
+              minlength="6"
+              >
+            </ion-input>
+          </ion-item>
+          <div class="error" *ngIf="form.controls?.['dni']?.invalid && (form.controls?.['dni']?.dirty || form.controls?.['dni']?.touched)">
+            <div *ngIf="form.controls?.['dni']?.errors?.['required']">El DNI es requerido</div>
+            <div *ngIf="form.controls?.['dni']?.errors?.['minlength']">El DNI debe tener mínimo 6 dígitos</div>
+            <div *ngIf="form.controls?.['dni']?.errors?.['maxlength']">El DNI debe tener máximo 8 dígitos</div>
+          </div>
+        </ion-col>
 
+      </ion-row>
+    </form>
+
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center aux danger">
+    {{error}}
+  </ion-row>
+
+  <ion-col size="12" sizeLg="12" sizeSm="6">
+    <ion-row class="ion-justify-content-center btn">
+      <ion-button expand="full" shape="round" size="large" (click)="registrar()">Registrar</ion-button>
     </ion-row>
-  </form>
+  </ion-col>
+  
+  <ion-col size="12" sizeLg="12" sizeSm="6">
+    <ion-row class="ion-justify-content-center btn">
+      <ion-button expand="full" shape="round" size="large" (click)="entrarAnonimo()">Entrar como anónimo</ion-button>
+    </ion-row>
+  </ion-col>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" >
+    <ion-fab-button class="true" (click)="escanear()">
+      <ion-img src="../../../assets/botones/dni.svg" class="fab-icon"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button [ngClass]="fotoSubida" (click)="abrirCamara()">
+      <ion-img src="../../../assets/botones/camara.svg" class="fab-icon"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

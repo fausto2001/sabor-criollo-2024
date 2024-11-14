@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 //import { EmailService } from 'src/app/services/email.service';
 import Swal from 'sweetalert2';
 import { MesaModel } from 'src/app/models/mesa.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-espera',
@@ -24,6 +25,7 @@ export class ListaEsperaPage implements OnInit {
   usuariosNoAdmitidos: UsuarioModel[] = [];
   hayUsuarios: boolean = true;
   mesaAsignada: boolean = false;
+  router: Router = inject(Router);
 
   constructor(private userService: UsuarioService, private authService: AuthService, 
     private toastServ: ToastService/*, private emailService: EmailService*/,
@@ -228,5 +230,9 @@ export class ListaEsperaPage implements OnInit {
         }
       });
     });
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
   }
 }

@@ -75,9 +75,14 @@ export class AltaEmpleadoPage implements OnInit {
   }
 
   async abrirCamara(){
-    const foto = await this.camaraServ.tomarFoto();
-    this.foto = await this.storageServ.subirFotoBase64(this.cuil, 'empleados/', foto);
-    this.switchFotoSubida();
+    if(this.form.get('cuil')?.valid){
+      this.error = '';
+      const foto = await this.camaraServ.tomarFoto();
+      this.foto = await this.storageServ.subirFotoBase64(this.cuil, 'duenios-supervisores/', foto);
+      this.switchFotoSubida();
+    }else{
+      this.error = 'Primero ingrese un CUIL válido';
+    }
   }
 
   async registrar(){

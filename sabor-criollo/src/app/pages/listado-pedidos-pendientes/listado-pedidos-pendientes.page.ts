@@ -156,6 +156,9 @@ export class ListadoPedidosPendientesPage implements OnInit {
 
       }
     });
-    
-}
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 }

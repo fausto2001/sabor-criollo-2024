@@ -49,11 +49,9 @@
     background-image: url('../../../assets/fondo-login-2.jpg')!important;
     background-size: cover;
   }
-  
-  
-  
-  ion-fab-button ion-img{
-    background-color: #01be62;
+
+  ion-fab-button {
+    --background: #01be62;
   }
   
   .slot{
@@ -164,4 +162,13 @@
     color: rgb(75, 4, 4);
     background-color: pink;
     font-weight: bold;
+  }
+
+  .titulo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; 
+    position: relative; 
   }

@@ -248,6 +248,9 @@ export class EstadoMesasPage implements OnInit {
 
       }
     });
+  }
 
+  goHome(){
+    this.router.navigateByUrl('/home');
   }
 }

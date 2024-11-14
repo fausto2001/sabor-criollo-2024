@@ -1,19 +1,19 @@
 import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonImg } from '@ionic/angular/standalone';
 import { Platform } from '@ionic/angular'
 import { VerticalBarChartComponent } from 'src/app/components/vertical-bar-chart/vertical-bar-chart.component';
 import { TortaChartComponent } from 'src/app/components/torta-chart/torta-chart.component';
 import { EncuestaService } from 'src/app/services/encuesta.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-graficos',
   templateUrl: './graficos.page.html',
   styleUrls: ['./graficos.page.scss'],
   standalone: true,
-  imports: [IonCard,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,VerticalBarChartComponent,TortaChartComponent],
+  imports: [IonImg, IonCard,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,VerticalBarChartComponent,TortaChartComponent],
 })
 export class GraficosPage implements OnInit {
 
@@ -25,6 +25,7 @@ export class GraficosPage implements OnInit {
   encuentasMalas:number = 0;
   encuentasRegular: number = 0;
   encuentasBuenas: number = 0;
+  router: Router = inject(Router);
 
   constructor(
     private platform: Platform
@@ -70,7 +71,7 @@ export class GraficosPage implements OnInit {
     }
   }
 
-  
-  
-
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 }
