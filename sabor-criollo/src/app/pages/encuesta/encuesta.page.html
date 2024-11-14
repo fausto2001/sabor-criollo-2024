@@ -1,13 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>encuesta</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">encuesta</ion-title>
+      <ion-title class="titulo">ENCUESTA</ion-title>
+      <div class="divSalir" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-row>
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="registrarEncuesta()">
+      <ion-row class="ion-justify-content-center slot aux">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Puntaje del establecimiento</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon name="thumbs-up-outline"></ion-icon>
+              <ion-range formControlName="puntaje" min="1" max="10" step="1" snaps="true" ticks="true">
+                <ion-label slot="start">1</ion-label>
+                <ion-label slot="end">10</ion-label>
+              </ion-range>
+              <ion-icon name="thumbs-down-outline"></ion-icon>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center slot aux">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>¿Mesa ordenada?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-label style="width:auto">Seleccionar si la mesa estaba ordenada.</ion-label>
+              <ion-checkbox slot="end"formControlName="mesaOrdenada"></ion-checkbox>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </form>
+  </ion-row>

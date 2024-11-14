@@ -1,0 +1,37 @@
+@import '../alta-empleado/alta-empleado.page.scss';
+  
+  ion-card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  ion-card {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-sizing:border-box;
+  }
+
+  ion-item {
+    display: flex;
+    align-items: center;
+  }
+
+  ion-checkbox {
+    --color-checked: var(--ion-color-primary);
+  }
+
+  ion-range {
+    --bar-background: linear-gradient(
+      to right,
+      #ff0000,       /* Red at the start */
+      #ff8c00,       /* Orange */
+      #ffd700,       /* Yellow */
+      #adff2f,       /* Green-yellow */
+      #00ff00        /* Lime green at the end */
+    );
+    --bar-background-active: black;
+  }
+  
