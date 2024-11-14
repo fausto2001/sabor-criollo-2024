@@ -1,0 +1,121 @@
+ion-content{
+    --background: none;
+    background-color: #01be62;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+    background-size: cover;
+}
+
+ion-input{
+    position: relative;
+}
+
+.custom-input {
+    --border-color: #e0e0e0;
+    --border-radius: 15px;
+    --border-style: solid;
+    --border-width: 1px;
+  
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
+  
+    .eye-icon {
+        position: relative;
+        top: 13px;
+    }
+  }
+.error{
+    width: 96%;
+    background-color: rgb(200, 90, 0);
+    border-radius: 5px;
+    border: 1px solid red;
+    height: auto;
+    position: absolute;
+    div{
+        color: white;
+        margin-left: 5px;
+    }
+}
+
+.slot{
+    margin: 8%;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.subslot{
+    margin-bottom: 35px;
+}
+
+ion-button {
+    margin-top: 5px;
+    height: 8vh;
+    border-radius: 25px;
+    --background: #0db946;
+    --color: black;
+  }
+
+  .fab-icon {
+    width: 70%;
+    height: 70%; 
+    object-fit: contain;
+  }
+
+  
+.danger{
+    color: red;
+    background-color: pink;
+    margin-bottom: 15px;
+  }
+
+  .error{
+    background-color: pink;
+    div{
+        color: red;
+    }
+  }
+
+  .back{
+    height: 30px;
+  }
+  
+  .divBack {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  ion-button {
+    margin: 0;
+    padding: 0;
+    border-radius: 25px;
+    --background: #0db946;
+    --color: black;
+  }
+
+  ion-fab-button{
+    &.false{
+      --background: #ed2553
+    }
+    &.true{
+      --background: #0db946
+    }
+  }
+
+  .titulo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; 
+    position: relative; 
+  }
+
+  .divSalir {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%); 
+    cursor: pointer;
+  }

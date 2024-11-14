@@ -103,6 +103,10 @@ export const routes: Routes = [
     path: 'cuenta',
     loadComponent: () => import('./pages/cuenta/cuenta.page').then( m => m.CuentaPage)
   },
+  {
+    path: 'alta-anonimo',
+    loadComponent: () => import('./pages/alta-anonimo/alta-anonimo.page').then( m => m.AltaAnonimoPage)
+  },
  /* {
     path: 'encuesta',
     loadComponent: () => import('./pages/encuesta/encuesta.page').then( m => m.EncuestaPage)
@@ -112,5 +116,7 @@ export const routes: Routes = [
     redirectTo: 'splash-screen',
     pathMatch: 'full',
   },
+
+
 
 ];

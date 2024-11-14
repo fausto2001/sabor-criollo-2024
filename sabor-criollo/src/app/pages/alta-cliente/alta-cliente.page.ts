@@ -39,6 +39,7 @@ export class AltaClientePage implements OnInit {
 
   protected isSupported = false;
   protected barcodes: Barcode[] = [];
+  private anonimo: boolean = false;
 
   constructor() {
     this.form = new FormGroup ({
@@ -237,7 +238,7 @@ export class AltaClientePage implements OnInit {
   }
 
   entrarAnonimo(){
-    this.router.navigateByUrl('/home-cliente');
+    this.router.navigateByUrl('/alta-anonimo');
   }
 
 

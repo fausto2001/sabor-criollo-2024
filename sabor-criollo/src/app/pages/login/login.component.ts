@@ -47,6 +47,7 @@ export class LoginComponent  implements OnInit {
     this.platform.ready().then(() => {
       if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
     });
+    //this.authService.loginAnonymously();
 
     //if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
   }
@@ -74,7 +75,6 @@ export class LoginComponent  implements OnInit {
 
   async ingresar(){
 
-    //oneSignal.sendNotification();
     if(this.form.valid){
       let email: string = this.form.get('email')!.value;
       let password: string = this.form.get('password')!.value;

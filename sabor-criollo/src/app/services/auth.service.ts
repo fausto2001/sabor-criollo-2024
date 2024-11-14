@@ -1,9 +1,10 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword, signInAnonymously, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { UsuarioService } from './usuario.service';
 import { UsuarioModel } from '../models/usuario.component';
 import { firstValueFrom } from 'rxjs';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
   public user$ = user(this.firebaseAuth);
   public currentUserSig = signal<UsuarioModel | null | undefined>(undefined);
   public userService: UsuarioService = inject(UsuarioService);
+
   state$ = authState(this.firebaseAuth);
   usuario:UsuarioModel | null = null;
 
@@ -27,6 +29,8 @@ export class AuthService {
         this.currentUserSig.set(null);
       }
     });
+    //this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+
   }
 
 /*
@@ -170,6 +174,21 @@ async register(mail: string, password: string, nroDocumento: string): Promise<{ 
       this.userService.borrarPersonaLogeada();
     });
   }
+
+  loginAnonymously() {
+    return signInAnonymously(this.firebaseAuth)
+      .then((userCredential) => {
+        const uid = userCredential.user?.uid;
+        console.log('Usuario anónimo logueado con UID:', uid);
+        return uid;
+      })
+      .catch((error) => {
+        console.error('Error al loguearse como usuario anónimo', error);
+        throw error;
+      });
+  }
+  
+
 
   /* async loguearUsuario(email: string, password: string){
 
