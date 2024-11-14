@@ -53,11 +53,13 @@ export class HomeClientePage implements OnInit {
     });
 
     this.usuario = this.authServ.usuario!;
-    if(!this.usuario){
-      this.authServ.user$.subscribe( (data)=> {
-        this.usuarioServ.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-        });
+    if (!this.usuario) {
+      this.authServ.user$.subscribe((data) => {
+        if (data) {
+          this.usuarioServ.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+          });
+        }
       });
     }
   }

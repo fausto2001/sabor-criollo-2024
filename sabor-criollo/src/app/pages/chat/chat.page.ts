@@ -45,11 +45,13 @@ export class ChatPage implements OnInit, AfterViewInit {
   
     
     //this.usuario = this.authService.usuario!;
-    if(!this.usuario){
-      this.authServ.user$.subscribe( (data)=> {
-        this.userServ.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-        });
+    if (!this.usuario) {
+      this.authServ.user$.subscribe((data) => {
+        if (data) {
+          this.userServ.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+          });
+        }
       });
     }
   }

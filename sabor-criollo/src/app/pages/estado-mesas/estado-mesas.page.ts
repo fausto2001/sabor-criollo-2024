@@ -50,11 +50,13 @@ export class EstadoMesasPage implements OnInit {
   ngOnInit() {
 
     this.usuario = this.authService.usuario!;
-    if(!this.usuario){
-      this.authService.user$.subscribe( (data)=> {
-        this.userService.getUsuarioPorUid(data!.uid).subscribe( (user) => {
-          this.usuario = user;
-        });
+    if (!this.usuario) {
+      this.authService.user$.subscribe((data) => {
+        if (data) {
+          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+          });
+        }
       });
     }
 
