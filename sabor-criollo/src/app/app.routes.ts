@@ -99,11 +99,7 @@ export const routes: Routes = [
     path: 'push',
     loadComponent: () => import('./components/push/push.component').then( m => m.PushComponent)
   },
-  {// crear componente de error
-    path: '**',
-    redirectTo: 'splash-screen',
-    pathMatch: 'full',
-  },  {
+  {
     path: 'cuenta',
     loadComponent: () => import('./pages/cuenta/cuenta.page').then( m => m.CuentaPage)
   },
@@ -111,6 +107,12 @@ export const routes: Routes = [
     path: 'encuesta',
     loadComponent: () => import('./pages/encuesta/encuesta.page').then( m => m.EncuestaPage)
   },
+  {// crear componente de error
+    path: '**',
+    redirectTo: 'splash-screen',
+    pathMatch: 'full',
+  },
+
 
 
 

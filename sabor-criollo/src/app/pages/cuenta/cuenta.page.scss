@@ -1,0 +1,105 @@
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+  }
+  .line::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #ffffff;
+    padding: 0 15px;
+  }
+
+  .info-cliente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+
+    border: 2px solid #ffdf58; /* Cambia #FF0000 al color de borde que desees */
+    border-radius: 8px; /* Ajusta el radio de borde según tus preferencias */
+    margin-bottom: 16px; /* Añade un margen inferior para separar los cards */
+  }
+
+  .icon-qr{
+    width: 40%;
+  }
+
+  .info-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    border: 2px solid #ffdf58; 
+    border-radius: 8px; 
+    margin-bottom: 16px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+
+}
+
+   .info-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    border: 2px solid #ffdf58; /* Cambia #FF0000 al color de borde que desees */
+    border-radius: 8px; /* Ajusta el radio de borde según tus preferencias */
+    margin-bottom: 16px; /* Añade un margen inferior para separar los cards */
+  }
+
+   .info-propina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    border: 2px solid #ffdf58; /* Cambia #FF0000 al color de borde que desees */
+    border-radius: 8px; /* Ajusta el radio de borde según tus preferencias */
+    margin-bottom: 16px; /* Añade un margen inferior para separar los cards */
+  }
+
+  .info-subtotal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    border: 2px solid #ffdf58; /* Cambia #FF0000 al color de borde que desees */
+    border-radius: 8px; /* Ajusta el radio de borde según tus preferencias */
+    margin-bottom: 16px; /* Añade un margen inferior para separar los cards */
+  }
+
+  .btnMenu{
+    margin: 15px;
+    padding: 5px;
+    height: auto;
+    --background: #ffdf58;
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+
+  ion-grid{
+    --background: none;
+    background-color: #ffdf58;
+    background-image: url('../../../assets/fondo-login-2.jpg')!important;
+    // background-size: cover;
+  }
+
+
+  
+  

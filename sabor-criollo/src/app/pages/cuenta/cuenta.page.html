@@ -1,13 +1,79 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cuenta</ion-title>
+    <ion-title>Pagar cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cuenta</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content [fullscreen]="true" scrollY="true">
+
+  <ion-grid fixed>
+    <ion-row class="cuenta">
+      <ion-card class="info-cliente">
+        <ion-card-content>
+          <div class="card-btn">
+
+            <h2>CUENTA MESA {{usuario.mesa}}</h2>
+            <!-- <ion-button color="success" expand="block" shape="round" class="circular-button" >
+                cliente: <br> {{usuario.nombre}}
+              </ion-button> -->
+            <h3>
+              CLIENTE: {{usuario.nombre}} <br>
+            </h3>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-img class="icon-qr" src="../../assets/botones/codigo-qr-2.png" name="logout"
+        (click)="escanearQRPropina()"></ion-img>
+
+      <ion-card class="info-pedido" *ngIf="pedido">
+        <ion-card-content>
+          <div class="card-btn">
+            @for(producto of pedido.pedidos; track producto){
+            <div class="line"></div>
+            <h2>{{producto.producto.nombre}} x {{producto.producto.cantidad}}</h2>
+            <h1>TOTAL: {{producto.cantidad*producto.producto.precio}}</h1>
+
+            }
+          </div>
+
+
+
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="info-subtotal">
+        <ion-card-content>
+          <div class="card-btn">
+            <h1>subtotal {{pedido.importeTotal}}</h1>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="info-propina">
+        <ion-card-content>
+          <div class="card-btn">
+            <h1>PROPINA %{{this.propina}}</h1>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="info-total">
+        <ion-card-content>
+          <div class="card-btn">
+            <h1>TOTAL {{pedido.importeTotal}}</h1>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button expand="block" shape="round" class="btnMenu" (click)="pagar()">
+        PAGAR
+      </ion-button>
+
+
+
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
