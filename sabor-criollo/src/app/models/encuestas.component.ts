@@ -7,6 +7,7 @@ export interface EncuestaModel {
     quejaServicio: string | null,
     cartaEstablecimiento: string | null,
     comentarioEstablecimiento: string | null,
-    foto: string | null,
-  
+    foto1: string | null,
+    foto2: string | null,
+    foto3: string | null
   }

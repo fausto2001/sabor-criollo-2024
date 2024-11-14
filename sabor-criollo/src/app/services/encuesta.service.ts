@@ -66,61 +66,61 @@ export class EncuestaService {
         id: '', uid_cliente: 'cliente1', id_pedido: 'pedido1',
         puntajeEstablecimiento: '5', ordenMesa: '4',
         quejaServicio: 'Ninguna', cartaEstablecimiento: 'Restaurante A',
-        comentarioEstablecimiento: 'Excelente ambiente', foto: null
+        comentarioEstablecimiento: 'Excelente ambiente', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente2', id_pedido: 'pedido2',
         puntajeEstablecimiento: '4', ordenMesa: '3',
         quejaServicio: 'Demora en la comida', cartaEstablecimiento: 'Restaurante B',
-        comentarioEstablecimiento: 'Buena atención', foto: null
+        comentarioEstablecimiento: 'Buena atención', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente3', id_pedido: 'pedido3',
         puntajeEstablecimiento: '3', ordenMesa: '3',
         quejaServicio: 'Mala atención', cartaEstablecimiento: 'Restaurante C',
-        comentarioEstablecimiento: 'Regular servicio', foto: null
+        comentarioEstablecimiento: 'Regular servicio', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente4', id_pedido: 'pedido4',
         puntajeEstablecimiento: '2', ordenMesa: '2',
         quejaServicio: 'Comida fría', cartaEstablecimiento: 'Restaurante D',
-        comentarioEstablecimiento: 'Mal ambiente', foto: null
+        comentarioEstablecimiento: 'Mal ambiente', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente5', id_pedido: 'pedido5',
         puntajeEstablecimiento: '5', ordenMesa: '5',
         quejaServicio: 'Ninguna', cartaEstablecimiento: 'Restaurante E',
-        comentarioEstablecimiento: 'Excelente comida', foto: null
+        comentarioEstablecimiento: 'Excelente comida', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente6', id_pedido: 'pedido6',
         puntajeEstablecimiento: '4', ordenMesa: '4',
         quejaServicio: 'Demora en el pedido', cartaEstablecimiento: 'Restaurante F',
-        comentarioEstablecimiento: 'Buen ambiente', foto: null
+        comentarioEstablecimiento: 'Buen ambiente', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente7', id_pedido: 'pedido7',
         puntajeEstablecimiento: '3', ordenMesa: '3',
         quejaServicio: 'Falta de amabilidad', cartaEstablecimiento: 'Restaurante G',
-        comentarioEstablecimiento: 'Ambiente tranquilo', foto: null
+        comentarioEstablecimiento: 'Ambiente tranquilo', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente8', id_pedido: 'pedido8',
         puntajeEstablecimiento: '5', ordenMesa: '5',
         quejaServicio: 'Ninguna', cartaEstablecimiento: 'Restaurante H',
-        comentarioEstablecimiento: 'Excelente experiencia', foto: null
+        comentarioEstablecimiento: 'Excelente experiencia', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente9', id_pedido: 'pedido9',
         puntajeEstablecimiento: '4', ordenMesa: '4',
         quejaServicio: 'Atención lenta', cartaEstablecimiento: 'Restaurante I',
-        comentarioEstablecimiento: 'Lugar acogedor', foto: null
+        comentarioEstablecimiento: 'Lugar acogedor', foto1: null, foto2: null, foto3: null
       },
       {
         id: '', uid_cliente: 'cliente10', id_pedido: 'pedido10',
         puntajeEstablecimiento: '3', ordenMesa: '3',
         quejaServicio: 'Demora en el servicio', cartaEstablecimiento: 'Restaurante J',
-        comentarioEstablecimiento: 'Regular', foto: null
+        comentarioEstablecimiento: 'Regular', foto1: null, foto2: null, foto3: null
       }
     ];
   

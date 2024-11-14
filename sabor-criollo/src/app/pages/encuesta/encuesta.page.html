@@ -11,14 +11,14 @@
   <ion-row>
     <form [formGroup]="form" class="auth-form" (ngSubmit)="registrarEncuesta()">
       <ion-row class="ion-justify-content-center slot aux">
-        <ion-card>
+        <ion-card [class.error-card]="form.controls['opinion'].invalid && (enviado || form.controls['opinion'].dirty)">
           <ion-card-header>
             <ion-card-title>Puntaje del establecimiento</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-item>
               <ion-icon name="thumbs-up-outline"></ion-icon>
-              <ion-range formControlName="puntaje" min="1" max="10" step="1" snaps="true" ticks="true">
+              <ion-range formControlName="puntaje" min="1" max="10" step="1" snaps="true" ticks="true" (ionChange)="onPuntajeChange($event)">
               </ion-range>
               <ion-icon name="thumbs-down-outline"></ion-icon>
             </ion-item>
@@ -32,7 +32,8 @@
           <ion-card-content>
             <ion-item lines="none">
               <ion-label style="width:auto">Seleccionar si la mesa estaba ordenada.</ion-label>
-              <ion-checkbox slot="end"formControlName="mesaOrdenada"></ion-checkbox>
+
+              <ion-checkbox slot="end" formControlName="mesaOrdenada" (ionChange)="onCheckboxChange($event)"></ion-checkbox>
             </ion-item>
           </ion-card-content>
         </ion-card>
