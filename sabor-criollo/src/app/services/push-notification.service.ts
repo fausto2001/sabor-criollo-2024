@@ -42,10 +42,10 @@ export class PushNotificationService {
         notifyButton: { enable: true },
       });
       OneSignal.isPushNotificationsEnabled((isEnabled: boolean) => {
-        alert(isEnabled ? 'Push notifications are enabled!' : 'Push notifications are not enabled yet.');
+        //alert(isEnabled ? 'Push notifications are enabled!' : 'Push notifications are not enabled yet.');
       });
       OneSignal.on('subscriptionChange', (isSubscribed: boolean) => {
-        alert('Subscription status changed:' + isSubscribed);
+        //alert('Subscription status changed:' + isSubscribed);
       });
     });
   }  

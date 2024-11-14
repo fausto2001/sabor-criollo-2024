@@ -71,13 +71,13 @@ export class PushComponent  implements OnInit {
     try {
       const data = await this.getStorage('auth');
       console.log('stored data: ', data);
-      alert('1. JSON: '+ data.value)
+      //alert('1. JSON: '+ data.value)
       this.id_notificacion = data.value;
       if(!data || !data?.value) {
         this.createUserAndLogin();
 
         this.id_notificacion = data.value;
-        alert('2. data: '+ data.value)
+        //alert('2. data: '+ data.value)
 
         this.usuario!.tokenNotification = this.id_notificacion;
         this.usuarioService.updateUsuario(this.usuario!);
@@ -93,7 +93,7 @@ export class PushComponent  implements OnInit {
         //console.log('identity: ', identity);
         if(!identity?.external_id) {
           this.id_notificacion = !identity?.external_id;/**/ 
-          alert('3. identify: '+ !identity?.external_id)
+          //alert('3. identify: '+ !identity?.external_id)
 
           this.usuario!.tokenNotification = this.id_notificacion;
           this.usuarioService.updateUsuario(this.usuario!);
@@ -101,11 +101,11 @@ export class PushComponent  implements OnInit {
         } else {
           this.onesignal.login(identity?.external_id);
           this.id_notificacion = identity?.external_id;/**/ 
-          alert('4. identify: '+ identity?.external_id)
+          //alert('4. identify: '+ identity?.external_id)
 
           this.usuario!.tokenNotification = this.id_notificacion;
           this.usuarioService.updateUsuario(this.usuario!);
-          alert('User already registered in onesignal');
+          //alert('User already registered in onesignal');
         }
       }
     } catch(e) {
@@ -178,7 +178,7 @@ export class PushComponent  implements OnInit {
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
       this.onesignal.login(randomNumber);
-      alert('Usuario creado en onesignal');
+      //alert('Usuario creado en onesignal');
     } catch(e) {
       throw(e);
     }
@@ -215,7 +215,7 @@ export class PushComponent  implements OnInit {
       const { identity } = response;
       console.log('Identidad: ', identity);
       await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
-      alert('Usuario eliminado de onesignal');
+      //alert('Usuario eliminado de onesignal');
     } catch(e) {
       console.log(e);
     }

@@ -71,7 +71,7 @@ export class PedidoPage implements OnInit {
             if (data) {
               this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
                 this.usuario = usuario!;
-                alert(this.usuario.apellido);
+                //alert(this.usuario.apellido);
               });
             }
           });

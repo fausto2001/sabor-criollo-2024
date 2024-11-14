@@ -23,7 +23,7 @@ export class EmailService {
   constructor() { emailjs.init(this.userID); }
 
   async enviandoEmail(nombreCliente:string,emailCliente:string,mensajeCliente:string){
-    alert(emailCliente);
+    //alert(emailCliente);
     const templateParams = {
       to_name: nombreCliente,
       from_name: 'Sabor Criollo',

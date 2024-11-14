@@ -57,7 +57,7 @@ export class CuentaPage implements OnInit {
         if (data) {
           this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
             this.usuario = usuario!;
-            alert(this.usuario.id);
+            //alert(this.usuario.id);
             this.cargarUltimoPedido(this.usuario.id);
 
           });

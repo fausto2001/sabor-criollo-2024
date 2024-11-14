@@ -175,7 +175,7 @@ export class LoginComponent  implements OnInit {
           this.createUserAndLogin();
         } else {
           this.onesignal.login(identity?.external_id);
-          alert('Usuario ya existe en onesignal');
+          //alert('Usuario ya existe en onesignal');
         }
       }
     } catch(e) {
@@ -190,7 +190,7 @@ export class LoginComponent  implements OnInit {
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
       this.onesignal.login(randomNumber);
-      alert('Usuario creado en onesignal');
+      //alert('Usuario creado en onesignal');
     } catch(e) {
       throw(e);
     }
@@ -227,7 +227,7 @@ export class LoginComponent  implements OnInit {
       const { identity } = response;
       console.log('Identidad: ', identity);
       await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
-      alert('Usuario eliminado de onesignal');
+      //alert('Usuario eliminado de onesignal');
     } catch(e) {
       console.log(e);
     }

@@ -144,7 +144,7 @@ export class AltaAnonimoPage implements OnInit {
           mesa: null,
           tokenNotification: null,
         }
-    alert(uid);
+    //alert(uid);
         this.usuarioService.setUsuario(nuevoUsuario);
         Swal.fire({
           icon: 'success',

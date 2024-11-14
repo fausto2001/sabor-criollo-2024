@@ -84,7 +84,7 @@ export class HomeClientePage implements OnInit {
         this.usuario!.enListaDeEspera = true;
         this.usuarioServ.updateUsuario(this.usuario!);
       }else{
-        alert('ERROR, QR INCORRECTO');
+        //alert('ERROR, QR INCORRECTO');
       }
 
     } else {
@@ -100,7 +100,7 @@ export class HomeClientePage implements OnInit {
 
     const granted = await this.requestPermissions();
     if (!granted) {
-      this.presentAlert();
+      //this.presentAlert();
       return;
     }
     this.barcodes = []; 
@@ -114,7 +114,7 @@ export class HomeClientePage implements OnInit {
         this.usuarioServ.updateUsuario(this.usuario!);
         this.router.navigateByUrl('/home-pedido');
       }else{
-        alert('QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa);
+        //alert('QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa);
         this.usuario!.enListaDeEspera = false;
         this.usuarioServ.updateUsuario(this.usuario!);
       }
