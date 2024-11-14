@@ -1,83 +1,106 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>encuesta</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title class="titulo">ENCUESTA</ion-title>
+      <div class="divSalir" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
+    </ion-toolbar>
+  </ion-header>
 
-
-<ion-content>
-    <!-- Formulario -->
-    <form [formGroup]="form">
-        <!-- range puntajeEstablecimiento -->
-          <ion-col size="15" sizeLg="12" sizeSm="12" class="subslot">
-              <ion-item >
-                <ion-range formControlName="puntajeEstablecimiento" class="texto-range" pin="true" min="1" max="10" step="1" snaps="true"
-                    aria-label="Custom range"
-                    [min]="1"
-                    [max]="10"
-                    [value]="5"
-                    [pin]="true"
-                    [ticks]="true"
-                    [snaps]="true"
-                    labelPlacement="stacked" label="Puntaje del establecimiento"
-                    >
-                </ion-range>
-              </ion-item>
-              <div class="error" *ngIf="form.controls?.['puntajeEstablecimiento']?.invalid && (form.controls?.['puntajeEstablecimiento']?.dirty || form.controls?.['puntajeEstablecimiento']?.touched)">
-                <div *ngIf="form.controls?.['puntajeEstablecimiento']?.errors?.['required']">El puntaje es requerido</div>
-              </div>
-          </ion-col>
-          <!-- checkbox  ordenMesa -->
-          <ion-col size="12" >
-              <ion-item>
-                <ion-label for="cbox1">
-                  ¿ Mesa ordenada ? (opcional)
-                </ion-label>
-                <ion-checkbox formControlName="ordenMesa" class="texto-checkbox" id="cbox1" [(ngModel)]="isChecked" slot="start">SI</ion-checkbox>
-              </ion-item>
-          </ion-col>
-          <!-- select quejaServicio -->
-          <ion-col>
-              <ion-item>
-                <ion-select formControlName="quejaServicio" interface="popover" placeholder="Quejas del servicio" >
-                  <ion-select-option value="Ninguna">Ninguna</ion-select-option>
-                  <ion-select-option value="Lento">Lento</ion-select-option>
-                  <ion-select-option value="Torpe">Torpe</ion-select-option>
-                  <ion-select-option value="Hostil">Hostil</ion-select-option>
-                  <ion-select-option value="Grosero">Grosero</ion-select-option>
-                </ion-select>
-              </ion-item>
-          </ion-col>
-          <!-- radio cartaEstablecimiento -->
-          <ion-col>
+  <ion-row>
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="registrarEncuesta()">
+      <ion-row class="ion-justify-content-center slot aux">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Puntaje del establecimiento</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
             <ion-item>
-              <ion-radio-group formControlName="cartaEstablecimiento">
-                <div>¿ Qué opina de la carta ? </div>
-                <div class="col-lg-3 col-md-3 flex-container texto">
-                  <ion-radio class="texto-radio" value="Buena">Buena</ion-radio>
-                  <ion-radio class="texto-radio" value="Regular">Regular</ion-radio>
-                  <ion-radio class="texto-radio" value="Mala">Mala</ion-radio>
-                </div>
-              </ion-radio-group>
+              <ion-icon name="thumbs-up-outline"></ion-icon>
+              <ion-range formControlName="puntaje" min="1" max="10" step="1" snaps="true" ticks="true">
+              </ion-range>
+              <ion-icon name="thumbs-down-outline"></ion-icon>
             </ion-item>
-          </ion-col>
-          <!-- textarea comentarioEstablecimiento -->
-          <ion-col>
-            <div>
-              <ion-label class="label fw-bold"></ion-label>
-              <ion-item color="transp" style="padding: 10px">
-                <ion-textarea formControlName="comentarioEstablecimiento" fill="solid" placeholder="Comentarios (Opcional)" rows="10"></ion-textarea>
-              </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>¿Mesa ordenada?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-label style="width:auto">Seleccionar si la mesa estaba ordenada.</ion-label>
+              <ion-checkbox slot="end"formControlName="mesaOrdenada"></ion-checkbox>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card [class.error-card]="form.controls['opinion'].invalid && (enviado || form.controls['opinion'].dirty)">
+          <ion-card-header>
+            <ion-card-title>¿Qué opina de la carta?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-radio-group formControlName="opinion">
+              <ion-list>
+                <ion-item lines="none">
+                  <ion-radio slot="start" value="buena"></ion-radio>
+                  <ion-icon name="happy-outline" slot="start" color="success"></ion-icon>
+                  <ion-label>Buena</ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-radio slot="start" value="regular"></ion-radio>
+                  <ion-icon name="help-outline" slot="start" color="warning"></ion-icon>
+                  <ion-label>Regular</ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-radio slot="start" value="mala"></ion-radio>
+                  <ion-icon name="sad-outline" slot="start" color="danger"></ion-icon>
+                  <ion-label>Mala</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-radio-group>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card [class.error-card]="form.controls['quejas'].invalid && (enviado || form.controls['quejas'].dirty)">
+          <ion-card-header>
+            <ion-card-title style="margin-top:25px;">Quejas sobre el servicio:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-textarea
+              formControlName="quejas" 
+              placeholder="Escriba sus quejas aquí..."
+              rows="3">
+            </ion-textarea>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Agregar fotos (1-3)</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <input type="file" (change)="onFileSelected($event)" multiple accept="image/*" />
+            <div *ngIf="fotos.length > 0">
+              <ion-row>
+                <ion-col size="4" *ngFor="let foto of fotos">
+                  <ion-img [src]="foto" class="uploaded-image"></ion-img>
+                </ion-col>
+              </ion-row>
             </div>
-          </ion-col>
+          </ion-card-content>
+        </ion-card>
 
-    </form>
-      <!-- Boton Registrar -->
-      <ion-row class="ion-justify-content-center btn">
-        <ion-button  expand="full" shape="round" size="large" (click)="registrar()" [disabled]="form.invalid">Registrar</ion-button>
       </ion-row>
-</ion-content>
+    </form>
 
- <!-- <ion-row class="ion-justify-content-center btn">
-  <ion-button  expand="full" shape="round" size="large" (click)="registrarProducto()">Producto</ion-button>
-</ion-row> -->
+    <ion-row class="ion-justify-content-center slot aux">
+      <ion-row class="ion-justify-content-center btn">
+        <ion-button expand="full" shape="round" size="large" (click)="registrarEncuesta()">Registrar encuesta</ion-button>
+      </ion-row>
+    </ion-row>
+
+  </ion-row>
+</ion-content>
