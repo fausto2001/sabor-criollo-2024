@@ -95,7 +95,7 @@ export class AltaClientePage implements OnInit {
       this.error = 'Primero ingrese un DNI válido';
     }
   }
-
+/*
   async registrar(){
     if(this.realizarComprobaciones()){
 
@@ -135,7 +135,48 @@ export class AltaClientePage implements OnInit {
         });
       });
     }
-  }
+  }*/
+
+    async registrar() {
+      if (this.realizarComprobaciones()) {
+        const resultado = await this.authService.register(this.email, this.password, this.dni);
+    
+        this.error = resultado.error;
+    
+        if (this.error !== '') {
+          return;
+        }
+    
+        
+        const nuevoUsuario = <UsuarioModel>{
+          id: '',
+          uid: resultado.uid,  
+          email: this.email,
+          clave: this.password,
+          nombre: this.nombre,
+          apellido: this.apellido,
+          dni: this.dni,
+          rol: this.rol,
+          enListaDeEspera: null,
+          admitido: null,
+          foto: this.foto,
+          mesa: null,
+          tokenNotification: null,
+        }
+    
+        this.usuarioService.setUsuario(nuevoUsuario);
+        Swal.fire({
+          icon: 'success',
+          title: "Alta generada con éxito",
+          toast: true,
+          position: 'center'
+        }).then(() => {
+          this.form.reset();
+          this.router.navigateByUrl('/login');
+        });
+      }
+    }
+    
 
   realizarComprobaciones(){
     let ret = false
