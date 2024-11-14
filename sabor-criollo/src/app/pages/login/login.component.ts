@@ -96,7 +96,7 @@ export class LoginComponent  implements OnInit {
           }) */
 
             
-            this.createOneSignalUser();
+            //this.createOneSignalUser();
             //this.sendNotificationtoAllUsers();
         })
         .catch((error) => {

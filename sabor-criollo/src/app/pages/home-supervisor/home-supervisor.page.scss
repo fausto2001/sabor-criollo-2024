@@ -1,5 +1,27 @@
 @import '../home/home.page.scss';
 
+
+
+
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
 /* .btnMenu{
   margin: 15px;
   padding: 5px;
