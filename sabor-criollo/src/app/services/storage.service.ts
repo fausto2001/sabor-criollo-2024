@@ -22,17 +22,24 @@ export class StorageService {
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   }
 
-  async subirFotoAdjuntada(name:string, directorio:string, foto:any){
+  async subirFotoAdjuntada(name: string, directorio: string, foto: any) {
     const filepath = directorio + name + '_' + this.getFormattedDate();
     const fileref = ref(this.storage, filepath);
-
-    let url:string = '';
-
-    await uploadBytesResumable(fileref, foto).then(async () => {
-      url = await getDownloadURL(fileref);
-    });
-
-    return url
+  
+    let url: string = '';
+  
+    // Ensure that the foto is a File or Blob
+    if (foto instanceof Blob || foto instanceof File) {
+      await uploadBytesResumable(fileref, foto).then(async () => {
+        url = await getDownloadURL(fileref);
+      }).catch((error) => {
+        console.error("Upload failed:", error);
+      });
+    } else {
+      console.error("Invalid file format.");
+    }
+  
+    return url;
   }
 
   async subirFotoBase64(name:string, directorio:string, foto:any){

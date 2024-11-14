@@ -107,10 +107,10 @@ export const routes: Routes = [
     path: 'alta-anonimo',
     loadComponent: () => import('./pages/alta-anonimo/alta-anonimo.page').then( m => m.AltaAnonimoPage)
   },
- /* {
+  {
     path: 'encuesta',
     loadComponent: () => import('./pages/encuesta/encuesta.page').then( m => m.EncuestaPage)
-  },*/
+  },
   {// crear componente de error
     path: '**',
     redirectTo: 'splash-screen',

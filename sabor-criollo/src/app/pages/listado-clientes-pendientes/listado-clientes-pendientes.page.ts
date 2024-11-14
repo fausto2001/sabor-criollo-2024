@@ -54,9 +54,9 @@ export class ListadoClientesPendientesPage implements OnInit {
           this.userService.updateUsuario(user)
             .then(() => {
               if (admitido) {//COMENTADO PORQUE HAY LIMITE DE EMAILS
-                 //this.emailService.enviandoEmail(nombre, email, '¡Genial! Has sido aprobado exitosamente');
+                 this.emailService.enviandoEmail(nombre, email, '¡Genial! Has sido aprobado exitosamente');
               } else {
-                // this.emailService.enviandoEmail(nombre, email, '¡Vaya! Tu solicitud ha sido rechazada');
+                 this.emailService.enviandoEmail(nombre, email, '¡Vaya! Tu solicitud ha sido rechazada');
               }
               // this.toastService.presentToast('top', 'Acción realizada exitosamente', 'success', 2000);
               // this.toast2Serv.showToast('Acción realizada exitosamente', 'short', 'top');
