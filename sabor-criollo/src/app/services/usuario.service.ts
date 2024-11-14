@@ -24,6 +24,8 @@ export class UsuarioService {
       map( usuarios => usuarios[0] as UsuarioModel ));
   }
 
+  
+
   async getUsuarioPorCorreo(mail: string)
   {
     const userQuery = query(collection(this.db, 'usuarios'), where('email', '==', mail));

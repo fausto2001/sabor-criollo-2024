@@ -51,8 +51,18 @@ export class HomeClientePage implements OnInit {
         });
       }
     });
+
+    this.usuario = this.authServ.usuario!;
+    if(!this.usuario){
+      this.authServ.user$.subscribe( (data)=> {
+        this.usuarioServ.getUsuarioPorUid(data!.uid).subscribe( (user) => {
+          this.usuario = user;
+        });
+      });
+    }
   }
 
+  
   // Esto hay que reformularlo para que no tenga problema con los clientes anónimos
   //verificar que esta escaneando su mesa asignada
   async pedirMesaScan(): Promise<void> {

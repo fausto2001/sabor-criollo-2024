@@ -43,13 +43,13 @@ export class ChatPage implements OnInit, AfterViewInit {
       this.scrollToBottom();
     });
   
-    if (!this.usuario) {
-      this.authServ.user$.subscribe((data) => {
-        if (data) {
-          this.userServ.getUsuarioPorCorreo(data.email!).then((usuario) => {
-            this.usuario = usuario;
-          });
-        }
+    
+    //this.usuario = this.authService.usuario!;
+    if(!this.usuario){
+      this.authServ.user$.subscribe( (data)=> {
+        this.userServ.getUsuarioPorUid(data!.uid).subscribe( (user) => {
+          this.usuario = user;
+        });
       });
     }
   }

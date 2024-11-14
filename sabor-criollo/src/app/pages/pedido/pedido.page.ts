@@ -67,14 +67,14 @@ export class PedidoPage implements OnInit {
       }*/
 
       if (!this.usuario) {
-        this.authService.user$.subscribe((data) => {
-          if (data) {
-            this.userService.getUsuarioPorCorreo(data.email!).then((usuario) => {
-              this.usuario = usuario!;
-              this.pedido.idMesa = usuario!.mesa;
+        this.usuario = this.authService.usuario!;
+        if(!this.usuario){
+          this.authService.user$.subscribe( (data)=> {
+            this.userService.getUsuarioPorUid(data!.uid).subscribe( (user) => {
+              this.usuario = user;
             });
-          }
-        });
+          });
+        }
       }
 
       this.productoService.getProductos().subscribe(
