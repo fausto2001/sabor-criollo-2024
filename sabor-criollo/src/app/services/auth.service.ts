@@ -102,6 +102,7 @@ async register(mail: string, password: string, nroDocumento: string): Promise<{ 
   });
 }
 
+
   // Login robusto, corrobora que el usuario esté habilitado, 
   // maneja errores y traduce al usuario el motivo del error
   async login(mail: string, password: string): Promise<string> {

@@ -147,6 +147,7 @@ export class AltaClientePage implements OnInit {
           return;
         }
     
+        
         const nuevoUsuario = <UsuarioModel>{
           id: '',
           uid: resultado.uid,  
