@@ -29,7 +29,7 @@ export class AuthService {
     });
   }
 
-
+/*
   async register(mail: string, password: string, nroDocumento: string): Promise<string> {
 
     if(await this.userService.documentoYaRegistrado(nroDocumento))
@@ -65,6 +65,42 @@ export class AuthService {
         });
     });
   }
+*/
+
+async register(mail: string, password: string, nroDocumento: string): Promise<{ error: string, uid: string | null }> {
+  if (await this.userService.documentoYaRegistrado(nroDocumento)) {
+    return { error: 'El número de documento ya se encuentra registrado.', uid: null };
+  }
+
+  return new Promise<{ error: string, uid: string | null }>((resolve) => {
+    createUserWithEmailAndPassword(this.firebaseAuth, mail, password)
+      .then((userCredential) => {
+        const uid = userCredential.user.uid; // Obtener el UID del usuario creado
+        resolve({ error: '', uid });
+      })
+      .catch(err => {
+        let mensajeError = '';
+        switch (err.message) {
+          case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
+            mensajeError = 'La contraseña debe tener al menos 6 caracteres';
+            break;
+          case 'Firebase: Error (auth/invalid-email).':
+            mensajeError = 'Ingrese un correo válido.';
+            break;
+          case 'Firebase: Error (auth/email-already-in-use).':
+            mensajeError = 'El correo indicado ya se encuentra registrado.';
+            break;
+          case 'Firebase: Error (auth/missing-password).':
+            mensajeError = 'Ingrese una contraseña.';
+            break;
+          default:
+            mensajeError = 'Error al registrar usuario: ' + err.message;
+            break;
+        }
+        resolve({ error: mensajeError, uid: null });
+      });
+  });
+}
 
   // Login robusto, corrobora que el usuario esté habilitado, 
   // maneja errores y traduce al usuario el motivo del error

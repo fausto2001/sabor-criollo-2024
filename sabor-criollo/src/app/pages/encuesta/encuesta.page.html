@@ -4,10 +4,80 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">encuesta</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content>
+    <!-- Formulario -->
+    <form [formGroup]="form">
+        <!-- range puntajeEstablecimiento -->
+          <ion-col size="15" sizeLg="12" sizeSm="12" class="subslot">
+              <ion-item >
+                <ion-range formControlName="puntajeEstablecimiento" class="texto-range" pin="true" min="1" max="10" step="1" snaps="true"
+                    aria-label="Custom range"
+                    [min]="1"
+                    [max]="10"
+                    [value]="5"
+                    [pin]="true"
+                    [ticks]="true"
+                    [snaps]="true"
+                    labelPlacement="stacked" label="Puntaje del establecimiento"
+                    >
+                </ion-range>
+              </ion-item>
+              <div class="error" *ngIf="form.controls?.['puntajeEstablecimiento']?.invalid && (form.controls?.['puntajeEstablecimiento']?.dirty || form.controls?.['puntajeEstablecimiento']?.touched)">
+                <div *ngIf="form.controls?.['puntajeEstablecimiento']?.errors?.['required']">El puntaje es requerido</div>
+              </div>
+          </ion-col>
+          <!-- checkbox  ordenMesa -->
+          <ion-col size="12" >
+              <ion-item>
+                <ion-label for="cbox1">
+                  ¿ Mesa ordenada ? (opcional)
+                </ion-label>
+                <ion-checkbox formControlName="ordenMesa" class="texto-checkbox" id="cbox1" [(ngModel)]="isChecked" slot="start">SI</ion-checkbox>
+              </ion-item>
+          </ion-col>
+          <!-- select quejaServicio -->
+          <ion-col>
+              <ion-item>
+                <ion-select formControlName="quejaServicio" interface="popover" placeholder="Quejas del servicio" >
+                  <ion-select-option value="Ninguna">Ninguna</ion-select-option>
+                  <ion-select-option value="Lento">Lento</ion-select-option>
+                  <ion-select-option value="Torpe">Torpe</ion-select-option>
+                  <ion-select-option value="Hostil">Hostil</ion-select-option>
+                  <ion-select-option value="Grosero">Grosero</ion-select-option>
+                </ion-select>
+              </ion-item>
+          </ion-col>
+          <!-- radio cartaEstablecimiento -->
+          <ion-col>
+            <ion-item>
+              <ion-radio-group formControlName="cartaEstablecimiento">
+                <div>¿ Qué opina de la carta ? </div>
+                <div class="col-lg-3 col-md-3 flex-container texto">
+                  <ion-radio class="texto-radio" value="Buena">Buena</ion-radio>
+                  <ion-radio class="texto-radio" value="Regular">Regular</ion-radio>
+                  <ion-radio class="texto-radio" value="Mala">Mala</ion-radio>
+                </div>
+              </ion-radio-group>
+            </ion-item>
+          </ion-col>
+          <!-- textarea comentarioEstablecimiento -->
+          <ion-col>
+            <div>
+              <ion-label class="label fw-bold"></ion-label>
+              <ion-item color="transp" style="padding: 10px">
+                <ion-textarea formControlName="comentarioEstablecimiento" fill="solid" placeholder="Comentarios (Opcional)" rows="10"></ion-textarea>
+              </ion-item>
+            </div>
+          </ion-col>
+
+    </form>
+      <!-- Boton Registrar -->
+      <ion-row class="ion-justify-content-center btn">
+        <ion-button  expand="full" shape="round" size="large" (click)="registrar()" [disabled]="form.invalid">Registrar</ion-button>
+      </ion-row>
 </ion-content>
+
+ <!-- <ion-row class="ion-justify-content-center btn">
+  <ion-button  expand="full" shape="round" size="large" (click)="registrarProducto()">Producto</ion-button>
+</ion-row> -->
