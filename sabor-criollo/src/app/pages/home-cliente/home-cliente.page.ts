@@ -114,6 +114,16 @@ export class HomeClientePage implements OnInit {
         this.usuarioServ.updateUsuario(this.usuario!);
         this.router.navigateByUrl('/home-pedido');
       }else{
+        Swal
+          .fire({
+            position: 'center',
+            toast: true,
+            title: 'Error',
+            text: 'QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa,
+            icon: 'error',
+            confirmButtonText: 'OK',
+            showConfirmButton: true,
+          });
         //alert('QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa);
         this.usuario!.enListaDeEspera = false;
         this.usuarioServ.updateUsuario(this.usuario!);
