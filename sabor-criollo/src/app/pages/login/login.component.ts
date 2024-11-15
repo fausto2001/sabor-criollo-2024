@@ -288,4 +288,8 @@ export class LoginComponent  implements OnInit {
       console.log(e);
     }
   }
+
+  test() {
+    this.router.navigateByUrl('/pedido');
+  }
 }
