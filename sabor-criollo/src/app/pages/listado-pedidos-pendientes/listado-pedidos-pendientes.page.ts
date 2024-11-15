@@ -103,7 +103,8 @@ export class ListadoPedidosPendientesPage implements OnInit {
         pedidoText += `${pedidoProducto.producto.nombre}, Cantidad: ${pedidoProducto.cantidad}\n`;
       });
     } else {
-      pedidoText = 'No hay productos en el pedido.';
+      return;
+      //pedidoText = 'No hay productos en el pedido.';
     }
 
     Swal.fire({

@@ -206,7 +206,7 @@ mostrarPedido() {
       this.pedido.idMesa = this.usuario.mesa;
     });
   } else {
-    pedidoText = 'No hay productos en el pedido.';
+    return;
   }
 
   this.verificarPedidoPorRol();

@@ -95,7 +95,8 @@ export class EstadoMesasPage implements OnInit {
         pedidoText += `${pedidoProducto.producto.nombre}, Cantidad: ${pedidoProducto.cantidad}\n`;
       });
     } else {
-      pedidoText = 'No hay productos en el pedido.';
+      return;
+      //pedidoText = 'No hay productos en el pedido.';
     }
 
     Swal.fire({
@@ -150,7 +151,8 @@ export class EstadoMesasPage implements OnInit {
         pedidoText += `${pedidoProducto.producto.nombre}, Cantidad: ${pedidoProducto.cantidad}\n`;
       });
     } else {
-      pedidoText = 'No hay productos en el pedido.';
+      return;
+      //pedidoText = 'No hay productos en el pedido.';
     }
 
     Swal.fire({
@@ -204,7 +206,8 @@ export class EstadoMesasPage implements OnInit {
 
       pedidoText += `\n${pedido.importeTotal}`;
     } else {
-      pedidoText = 'No hay productos en el pedido.';
+      return;
+      //pedidoText = 'No hay productos en el pedido.';
     }
 
     Swal.fire({
