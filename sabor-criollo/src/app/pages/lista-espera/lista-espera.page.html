@@ -29,7 +29,7 @@
   <ng-container *ngFor="let usuario of usuariosNoAdmitidos; index as i">
     <ion-card>
       <ion-text color="primary">
-        <h1 style="color: black; margin-left: 20px; font-weight: bold;"> {{usuario.email}}</h1>
+        <h1 style="color: black; margin-left: 20px; font-weight: bold;"> {{usuario.nombre}}</h1>
       </ion-text>
       <ion-card-content>
         <ion-img class="icon-back" src="../../../assets/botones/aprobado.png" name="aprobado" (click)="aceptarUsuario(usuario.uid, true, usuario.nombre)"></ion-img>

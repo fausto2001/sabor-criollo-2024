@@ -96,7 +96,7 @@ export class AltaAnonimoPage implements OnInit {
 
         const nuevoUsuario = <UsuarioModel>{
           id: '',
-          uid: data,
+          uid: 'AaJPlmyQ8naWuyogw68xoPQYY9s1',
           email: 'anonimo@sabor-criollo.com',
           //clave: this.password,
           nombre: this.nombre,
