@@ -43,25 +43,21 @@ export class HomeClientePage implements OnInit {
       this.isSupported = result.supported;
     });
 
-    this.usuario = this.authServ.usuario;
     this.authServ.user$.subscribe((data) => {
-      if (data && data.email) {
-        this.usuarioServ.getUsuarioPorCorreoObservable(data.email).subscribe((user) => {
-          this.usuario = user;
+      if (data) {
+        this.usuarioServ.getUsuarioPorUid(data.uid!).then((usuario) => {
+          this.usuario = usuario!;
         });
+      } else {
+        this.usuario = null;
       }
     });
 
-    this.usuario = this.authServ.usuario!;
-    if (!this.usuario) {
-      this.authServ.user$.subscribe((data) => {
-        if (data) {
-          this.usuarioServ.getUsuarioPorUid(data.uid!).then((usuario) => {
-            this.usuario = usuario!;
-          });
-        }
-      });
-    }
+    setInterval(() =>{
+      this.usuarioServ.getUsuarioPorUid(this.usuarioServ.personaLogeada.uid).then((usuario) =>{
+        this.usuario!.enListaDeEspera = usuario!.enListaDeEspera;
+      })
+    }, 500)
   }
 
   
