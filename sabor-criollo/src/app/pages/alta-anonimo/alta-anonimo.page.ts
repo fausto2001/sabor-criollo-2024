@@ -163,7 +163,7 @@ export class AltaAnonimoPage implements OnInit {
     }*/
     
       async ingresar(){
-          await this.authService.login('anonimo@sabor-criollo.com', '11111111')
+          await this.authService.login('anonimo@sabor-criollo.com', '123456')
             .then( (resultadoLogin) => {
               //this.pushNotifServ.promptForNotificationPermission();
               this.error = resultadoLogin;
