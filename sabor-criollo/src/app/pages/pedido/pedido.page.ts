@@ -2,7 +2,7 @@ import { CommonModule, formatDate } from '@angular/common';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonImg, IonRow, IonButton, IonCol, IonInput, IonLabel, IonItem, IonGrid, IonRadioGroup, IonRadio, IonBackButton, IonFabButton, IonFab, IonFabList, IonCardContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonText } from '@ionic/angular/standalone';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductoModel } from "../../models/producto.component";
-import { Component, inject, OnInit, ViewChild  } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -20,16 +20,21 @@ import { Router } from '@angular/router';
 import { PedidoModel } from 'src/app/models/pedido.component';
 import { PedidoProducto } from 'src/app/models/pedido-producto.component';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { register } from 'swiper/element/bundle'
+register();
+
 
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.page.html',
   styleUrls: ['./pedido.page.scss'],
   standalone: true,
-  imports: [IonText, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonCardContent, IonFabList, IonFab, IonFabButton, IonBackButton, 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [ IonText, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonCardContent, IonFabList, IonFab, IonFabButton, IonBackButton, 
     IonRadio, IonRadioGroup, IonGrid, IonItem, IonLabel, IonInput, IonCol, 
     IonButton, IonImg, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, 
-    IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule],
+    IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule, ],
 })
 export class PedidoPage implements OnInit {
   productos: ProductoModel[] = [];
@@ -58,13 +63,32 @@ export class PedidoPage implements OnInit {
     //private productosPedidos: ProductoModel[] = [];
 
     ngOnInit() {
-
       this.usuario = this.authService.usuario!;
-     /* if(!this.usuario){
-        this.authService.user$.subscribe( (data)=> {
 
+      if (!this.usuario) {
+        this.authService.user$.subscribe((data) => {
+          if (data) {
+            this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+              this.usuario = usuario!;
+            });
+          }
         });
-      }*/
+      }
+    
+      this.productoService.getProductos().subscribe(
+        (productos) => {
+          this.productos = productos.map((producto) => ({
+            ...producto,
+            cantidad: 0,
+            imagenes: this.obtenerImagenesParaProducto(producto), // Genera las imágenes
+          }));
+        },
+        (error) => {
+          console.error('Error fetching productos: ', error);
+        }
+      );
+
+/*       this.usuario = this.authService.usuario!;
 
         if (!this.usuario) {
           this.authService.user$.subscribe((data) => {
@@ -85,7 +109,16 @@ export class PedidoPage implements OnInit {
         error => {
           console.error('Error fetching productos: ', error);
         }
-      );
+      ); */
+    }
+
+    obtenerImagenesParaProducto(producto: ProductoModel): string[] {
+      const basePath = 'assets/images/';
+      return [
+        `${basePath}${producto.id}_1.jpg`,
+        `${basePath}${producto.id}_2.jpg`,
+        `${basePath}${producto.id}_3.jpg`,
+      ];
     }
 
     actualizarCantidadPedido(producto: ProductoModel, agregar: boolean) {
@@ -155,7 +188,10 @@ export class PedidoPage implements OnInit {
       this.pedido.importeTotal = this.pedido.pedidos.reduce((total, pedidoProducto) => {
         return total + pedidoProducto.producto.precio * pedidoProducto.cantidad;
       }, 0);
-      this.pedido.tiempoTotal = Math.max(...this.pedido.pedidos.map(p => p.producto.tiempoelavoracion));
+      this.pedido.tiempoTotal = Math.max(...this.pedido.pedidos.map(p => p.producto.tiempoelaboracion));
+      if(this.pedido.tiempoTotal < 0){
+        this.pedido.tiempoTotal = 0;
+      }
     }
 
 mostrarPedido() {
@@ -256,6 +292,10 @@ mostrarPedido() {
 
   goHome(){
     this.router.navigateByUrl('/home');
+  }
+
+  goChat(){
+    this.router.navigateByUrl('/chat');
   }
 
 }

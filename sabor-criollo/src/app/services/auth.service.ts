@@ -135,7 +135,7 @@ async register(mail: string, password: string, nroDocumento: string): Promise<{ 
             } else {
               if(this.usuario?.admitido == false)
               {
-                resolve('Su solicitud de registro ha sido rechazado.');
+                resolve('Su solicitud de registro ha sido rechazada.');
                 this.logout();
               }else
               {

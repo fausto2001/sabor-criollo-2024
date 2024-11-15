@@ -1,55 +1,54 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border" fixed>
   <ion-toolbar>
-    <ion-title>pedido</ion-title>
+    <ion-title class="titulo">Importe total: ${{ pedido.importeTotal }}</ion-title>
+    <ion-title class="subtitulo">Tiempo de elaboración: {{ pedido.tiempoTotal }} mins.</ion-title>
+    <div class="divSalir" (click)="goHome()">
+      <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+    </div>
   </ion-toolbar>
 </ion-header>
-
-
-
 <ion-content [fullscreen]="true">
 
-  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
-    <h3> IMPORTE TOTAL: ${{pedido.importeTotal}} </h3> <br>
-  </ion-button>
-  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
-    TIEMPO ELABORACIÓN: {{pedido.tiempoTotal}} minutos
-  </ion-button>
-  <ion-button class="agregar" color="tertiary"  expand="block"  shape="round" >
-    💬 CONSULTAR CON EL MOZO
-  </ion-button>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="mostrarPedido()">
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="goChat()">
     <ion-fab-button color="tertiary">
-      <ion-img src="../../../assets/botones/lista-de-comida.png" ></ion-img>
-      <!-- <ion-label>Importe Total: ${{importeTotal}}</ion-label> -->
+      <ion-img src="../../../assets/botones/mozo.svg"  class="fab-icon"></ion-img>
     </ion-fab-button>
   </ion-fab>
 
-  
-  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="mostrarPedido()">
+    <ion-fab-button color="tertiary">
+      <ion-img src="../../../assets/botones/lista-de-comida.png"  class="fab-icon"></ion-img>
+    </ion-fab-button>
+  </ion-fab>
+
+
 
    @if(productos && productos.length > 0){
    
     <ion-grid fixed>
       <ion-row class="productos">
-        <!-- <ion-col size="12" *ngFor="let item of fotosLindas"> -->
           @for(producto of productos; track producto)
           {
           <ion-card >
-            <img #some [src]="producto.imagen[this.currentImg]" alt="fotoProducto">
-            
-             <ion-button class="cambiar-imagen"color="success" expand="block" shape="round" (click)="setImage(-1)">
-              🢀
-            </ion-button>
-            <ion-button class="cambiar-iamgen" color="success" expand="block" shape="round" (click)="setImage(1)">
-              🢂
-            </ion-button> -
+            <swiper-container
+                [slides-per-view]="1"
+                navigation="true"
+                pagination="true"
+                loop="true"
+                class="product-swiper"
+              >
+                <swiper-slide *ngFor="let imagen of producto.imagen">
+                  <img [src]="imagen" alt="{{ producto.nombre }}" class="product-image" />
+                </swiper-slide>
+              </swiper-container>
             <ion-card-header>
               <div class="line"></div>
 
                <h2 class="descripcion-producto">{{producto.nombre}} </h2> 
               <ion-card-subtitle class="descripcion-producto"> ${{producto.precio}}</ion-card-subtitle>
               <ion-card-subtitle class="descripcion-producto">{{producto.descripcion}}</ion-card-subtitle>
-              <ion-card-subtitle class="descripcion-producto">Tiempo: {{producto.tiempoelavoracion}} mins</ion-card-subtitle>
+              <ion-card-subtitle class="descripcion-producto">Tiempo: {{producto.tiempoelaboracion}} mins</ion-card-subtitle>
               <div class="line"></div>
 
             </ion-card-header>
@@ -74,21 +73,11 @@
                     CONFIRMAR
                   </ion-button>
                 
-
-
-
-                
-
               </div>
             </ion-card-content>
           </ion-card>
-       <!--  </ion-col> -->
       }
       </ion-row>
     </ion-grid>
-    
-  
-  
-
   }
 </ion-content>
