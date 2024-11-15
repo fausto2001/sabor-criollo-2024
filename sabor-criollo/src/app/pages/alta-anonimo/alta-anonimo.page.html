@@ -13,7 +13,7 @@
       <ion-img src="../../../assets/logo-png.png"></ion-img>
     </ion-row>
 
-    <form [formGroup]="form" class="auth-form" (ngSubmit)="registrar()">
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="ingresar()">
       <ion-col size="12" class="subslot">
         <ion-item class="custom-input" lines="none">
           <ion-input
@@ -41,7 +41,7 @@
 
   <ion-col size="12" sizeLg="12" sizeSm="6">
     <ion-row class="ion-justify-content-center btn">
-      <ion-button expand="full" shape="round" size="large" (click)="registrar()">Entrar como anónimo</ion-button>
+      <ion-button expand="full" shape="round" size="large" (click)="ingresar()">Entrar como anónimo</ion-button>
     </ion-row>
   </ion-col>
 

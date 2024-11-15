@@ -82,17 +82,13 @@ export class AltaAnonimoPage implements OnInit {
       this.switchFotoSubida();
 
   }
-
+/*
   async registrar(){
     if(this.realizarComprobaciones()){
 
       await this.authService.loginAnonymously().then((data:any) => {
 
-       /* this.error = data;
 
-        if(this.error != ''){
-          return;
-        }  */
 
         const nuevoUsuario = <UsuarioModel>{
           id: '',
@@ -110,8 +106,11 @@ export class AltaAnonimoPage implements OnInit {
           tokenNotification: null,
         }
         
-        this.usuarioService.setUsuario(nuevoUsuario);
+        //this.usuarioService.setUsuario(nuevoUsuario);
         this.usuarioService.personaLogeada = nuevoUsuario;
+
+
+        
         Swal.fire({
           icon: 'success',
           title: "Alta generada con éxito",
@@ -123,7 +122,7 @@ export class AltaAnonimoPage implements OnInit {
         });
       });
     }
-  }
+  }*/
 /*
     async registrar() {
       if (this.realizarComprobaciones()) {
@@ -163,20 +162,32 @@ export class AltaAnonimoPage implements OnInit {
       }
     }*/
     
-
-  realizarComprobaciones(){
-    let ret = false
-    this.error = '';
-    this.form.markAllAsTouched();
-   
-    if(this.foto == ''){
-      this.error = 'La foto es requerida';
-      return ret;
-    }
-
-    return true;
-  }
-
+      async ingresar(){
+          await this.authService.login('anonimo@sabor-criollo.com', '11111111')
+            .then( (resultadoLogin) => {
+              //this.pushNotifServ.promptForNotificationPermission();
+              this.error = resultadoLogin;
+              if(this.error == ''){
+                //this.router.navigateByUrl('/home');
+              }
+              /* subs.subscribe( async (data) => {
+                if(data){
+                  this.authServ.usuario = data;
+                  // await this.pushNotifServ.registerNotifications();
+                  this.router.navigateByUrl('/home');
+    
+                }
+              }) */
+    
+                
+                //this.createOneSignalUser();
+                //this.sendNotificationtoAllUsers();
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        
+      }
 
   
   async escanear(){
