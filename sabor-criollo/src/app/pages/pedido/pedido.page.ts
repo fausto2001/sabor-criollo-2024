@@ -138,7 +138,7 @@ export class PedidoPage implements OnInit {
     }
     
     actualizarPedido(producto: ProductoModel) {
-      debugger
+      //debugger
       const pedidoExistente = this.verificarProducto(producto.id);
       
       if (pedidoExistente) {

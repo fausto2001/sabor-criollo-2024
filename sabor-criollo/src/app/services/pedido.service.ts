@@ -118,7 +118,7 @@ export class PedidoService {
   }*/
 
   setPedido(pedido:PedidoModel){
-    debugger;
+    //debugger;
     if(pedido){
       const tupla = doc(this.pedidosCollection);
       pedido.id = tupla.id;

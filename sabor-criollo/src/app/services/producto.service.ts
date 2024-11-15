@@ -51,7 +51,7 @@ export class ProductoService {
   }
 
   setProducto(producto:ProductoModel){
-    debugger;
+    //debugger;
     if(producto){
       const tupla = doc(this.productosCollection);
       producto.id = tupla.id;
