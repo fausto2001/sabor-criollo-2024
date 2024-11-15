@@ -7,7 +7,7 @@ table {
   }
   
   th, td {
-    border: 1px solid #ebd248;
+    border: 1px solid #01be62;
     padding: 8px;
     text-align: left;
     background-color: #030303;
@@ -26,7 +26,7 @@ table {
 
 ion-content{
   --background: none;
-  background-color: #ffdf58;
+  background-color: #01be62;
   background-image: url('../../../assets/fondo-login-2.jpg')!important;
   // background-size: cover;
 }
@@ -44,7 +44,7 @@ ion-content{
 }
 ion-card{
   color: white;
-  --background: #ffdf58;
+  --background: #01be62;
   border-radius: 15px;
 }
 

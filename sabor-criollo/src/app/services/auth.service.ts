@@ -175,7 +175,7 @@ async register(mail: string, password: string, nroDocumento: string): Promise<{ 
     });
   }
 
-  loginAnonymously() {
+  async loginAnonymously() {
     return signInAnonymously(this.firebaseAuth)
       .then((userCredential) => {
         const uid = userCredential.user?.uid;

@@ -82,35 +82,36 @@ export class AltaAnonimoPage implements OnInit {
       this.switchFotoSubida();
 
   }
-/*
+
   async registrar(){
     if(this.realizarComprobaciones()){
 
-      await this.authService.register(this.email, this.password, this.dni).then((data:any) => {
+      await this.authService.loginAnonymously().then((data:any) => {
 
-        this.error = data;
+       /* this.error = data;
 
         if(this.error != ''){
           return;
-        }  
+        }  */
 
         const nuevoUsuario = <UsuarioModel>{
           id: '',
-          uid: '',
-          email: this.email,
-          clave: this.password,
+          uid: data,
+          email: 'anonimo@sabor-criollo.com',
+          //clave: this.password,
           nombre: this.nombre,
-          apellido: this.apellido,
-          dni: this.dni,
+          //apellido: this.apellido,
+          //dni: this.dni,
           rol: this.rol,
           enListaDeEspera: null,
-          admitido: null,
+          admitido: true,
           foto: this.foto,
           mesa: null,
           tokenNotification: null,
         }
         
         this.usuarioService.setUsuario(nuevoUsuario);
+        this.usuarioService.personaLogeada = nuevoUsuario;
         Swal.fire({
           icon: 'success',
           title: "Alta generada con éxito",
@@ -118,15 +119,19 @@ export class AltaAnonimoPage implements OnInit {
           position: 'center'
         }).then( () => {
           this.form.reset();
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/home');
         });
       });
     }
-  }*/
-
+  }
+/*
     async registrar() {
       if (this.realizarComprobaciones()) {
-        const uid = await this.authService.loginAnonymously();
+        const uid = await this.authService.loginAnonymously().then((data:any) => {
+
+
+
+        }
     
           
         const nuevoUsuario = <UsuarioModel>{
@@ -153,10 +158,10 @@ export class AltaAnonimoPage implements OnInit {
           position: 'center'
         }).then(() => {
           this.form.reset();
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/home');
         });
       }
-    }
+    }*/
     
 
   realizarComprobaciones(){
