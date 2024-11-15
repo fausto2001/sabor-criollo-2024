@@ -212,6 +212,27 @@ export class AltaClientePage implements OnInit {
     });
   }
 
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      return;
+    }
+    this.barcodes = []; 
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
+
+    if (this.barcodes.length > 0) {
+        const informacion = JSON.stringify(this.barcodes[0]).split('@');
+        this.form.patchValue({
+            apellido: informacion[1],
+            nombre: informacion[2],
+            dni: informacion[4]
+        });
+    } else {
+        console.warn('No se encontró ningún código en el escaneo.');
+    }
+  }
+
   validateNumber(event: KeyboardEvent) {
     const char = event.key;
     if (!/[0-9]/.test(char) && char !== 'Backspace' && char !== 'Delete' && char !== 'ArrowLeft' && char !== 'ArrowRight') {
@@ -242,36 +263,10 @@ export class AltaClientePage implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
 
   /* private camaraService:CamaraService = inject(CamaraService);
   private qrService:QrService = inject(QrService);
@@ -435,44 +430,12 @@ export class AltaClientePage implements OnInit {
   entrarAnonimo(){
     this.router.navigateByUrl('/home-cliente');
   }
-
-    async scan(): Promise<void> {
-      const granted = await this.requestPermissions();
-      if (!granted) {
-        this.presentAlert();
-        return;
-      }
-      this.barcodes = []; 
-      const { barcodes } = await BarcodeScanner.scan();
-      this.barcodes.push(...barcodes);
-  
-      if (this.barcodes.length > 0) {
-          const informacion = JSON.stringify(this.barcodes[0]).split('@');
-          this.form.patchValue({
-              apellido: informacion[1],
-              nombre: informacion[2],
-              dni: informacion[4]
-          });
-      } else {
-          console.warn('No se encontró ningún código en el escaneo.');
-      }
-  }
   
   
 
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
-  }
 
-  async presentAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permission denied',
-      message: 'Please grant camera permission to use the barcode scanner.',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
+
+
 
     goHome(){
       this.router.navigateByUrl('/home');

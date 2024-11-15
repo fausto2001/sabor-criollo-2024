@@ -43,20 +43,20 @@ export class LoginComponent  implements OnInit {
   });
 
   constructor() {
-
+    /*
     this.platform.ready().then(() => {
       if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
     });
     //this.authService.loginAnonymously();
 
-    //if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
+    //if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();*/
   }
 
   ngOnInit() {
-    console.log('ngoninit');
+    //console.log('ngoninit');
 
     //this.onesignal.OneSignalIOSPermission();
-    if(Capacitor.getPlatform() != 'web') this.oneSignal();
+    //if(Capacitor.getPlatform() != 'web') this.oneSignal();
   }
 /*
   async oneSignal() {
