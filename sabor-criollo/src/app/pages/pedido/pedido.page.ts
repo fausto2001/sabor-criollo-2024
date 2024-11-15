@@ -197,7 +197,7 @@ mostrarPedido() {
         showConfirmButton: false
       });
       this.pedidoService.setPedido(this.pedido);
-      this.router.navigateByUrl('/lista-espera');
+      this.router.navigateByUrl('/home');
 
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal.fire({
