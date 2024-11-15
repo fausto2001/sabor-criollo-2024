@@ -56,6 +56,7 @@ export class HomeClientePage implements OnInit {
     setInterval(() =>{
       this.usuarioServ.getUsuarioPorUid(this.usuarioServ.personaLogeada.uid).then((usuario) =>{
         this.usuario!.enListaDeEspera = usuario!.enListaDeEspera;
+        this.usuario!.mesa = usuario!.mesa;
       })
     }, 500)
   }
