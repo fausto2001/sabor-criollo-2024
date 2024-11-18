@@ -111,6 +111,7 @@
             <div *ngIf="form.controls?.['dni']?.errors?.['required']">El DNI es requerido</div>
             <div *ngIf="form.controls?.['dni']?.errors?.['minlength']">El DNI debe tener mínimo 6 dígitos</div>
             <div *ngIf="form.controls?.['dni']?.errors?.['maxlength']">El DNI debe tener máximo 8 dígitos</div>
+            <div *ngIf="form.controls?.['dni']?.errors?.['pattern']">El DNI solo puede contener números</div>
           </div>
         </ion-col>
 
@@ -132,6 +133,7 @@
             <div *ngIf="form.controls?.['cuil']?.errors?.['required']">El CUIL es requerido</div>
             <div *ngIf="form.controls?.['cuil']?.errors?.['minlength']">El CUIL debe tener 11 dígitos</div>
             <div *ngIf="form.controls?.['cuil']?.errors?.['maxlength']">El CUIL debe tener 11 dígitos</div>
+            <div *ngIf="form.controls?.['cuil']?.errors?.['pattern']">El CUIL solo puede contener números</div>
           </div>
         </ion-col>
 
