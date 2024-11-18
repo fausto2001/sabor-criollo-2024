@@ -217,16 +217,15 @@ export class PushService {
   getStorage(key: string) {
     return Preferences.get({ key: key });
   }
-//mensaje, titulo, email, dispositivo
+//mensaje, titulo, dispositivo
   async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, dispositivo: any) {
     try {
       const data = await this.getStorage('auth');
       if (data?.value) {
-        alert(data.value);
         await lastValueFrom(
           this.onesignal.sendNotification(
-            'Notificacion para usuario especifico',
             mensaje,
+            titulo,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
            [dispositivo]//BLZ3xKG0QgwxiXqJzX2k

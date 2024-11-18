@@ -182,8 +182,8 @@ export class AltaClientePage implements OnInit {
           toast: true,
           position: 'center'
         }).then(() => {
-          this.form.reset();
-          this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo cliente esperando ser aceptado', 'Sabor Criollo tiene un nuevo mensaje', 'samsunga04s')
+          this.form.reset();                                                                                                                                                                                
+          this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando tu aprobación. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'ngXfl09St1tkmB48AxYk')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
           this.router.navigateByUrl('/login');
         });
       }
