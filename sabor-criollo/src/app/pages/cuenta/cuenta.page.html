@@ -1,8 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Pagar cuenta</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title class="titulo">Cuenta</ion-title>
+      <div class="divSalir" (click)="goHome()">
+        <ion-img src="../../../assets/botones/back.svg" class="back"></ion-img>
+      </div>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content [fullscreen]="true" scrollY="true">
   <ion-grid>

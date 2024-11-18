@@ -120,5 +120,9 @@ export class CuentaPage implements OnInit {
     
     this.router.navigate(['/home'])
   }
+  
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
 
 }
