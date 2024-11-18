@@ -110,6 +110,7 @@
             <div *ngIf="form.controls?.['dni']?.errors?.['required']">El DNI es requerido</div>
             <div *ngIf="form.controls?.['dni']?.errors?.['minlength']">El DNI debe tener mínimo 6 dígitos</div>
             <div *ngIf="form.controls?.['dni']?.errors?.['maxlength']">El DNI debe tener máximo 8 dígitos</div>
+            <div *ngIf="form.controls?.['dni']?.errors?.['pattern']">El DNI solo puede contener números</div>
           </div>
         </ion-col>
 
