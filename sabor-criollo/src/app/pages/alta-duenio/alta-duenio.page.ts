@@ -47,8 +47,8 @@ export class AltaDuenioPage implements OnInit {
       confirmPassword: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
       apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
-      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
-      cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8), Validators.pattern("^[0-9]+$")]),
+      cuil: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern("^[0-9]+$")]),
       rol: new FormControl('', [Validators.required]),
       foto: new FormControl('', [Validators.required]),
     });
