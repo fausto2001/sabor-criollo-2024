@@ -142,12 +142,12 @@ export class PushComponent  implements OnInit {
           }
       
           // Si ya existe un ID, verificarlo con OneSignal
-          const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
+          /*const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
           if (!response || !response.identity?.external_id) {
             this.onesignal.login(data.value);
           } else {
             console.log("Usuario ya registrado en OneSignal");
-          }
+          }*/
       
           // Actualizar el ID en el modelo de usuario
           this.usuario!.tokenNotification = data.value;
@@ -198,10 +198,10 @@ export class PushComponent  implements OnInit {
       const data = await this.getStorage('auth');
       if(!data?.value) return;
       console.log('ID externo: ', data.value);
-      const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
-      const { identity } = response;
+      /*const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
+    const { identity } = response;
       console.log('Identidad: ', identity);
-      await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
+      await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));*/
       //alert('Usuario eliminado de onesignal');
     } catch(e) {
       console.log(e);
