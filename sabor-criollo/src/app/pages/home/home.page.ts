@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
     if(Capacitor.getPlatform() != 'web') this.oneSignal();
 
     //this.onesignalService.requestPermission();
-    this.pushService.createOneSignalUser();
+    //this.pushService.createOneSignalUser();
   }
 
   async oneSignal() {

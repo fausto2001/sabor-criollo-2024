@@ -183,7 +183,7 @@ export class AltaClientePage implements OnInit {
           position: 'center'
         }).then(() => {
           this.form.reset();
-          this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo cliente esperando ser aceptado', 'Sabor Criollo tiene un nuevo mensaje','tomasmastrapasqua3@gmail.com', 'BLZ3xKG0QgwxiXqJzX2k')
+          this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo cliente esperando ser aceptado', 'Sabor Criollo tiene un nuevo mensaje', 'samsunga04s')
           this.router.navigateByUrl('/login');
         });
       }

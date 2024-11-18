@@ -166,7 +166,7 @@ export class PushService {
 
   async createUserAndLogin() {
     try {
-      const randomNumber = this.generateRandomString(20);
+      const randomNumber = 'test-service'
       console.log('Número almacenado: ', randomNumber);
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
@@ -186,7 +186,7 @@ export class PushService {
     });
     toast.present();
   }*/
-
+/*
   generateRandomString(length: number): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -197,7 +197,7 @@ export class PushService {
     }
   
     return result;
-  }  
+  }  */
 
   async deleteOneSignalUser() {
     try {
@@ -218,10 +218,9 @@ export class PushService {
     return Preferences.get({ key: key });
   }
 //mensaje, titulo, email, dispositivo
-  async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, email: any, dispositivo: any) {
+  async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, dispositivo: any) {
     try {
       const data = await this.getStorage('auth');
-      this.usuario = await this.usuarioService.getUsuarioPorCorreo(email);
       if (data?.value) {
         alert(data.value);
         await lastValueFrom(
@@ -230,7 +229,7 @@ export class PushService {
             mensaje,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
-           [this.usuario?.tokenNotification, dispositivo]//BLZ3xKG0QgwxiXqJzX2k
+           [dispositivo]//BLZ3xKG0QgwxiXqJzX2k
           )
         );
       }

@@ -190,9 +190,9 @@ export class OnesignalService {
       properties: {
         tags: { type: 'user', uid: uid }
       },
-      identity: {
+      /*identity: {
         external_id: uid
-      }
+      }*/
     };
 
     const headers = new HttpHeaders()

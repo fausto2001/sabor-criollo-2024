@@ -67,54 +67,7 @@ export class PushComponent  implements OnInit {
     }
   }
 
-  async createOneSignalUser() {
-    try {
-      const data = await this.getStorage('auth');
-      console.log('stored data: ', data);
-      //alert('1. JSON: '+ data.value)
-      this.id_notificacion = data.value;
-      if(!data || !data?.value) {
-        this.createUserAndLogin();
 
-        this.id_notificacion = data.value;
-        //alert('2. data: '+ data.value)
-
-        this.usuario!.tokenNotification = this.id_notificacion;
-        this.usuarioService.updateUsuario(this.usuario!);
-        return;
-      }
-      //console.log('external id: ', data.value);
-      const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
-
-      if(!response) {
-        this.createUserAndLogin();
-      } else {
-        const { identity } = response;
-        //console.log('identity: ', identity);
-        if(!identity?.external_id) {
-          this.id_notificacion = !identity?.external_id;/**/ 
-          //alert('3. identify: '+ !identity?.external_id)
-
-          this.usuario!.tokenNotification = this.id_notificacion;
-          this.usuarioService.updateUsuario(this.usuario!);
-          this.createUserAndLogin();
-        } else {
-          this.onesignal.login(identity?.external_id);
-          this.id_notificacion = identity?.external_id;/**/ 
-          //alert('4. identify: '+ identity?.external_id)
-
-          this.usuario!.tokenNotification = this.id_notificacion;
-          this.usuarioService.updateUsuario(this.usuario!);
-          //alert('User already registered in onesignal');
-        }
-      }
-    } catch(e) {
-      console.log(e);
-    }
-
-    this.usuario!.tokenNotification = this.id_notificacion;
-    this.usuarioService.updateUsuario(this.usuario!);
-  }
 /*
     async createOneSignalUser() {
       try {
@@ -170,10 +123,44 @@ export class PushComponent  implements OnInit {
       this.usuarioService.updateUsuario(this.usuario); 
     }*/
     
+      async createOneSignalUser() {
+        try {
+          const data = await this.getStorage('auth');
+          console.log('Data del storage: ', data);
+      
+          if (!data?.value) {
+            // Generar un nuevo ID si no existe
+            const randomNumber = 'test';
+            await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
+            await Preferences.set({ key: 'auth', value: randomNumber });
+            this.onesignal.login(randomNumber);
+      
+            // Actualizar el modelo del usuario
+            this.usuario!.tokenNotification = randomNumber;
+            await this.usuarioService.updateUsuario(this.usuario!);
+            return;
+          }
+      
+          // Si ya existe un ID, verificarlo con OneSignal
+          const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
+          if (!response || !response.identity?.external_id) {
+            this.onesignal.login(data.value);
+          } else {
+            console.log("Usuario ya registrado en OneSignal");
+          }
+      
+          // Actualizar el ID en el modelo de usuario
+          this.usuario!.tokenNotification = data.value;
+          await this.usuarioService.updateUsuario(this.usuario!);
+        } catch (e) {
+          console.error("Error al crear o verificar usuario en OneSignal: ", e);
+        }
+      }
+      
 
   async createUserAndLogin() {
     try {
-      const randomNumber = this.generateRandomString(20);
+      const randomNumber = 'test';
       console.log('Número almacenado: ', randomNumber);
       await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
       await Preferences.set({ key: 'auth', value: randomNumber });
@@ -193,7 +180,7 @@ export class PushComponent  implements OnInit {
     });
     toast.present();
   }*/
-
+/*
   generateRandomString(length: number): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -204,7 +191,7 @@ export class PushComponent  implements OnInit {
     }
   
     return result;
-  }  
+  }  */
 
   async deleteOneSignalUser() {
     try {
@@ -230,14 +217,14 @@ export class PushComponent  implements OnInit {
       const data = await this.getStorage('auth');
       this.usuario = await this.usuarioService.getUsuarioPorCorreo(email);
       if (data?.value) {
-        alert(data.value);
+        alert(this.usuario?.tokenNotification + ' ' + dispositivo);
         await lastValueFrom(
           this.onesignal.sendNotification(
             titulo,
             mensaje,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
-           [this.usuario?.tokenNotification, dispositivo]//BLZ3xKG0QgwxiXqJzX2k
+           ['samsunga33', 'samsunga34', 'motoe40', 'samsunga51', 'samsunga04s']//BLZ3xKG0QgwxiXqJzX2k
           )
         );
       }
