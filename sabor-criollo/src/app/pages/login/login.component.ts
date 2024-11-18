@@ -9,6 +9,8 @@ import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular/standalone';
 import { lastValueFrom } from 'rxjs';
 import { Preferences } from '@capacitor/preferences';
+import { PushComponent } from 'src/app/components/push/push.component';
+
 
 //import { PushNotificationService } from 'src/app/services/push-notification.service';
 //import Swal from 'sweetalert2';
@@ -35,6 +37,8 @@ export class LoginComponent  implements OnInit {
   private router: Router = inject(Router);
   private onesignal = inject(OnesignalService);
   private platform = inject(Platform);
+  //private pushComponent: PushComponent = inject(PushComponent);
+
   //private pushNotifServ: PushNotificationService = inject(PushNotificationService);
 
   protected form: FormGroup = new FormGroup({
@@ -43,13 +47,11 @@ export class LoginComponent  implements OnInit {
   });
 
   constructor() {
-    /*
-    this.platform.ready().then(() => {
+    
+    //Prepara y configura OneSignal para recibir notificaciones si la plataforma no es 
+   /* this.platform.ready().then(() => {
       if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
-    });
-    //this.authService.loginAnonymously();
-
-    //if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();*/
+    });*/
   }
 
   ngOnInit() {
@@ -58,20 +60,15 @@ export class LoginComponent  implements OnInit {
     //this.onesignal.OneSignalIOSPermission();
     //if(Capacitor.getPlatform() != 'web') this.oneSignal();
   }
-/*
-  async oneSignal() {
-    await this.onesignal.OneSignalIOSPermission();
-    const randomNumber  = {Math.random()}.toString;
 
-    Preferences.set{{key: 'auth', value: randomNumber}};
-
-    await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber.toString()));
-
-  }
-
-  getStorage(key){
-    return Preferences.get{{key: key}};
+ /* async oneSignal() {
+    try {
+      await this.onesignal.OneSignalIOSPermission();
+    } catch(e) {
+      console.log(e);
+    }
   }*/
+
 
   async ingresar(){
 
@@ -96,8 +93,6 @@ export class LoginComponent  implements OnInit {
           }) */
 
             
-            //this.createOneSignalUser();
-            //this.sendNotificationtoAllUsers();
         })
         .catch((error) => {
           console.error(error);
@@ -144,149 +139,6 @@ export class LoginComponent  implements OnInit {
 
   altaClientes(){
     this.router.navigateByUrl('/alta-cliente');
-  }
-
-  //////////////////
-
-  async oneSignal() {
-    try {
-      await this.onesignal.OneSignalIOSPermission();
-    } catch(e) {
-      console.log(e);
-    }
-  }
-
-  async createOneSignalUser() {
-    try {
-      const data = await this.getStorage('auth');
-      console.log('Datos almacenados: ', data);
-      if(!data || !data?.value) {
-        this.createUserAndLogin();
-        return;
-      }
-      console.log('ID Externa: ', data.value);
-      const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
-      if(!response) {
-        this.createUserAndLogin();
-      } else {
-        const { identity } = response;
-        console.log('Identidad: ', identity);
-        if(!identity?.external_id) {
-          this.createUserAndLogin();
-        } else {
-          this.onesignal.login(identity?.external_id);
-          //alert('Usuario ya existe en onesignal');
-        }
-      }
-    } catch(e) {
-      console.log(e);
-    }
-  }
-
-  async createUserAndLogin() {
-    try {
-      const randomNumber = this.generateRandomString(20);
-      console.log('número almacenado: ', randomNumber);
-      await lastValueFrom(this.onesignal.createOneSignalUser(randomNumber));
-      await Preferences.set({ key: 'auth', value: randomNumber });
-      this.onesignal.login(randomNumber);
-      //alert('Usuario creado en onesignal');
-    } catch(e) {
-      throw(e);
-    }
-  }
-  
-  /*async showToast(msg: string, color: string = 'success', duration = 3000) {
-    const toast = await this.toastCtrl.create({
-      message: msg,
-      duration: duration,
-      color: color,
-      position: 'bottom'
-    });
-    toast.present();
-  }*/
-
-  generateRandomString(length: number): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-  
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      result += characters.charAt(randomIndex);
-    }
-  
-    return result;
-  }  
-
-  async deleteOneSignalUser() {
-    try {
-      const data = await this.getStorage('auth');
-      if(!data?.value) return;
-      console.log('ID externo: ', data.value);
-      const response = await lastValueFrom(this.onesignal.checkOneSignalUserIdentity(data.value));
-      const { identity } = response;
-      console.log('Identidad: ', identity);
-      await lastValueFrom(this.onesignal.deleteOneSignalUser(identity?.external_id));
-      //alert('Usuario eliminado de onesignal');
-    } catch(e) {
-      console.log(e);
-    }
-  }
- 
-  getStorage(key: string) {
-    return Preferences.get({ key: key });
-  }
-
-  async sendNotificationtoSpecificDevice() {
-    try {
-      const data = await this.getStorage('auth');
-
-      if (data?.value) {
-        await lastValueFrom(
-          this.onesignal.sendNotification(
-            'Este es un mensaje de prueba',
-            'Mensaje de prueba',
-            { type: 'user1' },
-            [data.value]
-          )
-        );
-      }
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async sendNotificationtoAllUsers() {
-    try {
-      await lastValueFrom(
-        this.onesignal.sendNotification(
-          'Este es un mensaje para todo el mundo',
-          'Mensaje de prueba',
-          { type: 'user12' }
-        )
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async sendNotificationtoSpecificDeviceFromWeb() {
-    try {
-      await lastValueFrom(
-        this.onesignal.sendNotification(
-          'Este es un mensaje de prueba',
-          'Mensaje de prueba',
-          { type: 'user1' },
-          [
-            'coHcnUkQifwJunY37EgT',
-            'eATuiZAy7iJ5IE1YLxvK'
-          ]
-        )
-      );
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   test() {

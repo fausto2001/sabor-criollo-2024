@@ -11,6 +11,12 @@ import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { OnesignalService } from 'src/app/services/onesignal.service';
+import { Capacitor } from '@capacitor/core';
+import { Platform } from '@ionic/angular/standalone';
+import { lastValueFrom } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
+import { PushService } from 'src/app/services/push.service';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -27,6 +33,10 @@ export class AltaClientePage implements OnInit {
   private storageService: StorageService = inject(StorageService);
   private qrService:QrService = inject(QrService);
   private camaraService:CamaraService = inject(CamaraService);
+  private onesignalService = inject(OnesignalService);
+  private platform = inject(Platform);
+  private pushService: PushService = inject(PushService);
+
   protected fotoSubida: string = 'false';  
   
   protected error: string = '';
@@ -173,6 +183,7 @@ export class AltaClientePage implements OnInit {
           position: 'center'
         }).then(() => {
           this.form.reset();
+          this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo cliente esperando ser aceptado', 'Sabor Criollo tiene un nuevo mensaje','tomasmastrapasqua3@gmail.com', 'BLZ3xKG0QgwxiXqJzX2k')
           this.router.navigateByUrl('/login');
         });
       }

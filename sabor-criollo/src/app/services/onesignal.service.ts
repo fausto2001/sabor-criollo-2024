@@ -61,6 +61,7 @@ export class OnesignalService {
       if (!hasPermission) {
         // show prompt
         this.showAlert(msg);
+        //this.requestPermission();
       }
     } catch (e) {
       throw e;
@@ -71,7 +72,10 @@ export class OnesignalService {
     try {
       const permission = await OneSignal.Notifications.canRequestPermission();
       console.log('permission: ', permission);
+      //const permission = true;
       if (permission) {
+        alert('PERMISOS PARA RERCIBIR NOTIFICACIONES')
+
         // Prompts the user for notification permissions.
         //    * Since this shows a generic native prompt,
         // we recommend instead using an In-App Message to prompt for notification
@@ -89,14 +93,14 @@ export class OnesignalService {
   }
 
   showAlert(msg: string) {
-    this.alertCtrl
+    /*this.alertCtrl
       .create({
-        header: `Allow Push Notifications${msg}`,
+        header: `Permitir notificaciones${msg}`,
         message:
-          'Please allow us to send you notifications to get latest offers and order updates...',
+          'Por favor, permite las notificaciones',
         buttons: [
           {
-            text: "Don't Allow",
+            text: "No permitir",
             role: 'cancel',
             handler: () => {
               console.log('Confirm Cancel');
@@ -104,14 +108,15 @@ export class OnesignalService {
             },
           },
           {
-            text: 'Allow',
+            text: 'Permitir',
             handler: () => {
               this.requestPermission();
             },
           },
         ],
       })
-      .then((alertEl) => alertEl.present());
+      .then((alertEl) => alertEl.present());*/
+      this.requestPermission();
   }
 
   sendNotification(msg: string, title: string, data: any = null, external_id?: any) {

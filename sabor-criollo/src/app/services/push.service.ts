@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Component, OnInit, inject } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular/standalone';
@@ -9,18 +10,11 @@ import { OnesignalService } from 'src/app/services/onesignal.service';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonCol, IonRow, IonImg } from '@ionic/angular/standalone';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
-
-@Component({
-  selector: 'app-push',
-  templateUrl: './push.component.html',
-  styleUrls: ['./push.component.scss'],
-  standalone: true,
-  imports: [IonImg, IonRow, IonCol, IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
-
+@Injectable({
+  providedIn: 'root'
 })
-export class PushComponent  implements OnInit {
+export class PushService {
 
-  
   protected error: string = '';
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
@@ -28,8 +22,7 @@ export class PushComponent  implements OnInit {
   private platform = inject(Platform);
   private usuarioService = inject(UsuarioService);
   private authServ = inject(AuthService);
-
-
+  
   private usuario: UsuarioModel | null;
   private id_notificacion: any;
 
@@ -224,7 +217,7 @@ export class PushComponent  implements OnInit {
   getStorage(key: string) {
     return Preferences.get({ key: key });
   }
-
+//mensaje, titulo, email, dispositivo
   async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, email: any, dispositivo: any) {
     try {
       const data = await this.getStorage('auth');
@@ -233,7 +226,7 @@ export class PushComponent  implements OnInit {
         alert(data.value);
         await lastValueFrom(
           this.onesignal.sendNotification(
-            titulo,
+            'Notificacion para usuario especifico',
             mensaje,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
