@@ -58,7 +58,7 @@ export class AltaClientePage implements OnInit {
       confirmPassword: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
       apellido: new FormControl('', [Validators.required, Validators.pattern("^(?!\\s*$)[a-zA-ZÀ-ÿ\\s]+$")]),
-      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]),
+      dni: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(8), Validators.pattern("^[0-9]+$")]),
       rol: new FormControl('cliente', [Validators.required]),
       foto: new FormControl('', [Validators.required]),
     });
