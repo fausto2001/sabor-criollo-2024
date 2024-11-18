@@ -72,6 +72,10 @@ Bienvenido a **Sabor Criollo 2024**.
     
 ### β Joel Mahafud (Beta)
     - ✔️ Unificado en estilos y lógica de los módulos de alta (11/11)
+    - ✔️ Mejoras en mensajes de error y validaciones (13/11)
+    - ✔️ Fixes varios, pulido en estilos, mejoras visuales. (14/11)
+    - ✔️ Rediseño del componente pedido (15/11)
+    - ✔️ 
     
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Bartender/Cocinero/Mozo visualizan sus tareas correspondientes (10/11)
@@ -81,6 +85,17 @@ Bienvenido a **Sabor Criollo 2024**.
 
 
 ## 📅 Semana 4 (17/11 - 23/11)
+
+### α Fausto Panello (Alfa)
+    - ⌛ Más tareas...
+    
+### β Joel Mahafud (Beta)
+    - ✔️ Fixes de UI (18/11)
+    - ⌛ Más tareas...
+    
+### γ Tomas Mastrapasqua (Gamma)
+    - ⌛ Más tareas...
+
 
 ## 📜 Módulos de funcionalidades mínimas a realizar
 
