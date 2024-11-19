@@ -1,5 +1,5 @@
 # 🍔 Sabor Criollo 2024
-![file](https://github.com/user-attachments/assets/f0c4a06d-5a4b-424d-a2a2-c5bec3bc6777)
+![file](https://github.com/user-attachments/assets/f0c4a06d-5a4b-424d-a2a2-c5bec3bc6777) </br>
 
 Bienvenido a **Sabor Criollo 2024**.
 
@@ -188,3 +188,15 @@ a ser realizada).
             - El cliente, escaneando el QR de la lista de espera, podrá visualizar los resultados de las encuestas en distintos tipos de gráficos (torta, barra, lineal, etc.).
 
 ---
+![lista-de-espera](https://github.com/user-attachments/assets/956fd3c5-640f-4662-b550-daa7289c86e0)
+![mesa-1](https://github.com/user-attachments/assets/63bd60e6-20d1-4f1c-a12b-2dd609a3e2b9)
+![mesa-2](https://github.com/user-attachments/assets/e6679451-f917-4210-9ff4-0b18a4cea53a)
+![mesa-3](https://github.com/user-attachments/assets/b0160d5b-bc54-496c-9b39-8ab8698603ed)
+![mesa-4](https://github.com/user-attachments/assets/4f83352d-80ec-4028-acd7-5bed6af8b6a9)
+![malo](https://github.com/user-attachments/assets/a9b383b9-d775-4b72-97bf-e74105fe6273)
+![regular](https://github.com/user-attachments/assets/0b65e4ee-c7fc-4f96-8cff-7d5708b2fe3d)
+![bueno](https://github.com/user-attachments/assets/f9f5b828-22e3-47ef-a9f4-b5902f116abe)
+![muybueno](https://github.com/user-attachments/assets/9c27d665-22d0-42bc-ba5c-769fe024154c)
+![excelente](https://github.com/user-attachments/assets/eadeedee-fcea-46d6-baea-94a7b063ad3c)
+
+
