@@ -10,7 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TStoDatePipe } from "../../pipes/tsto-date.pipe";
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
-
+import { Platform } from '@ionic/angular/standalone';
+import { lastValueFrom } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
+import { PushService } from 'src/app/services/push.service';
 
 @Component({
     selector: 'app-chat',
@@ -26,6 +29,8 @@ export class ChatPage implements OnInit, AfterViewInit {
   //private pushNotifServ:NotificationPushService = inject(NotificationPushService)
   private actRoute:ActivatedRoute = inject(ActivatedRoute);
   private router:Router = inject(Router);
+  private platform = inject(Platform);
+  private pushService: PushService = inject(PushService);
 
 
   mensajes:Chat[] = [];
@@ -99,6 +104,8 @@ export class ChatPage implements OnInit, AfterViewInit {
       this.chatServ.guardarMensaje(nuevoMensaje);
       if(this.usuario?.rol == 'cliente'){
         //this.pushNotifServ.emitPushNotificationPorRol('Nuevo mensaje - Mesa: ' + this.usuario!.mesa, this.sendMensaje, 'mozo');
+        this.pushService.sendNotificationtoSpecificDevice('Un cliente ha realizado una consulta ¡Respondele lo antes posible!', '¡Nueva consulta en Sabor Criollo!', 'motoe40')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
+
       }
       
       setTimeout(() => {
