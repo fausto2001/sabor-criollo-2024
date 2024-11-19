@@ -75,7 +75,7 @@ Bienvenido a **Sabor Criollo 2024**.
 ## 📅 Semana 4 (17/11 - 23/11)
 
 ### α Fausto Panello (Alfa)
-    - ⌛ Más tareas...
+    - ✔️ Creación de push notifications. (18/11)
     
 ### β Joel Mahafud (Beta)
     - ✔️ Fixes de UI (18/11)
