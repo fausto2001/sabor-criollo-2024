@@ -119,8 +119,8 @@ Bienvenido a **Sabor Criollo 2024**.
             - Verificar que el cliente NO pueda ingresar a la aplicación, si NO es aceptado (con estado ‘pendiente de aprobación’ o ‘rechazado’). Informar lo acontecido con un mensaje alusivo para cada caso.
             - Verificar que el cliente pueda ingresar a la aplicación, si es aceptado.
 			
-![](./sabor-criollo/src/assets/readme_fotos/fn4.png)
-![](./sabor-criollo/src/assets/readme_fotos/fn5.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn4.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn5.jpg)
 
 ### 4 - Ingresa un cliente al local como anónimo (celular 2) y escanea el código QR para solicitar mesa (lista de espera).
     Tareas: - Verificar que aparezca en la lista de espera del maître (celular 1). (push notification *A)
