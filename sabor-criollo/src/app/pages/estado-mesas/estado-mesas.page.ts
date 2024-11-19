@@ -19,7 +19,10 @@ import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
-
+import { Platform } from '@ionic/angular/standalone';
+import { lastValueFrom } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
+import { PushService } from 'src/app/services/push.service';
 @Component({
   selector: 'app-estado-mesas',
   templateUrl: './estado-mesas.page.html',
@@ -28,6 +31,8 @@ import { Router } from '@angular/router';
   imports: [IonCard, IonCardContent, IonFabList, IonFab, IonFabButton, IonBackButton, IonRadio, IonSelectOption, IonRadioGroup, IonGrid, IonItem, IonLabel, IonInput, IonCol, IonButton, IonImg, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonRow, CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class EstadoMesasPage implements OnInit {
+  private platform = inject(Platform);
+  private pushService: PushService = inject(PushService);
   //private pushNotifServ: NotificationPushService = inject(NotificationPushService);
   mesas!: MesaModel[];
   hayMesas: boolean = true;
@@ -138,6 +143,7 @@ export class EstadoMesasPage implements OnInit {
         }
         pedido.estado = 'En proceso';
         this.pedidoService.updatePedido(pedido);
+        this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo pedido a la espera', '¡Nuevo pedido en Sabor Criollo!', 'samsunga33')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
 
 
       }
