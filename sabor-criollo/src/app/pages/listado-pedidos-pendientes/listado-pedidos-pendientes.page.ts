@@ -18,6 +18,7 @@ import { QrService } from 'src/app/services/qr.service';
 import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { PushService } from 'src/app/services/push.service';
 //import { confirmarClaveValidator } from '../../Validators/password.validator';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 
@@ -32,6 +33,7 @@ export class ListadoPedidosPendientesPage implements OnInit {
   private authServ:AuthService = inject(AuthService)
   private usuarioServ:UsuarioService = inject(UsuarioService); 
   private qrServ:QrService = inject(QrService);
+  private pushService: PushService = inject(PushService); 
   //private pushNotifServ:NotificationPushService = inject(NotificationPushService);
 
   usuario!: UsuarioModel;
@@ -134,9 +136,11 @@ export class ListadoPedidosPendientesPage implements OnInit {
         });
 
         if(this.usuario.rol == 'bartender' && pedido.estadoBartender != 'No tiene'){
+          this.pushService.sendNotificationtoSpecificDevice('El bartender terminó su parte.', '¡Actualización del pedido en Sabor Criollo!', 'samsunga33')
           pedido.estadoBartender = 'Finalizado';
           } 
         if(this.usuario.rol == 'cocinero' && pedido.estadoCocinero != 'No tiene'){
+          this.pushService.sendNotificationtoSpecificDevice('El cocinero terminó su parte.', '¡Actualización del pedido en Sabor Criollo!', 'samsunga33')
           pedido.estadoCocinero = 'Finalizado';
         }
 
