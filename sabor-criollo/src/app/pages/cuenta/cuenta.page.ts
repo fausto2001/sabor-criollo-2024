@@ -56,7 +56,6 @@ export class CuentaPage implements OnInit {
     private pedidoService: PedidoService, private router: Router,
     private authService: AuthService, private toastService: ToastService, private mesaService: MesaService) { }
 
-<<<<<<< HEAD
     ngOnInit() {
       this.usuario = this.authService.usuario!;
       if (!this.usuario) {
@@ -76,24 +75,9 @@ export class CuentaPage implements OnInit {
 
       BarcodeScanner.isSupported().then((result) => {
         this.isSupported = result.supported;
-=======
-  ngOnInit() {
-    this.usuario = this.authService.usuario!;
-    if (!this.usuario) {
-      this.authService.user$.subscribe((data) => {
-        if (data) {
-          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
-            this.usuario = usuario!;
-            //alert(this.usuario.id);
-            this.cargarUltimoPedido(this.usuario.id);
 
-          });
-        }
->>>>>>> b75af5ad749d1e495f6db2ef23f581a784a3c4b5
       });
     }
-
-  }
 
   cargarUltimoPedido(id: string): void {
     console.log('id del usuario: ' + id);
