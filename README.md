@@ -146,6 +146,8 @@ Bienvenido a **Sabor Criollo 2024**.
             - Al tener la mesa asignada, se verifica que NO se le pueda asignar dicha mesa a otro cliente.
 
 ![](./sabor-criollo/src/assets/readme_fotos/fn8.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn8_1.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn8_2.png)
 ![](./sabor-criollo/src/assets/readme_fotos/fn9.png)
 
 ### 6 - Al cargar el código QR de la mesa (en el celular del cliente), se permite ver el listado de los productos (comidas, bebidas, postres) con tres imágenes por cada producto, precio, descripción y tiempo estimado de elaboración.
@@ -161,24 +163,21 @@ Bienvenido a **Sabor Criollo 2024**.
             - Verificar que el pedido no sea derivado a sus respectivos sectores hasta que el mozo no confirme el pedido.
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder al estado de su pedido.
 
-![](./sabor-criollo/src/assets/readme_fotos/fn10.jpg)
-![](./sabor-criollo/src/assets/readme_fotos/fn12.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn13.png)
 
 
 ### 8 - El mozo confirma el pedido (celular 3), este es derivado a los sectores correspondientes.
     Tareas: - Verificar que las distintas partes del pedido se visualicen en dichos sectores. (push notification *A)
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder a los juegos*, a la encuesta y al estado de su pedido.
 
-![](./sabor-criollo/src/assets/readme_fotos/fn13.jpg)
-![pedido-pendiente-cliente](https://github.com/user-attachments/assets/91244915-52e0-44a7-bbd1-e848283e2639)
+![](./sabor-criollo/src/assets/readme_fotos/fn13_1.png) (Menú del mozo)
 
 
 ### 9 - Cada sector (cocina y bar) realiza las tareas correspondientes (celular 1) y avisan que los productos están listos para que el mozo los entregue.
     Tareas: - Verificar que cada parte del pedido se visualice en el listado de pedidos pendientes del mozo. (push notification *A)
             - El cliente verifica el cambio de estado en su pedido (escaneando el QR de su mesa).
 
-![](./sabor-criollo/src/assets/readme_fotos/fn14.png)
-![](./sabor-criollo/src/assets/readme_fotos/fn15.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn13_1.png) (Menú del cocinero)
 
 ### 10 - El mozo entrega el pedido completo (las comidas, bebidas y postres).
     Tareas: - El cliente confirma la recepción de su pedido.
