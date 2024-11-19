@@ -128,10 +128,12 @@ export class OnesignalService {
       headings: { en: title },
       contents: { en: msg },
       android_channel_id: environment.onesignal.android_channel_id,
-      // small_icon: 'mipmap/ic_launcher_round',
-      // large_icon: 'mipmap/ic_launcher_round',
-      small_icon: 'mipmap/ic_notification',
-      large_icon: 'mipmap/ic_notification_large',
+      small_icon: 'drawable/ic_stat_name',
+      large_icon: 'drawable/ic_stat_name',
+
+      //small_icon: 'sabor-criollo/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp',//sabor-criollo\android\app\src\main\res\mipmap-hdpi\ic_launcher_round.webp
+      //large_icon: 'sabor-criollo/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp',
+
       ios_sound: 'sound.wav',
       // filters: [
       //   {
