@@ -74,7 +74,7 @@ export class OnesignalService {
       console.log('permission: ', permission);
       //const permission = true;
       if (permission) {
-        alert('PERMISOS PARA RERCIBIR NOTIFICACIONES')
+        //alert('PERMISOS PARA RECIBIR NOTIFICACIONES')
 
         // Prompts the user for notification permissions.
         //    * Since this shows a generic native prompt,
