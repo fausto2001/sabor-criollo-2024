@@ -50,45 +50,42 @@ export class CuentaPage implements OnInit {
     private pedidoService: PedidoService, private router: Router,
     private authService: AuthService, private toastService: ToastService, private mesaService: MesaService) { }
 
-    ngOnInit() {
-      this.usuario = this.authService.usuario!;
-      if (!this.usuario) {
-        this.authService.user$.subscribe((data) => {
-          if (data) {
-            this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
-              this.usuario = usuario!;
-              if (this.usuario.id) {
-                this.cargarUltimoPedido(this.usuario.id);
-              }
-            });
-          }
-        });
-      } else {
-        this.cargarUltimoPedido(this.usuario.id);
-      }
+  ngOnInit() {
+    this.usuario = this.authService.usuario!;
+    if (!this.usuario) {
+      this.authService.user$.subscribe((data) => {
+        if (data) {
+          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+            this.usuario = usuario!;
+            //alert(this.usuario.id);
+            this.cargarUltimoPedido(this.usuario.id);
+
+          });
+        }
+      });
     }
-    
+
+  }
 
   cargarUltimoPedido(id: string): void {
     console.log('id del usuario: ' + id);
     //alert(id);
-    this.pedidoService.getPedidoPorId('3WEKFdLXn81Qlql68Jx9').subscribe(
+    this.pedidoService.getUltimoPedidoUsuario(id).subscribe(
       (pedido) => {
         //this.pedido = pedido;
-        this.pedido = pedido;
+        console.log('Último pedido:', this.pedido);
+        this.pedido = pedido.sort((a, b)=>{return a.fecha! > b.fecha! ? -1 : 1})[0];
 
-       this.mesaService.getMesaUsuario(this.pedido.idMesa!, this.pedido.idCliente).subscribe( data => {
+        this.mesaService.getMesaUsuario(this.pedido.idMesa!, this.pedido.idCliente).subscribe( data => {
           this.mesa = data;
         });
 
         this.userService.getUsuarioPorId(this.pedido.idCliente).subscribe( data => {
           this.cliente = data;          
         })
-
         this.subtotal = this.pedido.importeTotal;
       }
     );
-
   }
 
   async escanearQRPropina() {
@@ -106,21 +103,10 @@ export class CuentaPage implements OnInit {
 
 
   async pagar(){
-
-    //this.mesaService.getMesaUsuario(this.usuario.mesa, this.usuario.id);
-
     this.cliente.mesa = null;
     await this.userService.updateUsuario(this.cliente);
-
-    // this.mesa.estado = 'Disponible';
-    // this.mesa.cliente = null;
-    // await this.mesaService.updateMesa(this.mesa)
-
     this.pedido.estado = 'Pagado';
     await this.pedidoService.updatePedido(this.pedido);
-
-    // this.pushNotifServ.emitPushNotificationPorRol('Solicitando cuenta - Mesa: ' + this.pedido.idMesa , "El cliente está solicitando pagar su cuenta.", 'mozo');
-    
     this.router.navigate(['/home'])
   }
   
