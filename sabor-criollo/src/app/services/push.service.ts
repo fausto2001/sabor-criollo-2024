@@ -228,7 +228,7 @@ export class PushService {
             titulo,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
-           [dispositivo]//BLZ3xKG0QgwxiXqJzX2k
+           [dispositivo],//BLZ3xKG0QgwxiXqJzX2k
           )
         );
       }
