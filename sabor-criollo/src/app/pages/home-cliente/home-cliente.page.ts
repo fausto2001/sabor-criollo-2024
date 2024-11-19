@@ -10,6 +10,12 @@ import { QrService } from 'src/app/services/qr.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { OnesignalService } from 'src/app/services/onesignal.service';
+import { Capacitor } from '@capacitor/core';
+import { Platform } from '@ionic/angular/standalone';
+import { lastValueFrom } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
+import { PushService } from 'src/app/services/push.service';
 
 import Swal from 'sweetalert2';
 @Component({
@@ -26,6 +32,9 @@ export class HomeClientePage implements OnInit {
   private qrServ:QrService = inject(QrService);
   private router: Router = inject(Router);
   private toastServ: ToastService = inject(ToastService);
+  private onesignalService = inject(OnesignalService);
+  private platform = inject(Platform);
+  private pushService: PushService = inject(PushService);
   //private pushServ:NotificationPushService = inject(NotificationPushService)
   usuario!:UsuarioModel | null;
 
@@ -80,6 +89,8 @@ export class HomeClientePage implements OnInit {
       if(this.barcodes[0].rawValue == 'espera'){
         this.usuario!.enListaDeEspera = true;
         this.usuarioServ.updateUsuario(this.usuario!);
+        this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando una mesa. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'motoe40')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
+
       }else{
         //alert('ERROR, QR INCORRECTO');
       }
