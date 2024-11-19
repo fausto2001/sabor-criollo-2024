@@ -239,6 +239,28 @@ export class PushService {
     }
   }
 
+  async sendNotificationtoSpecificDeviceConMail(mensaje: string, titulo: string, email: any, dispositivo: any) {
+    try {
+      const data = await this.getStorage('auth');
+      this.usuario = await this.usuarioService.getUsuarioPorCorreo(email);
+      if (data?.value) {
+        alert('TOKEN: ' + this.usuario?.tokenNotification + ' DISPOSITIVO: ' + dispositivo);
+        await lastValueFrom(
+          this.onesignal.sendNotification(
+            titulo,
+            mensaje,
+            { type: 'user1' },
+           // [data.value]//aca va el id del usuario
+           [dispositivo]//BLZ3xKG0QgwxiXqJzX2k
+          )
+        );
+      }
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async sendNotificationtoAllUsers() {
     try {
       await lastValueFrom(
