@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonImg, IonCol, IonRow, IonGrid } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonImg, IonCol, IonRow, IonGrid, IonCard, IonCardTitle } from '@ionic/angular/standalone';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MesaService } from 'src/app/services/mesa.service';
@@ -19,7 +19,7 @@ import { PedidoModel } from 'src/app/models/pedido.component';
   templateUrl: './home-pedido.page.html',
   styleUrls: ['./home-pedido.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonContent, IonHeader, IonTitle, IonRow, IonCol, 
+  imports: [IonCardTitle, IonCard, IonGrid, IonContent, IonHeader, IonTitle, IonRow, IonCol, 
     IonButton, IonToolbar, CommonModule, FormsModule, RouterLink, IonIcon, IonImg]
 })
 export class HomePedidoPage implements OnInit {

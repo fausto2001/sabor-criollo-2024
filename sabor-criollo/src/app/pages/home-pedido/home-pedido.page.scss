@@ -23,3 +23,20 @@
     background-image: url('../../../assets/fondo-login-2.jpg')!important;
 } */
 
+ion-card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+ion-card {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-sizing:border-box;
+  //--background: #01be62;
+}
+

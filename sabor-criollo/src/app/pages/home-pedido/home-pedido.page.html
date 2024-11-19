@@ -7,16 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
-
+  <ion-row class="icon-img">
+    <ion-img src="../../../assets/logo-png.png"></ion-img>
+  </ion-row>
         <!-- NO HAY PEDIDO ANTERIOR -->
       <ng-container *ngIf="!pedido">
         <ion-row>
+          <ion-card>
+            <ion-card-title>USTED NO TIENE PEDIDOS PENDIENTES</ion-card-title>
+          </ion-card>
+        </ion-row>
+        <ion-row>
           <ion-col size="12" >
-            <ion-row class="icon-img">
-              <ion-img src="../../../assets/logo-png.png"></ion-img>
-            </ion-row>
            <!--  <p class="ion-justify-content-center">BIENVENIDO A SABOR CRIOLLO</p> -->
             <ion-button routerLink="/pedido" expand="block" shape="round" class="btnMenu">
               REALIZAR PEDIDO
@@ -31,10 +34,15 @@
         </ion-row>
       </ng-container>
 
-      <div *ngIf="pedido"> 
+    <div *ngIf="pedido"> 
       <!-- PENDIENTE -->
       <ng-container *ngIf="pedido.estado == 'pendiente'">
-        <!-- <p>EL ESTADO DE SU PEDIDO ES: <br> PENDIENTE</p> -->
+        <!-- <p>EL ESTADO DE SU PEDIDO ES: <br> PENDIENTE</p> -->  
+         <ion-row>
+            <ion-card>
+              <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br>PENDIENTE</ion-card-title>
+            </ion-card>
+          </ion-row>
         <ion-row>
           <ion-col size="12" >
             <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
@@ -53,8 +61,12 @@
       <!-- En proceso -->
       <ng-container *ngIf="pedido.estado == 'En proceso'">
         <ion-row>
+          <ion-card>
+            <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br> EN PROCESO</ion-card-title>
+          </ion-card>
+        </ion-row>
+        <ion-row>
           <ion-col size="12" >
-            <p>EL ESTADO DE SU PEDIDO ES: <br> EN PREPARACION</p>
             <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
               CONSULTAR AL MOZO
             </ion-button>
@@ -74,8 +86,12 @@
       <!-- FINALIZADO -->
       <ng-container *ngIf="pedido.estado == 'Finalizado'">
         <ion-row>
+          <ion-card>
+            <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br>FINALIZADO</ion-card-title>
+          </ion-card>
+        </ion-row>
+        <ion-row>
           <ion-col size="12" >
-            <p>EL ESTADO DE SU PEDIDO ES: <br> FINALIZADO</p>
             <ion-button routerLink="/chat" expand="block" shape="round" class="btnMenu">
               CONSULTAR AL MOZO
             </ion-button>
@@ -95,8 +111,12 @@
       <!-- ENTREGADO -->
       <ng-container *ngIf="pedido.estado == 'Entregado'">
         <ion-row>
+          <ion-card>
+            <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br> ENTREGADO</ion-card-title>
+          </ion-card>
+        </ion-row>
+        <ion-row>
           <ion-col size="12" >
-            <p>EL ESTADO DE SU PEDIDO ES: <br> ENTREGADO</p>
             <ion-button routerLink="/graficos" expand="block" shape="round" class="btnMenu">
               VER ENCUESTAS ANTERIORES
             </ion-button>
@@ -115,9 +135,13 @@
 
       <!-- PAGADO -->
       <ng-container *ngIf="pedido.estado == 'Pagado'">
+          <ion-row>
+            <ion-card>
+              <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br> PAGADO</ion-card-title>
+            </ion-card>
+          </ion-row>
         <ion-row>
           <ion-col size="12" >
-            <p>EL ESTADO DE SU PEDIDO ES: <br> PAGADO</p>
             <ion-button routerLink="/graficos" expand="block" shape="round" class="btnMenu">
               VER ENCUESTAS ANTERIORES
             </ion-button>
@@ -134,8 +158,12 @@
       
       <ng-container *ngIf="pedido.estado == 'Cobrado'">
         <ion-row>
+          <ion-card>
+            <ion-card-title>EL ESTADO DE SU PEDIDO ES: <br> COBRADO</ion-card-title>
+          </ion-card>
+        </ion-row>
+        <ion-row>
           <ion-col size="12" >
-            <p>EL ESTADO DE SU ULTIMO PEDIDO ES: <br> COBRADO</p>
             <ion-button routerLink="/graficos" expand="block" shape="round" class="btnMenu">
               VER ENCUESTAS ANTERIORES
             </ion-button>
@@ -148,5 +176,5 @@
           </ion-col>
         </ion-row>
       </ng-container>
-      </div>
+    </div>
 </ion-content>
