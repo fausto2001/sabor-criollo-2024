@@ -184,6 +184,7 @@ export class AltaClientePage implements OnInit {
         }).then(() => {
           this.form.reset();                                                                                                                                                                                
           this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando tu aprobación. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'ngXfl09St1tkmB48AxYk')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
+          this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando tu aprobación. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'motoe40')// ngXfl09St1tkmB48AxYk fausto moto e 40
           this.router.navigateByUrl('/login');
         });
       }
