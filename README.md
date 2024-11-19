@@ -82,6 +82,8 @@ Bienvenido a **Sabor Criollo 2024**.
     - ⌛ Más tareas...
     
 ### γ Tomas Mastrapasqua (Gamma)
+    - ✔️ Push notifications para cada rol (18/11)
+    - ✔️ Cliente solicita la cuenta (18/11)
     - ⌛ Más tareas...
 
 
