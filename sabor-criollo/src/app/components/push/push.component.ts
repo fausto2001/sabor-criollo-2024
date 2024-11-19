@@ -217,14 +217,14 @@ export class PushComponent  implements OnInit {
       const data = await this.getStorage('auth');
       this.usuario = await this.usuarioService.getUsuarioPorCorreo(email);
       if (data?.value) {
-        alert(this.usuario?.tokenNotification + ' ' + dispositivo);
+        alert('TOKEN: ' + this.usuario?.tokenNotification + ' DISPOSITIVO: ' + dispositivo);
         await lastValueFrom(
           this.onesignal.sendNotification(
             titulo,
             mensaje,
             { type: 'user1' },
            // [data.value]//aca va el id del usuario
-           ['samsunga33', 'samsunga34', 'motoe40', 'samsunga51', 'samsunga04s']//BLZ3xKG0QgwxiXqJzX2k
+           [dispositivo]//BLZ3xKG0QgwxiXqJzX2k
           )
         );
       }

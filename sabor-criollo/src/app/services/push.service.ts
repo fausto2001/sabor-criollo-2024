@@ -221,6 +221,7 @@ export class PushService {
   async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, dispositivo: any) {
     try {
       const data = await this.getStorage('auth');
+      // alert del data.value
       if (data?.value) {
         await lastValueFrom(
           this.onesignal.sendNotification(
