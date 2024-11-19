@@ -117,7 +117,6 @@ Bienvenido a **Sabor Criollo 2024**.
             - Verificar que no puede tomar una mesa sin estar previamente en la lista de espera.
             - Verificar que solo puede acceder a los resultados de las encuestas previas.
 
-![](./sabor-criollo/src/assets/readme_fotos/QRespera.png)
 ![](./sabor-criollo/src/assets/readme_fotos/fn6.png)
 ![](./sabor-criollo/src/assets/readme_fotos/fn7.png)
 
@@ -127,10 +126,6 @@ Bienvenido a **Sabor Criollo 2024**.
             - Al tener la mesa asignada, se verifica que el cliente no se pueda vincular a otra mesa (indicar cuál es su mesa asignada).
             - Al tener la mesa asignada, se verifica que NO se le pueda asignar dicha mesa a otro cliente.
 
-![](./sabor-criollo/src/assets/readme_fotos/QRM1.png)
-![](./sabor-criollo/src/assets/readme_fotos/QRM2.png)
-![](./sabor-criollo/src/assets/readme_fotos/QRM3.png)
-![](./sabor-criollo/src/assets/readme_fotos/QRM4.png)
 ![](./sabor-criollo/src/assets/readme_fotos/fn8.png)
 ![](./sabor-criollo/src/assets/readme_fotos/fn9.png)
 
