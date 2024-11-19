@@ -167,6 +167,8 @@ Bienvenido a **Sabor Criollo 2024**.
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder a los juegos*, a la encuesta y al estado de su pedido.
 
 ![](./sabor-criollo/src/assets/readme_fotos/fn13.jpg)
+![pedido-pendiente-cliente](https://github.com/user-attachments/assets/91244915-52e0-44a7-bbd1-e848283e2639)
+
 
 ### 9 - Cada sector (cocina y bar) realiza las tareas correspondientes (celular 1) y avisan que los productos están listos para que el mozo los entregue.
     Tareas: - Verificar que cada parte del pedido se visualice en el listado de pedidos pendientes del mozo. (push notification *A)
