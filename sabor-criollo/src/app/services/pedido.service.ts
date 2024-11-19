@@ -81,6 +81,15 @@ export class PedidoService {
       map(usuarios => usuarios as PedidoModel[]))
   }
 
+  getPedidoPorId(id:string){
+    let qry = query(
+      this.pedidosCollection,
+      where('id', '==', id)
+    );
+    return collectionData(qry).pipe( take(1),
+      map( pedidos => pedidos[0] as PedidoModel  ));
+  }
+
   getUltimoPedidoMesaTake1(numero:string){
     let qry = query(
       this.pedidosCollection,

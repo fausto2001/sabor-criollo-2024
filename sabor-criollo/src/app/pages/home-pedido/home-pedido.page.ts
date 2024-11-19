@@ -55,7 +55,7 @@ export class HomePedidoPage implements OnInit {
       (pedido) => {
         //this.pedido = pedido;
         console.log('Último pedido:', this.pedido);
-        this.pedido = pedido.sort((a, b)=>{return a.fecha! > b.fecha! ? -1 : 1})[0];
+        this.pedido = pedido[0];
       }
     );
   }

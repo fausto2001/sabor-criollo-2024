@@ -8,8 +8,8 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content [fullscreen]="true" scrollY="true">
-  <ion-grid>
+<ion-content [fullscreen]="true">
+  <ion-grid *ngIf="pedido != null">
     <ion-row class="cuenta">
       <ion-card class="info-cliente">
         <ion-card-content>

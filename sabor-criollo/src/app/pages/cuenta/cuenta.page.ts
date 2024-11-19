@@ -50,42 +50,45 @@ export class CuentaPage implements OnInit {
     private pedidoService: PedidoService, private router: Router,
     private authService: AuthService, private toastService: ToastService, private mesaService: MesaService) { }
 
-  ngOnInit() {
-    this.usuario = this.authService.usuario!;
-    if (!this.usuario) {
-      this.authService.user$.subscribe((data) => {
-        if (data) {
-          this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
-            this.usuario = usuario!;
-            //alert(this.usuario.id);
-            this.cargarUltimoPedido(this.usuario.id);
-
-          });
-        }
-      });
+    ngOnInit() {
+      this.usuario = this.authService.usuario!;
+      if (!this.usuario) {
+        this.authService.user$.subscribe((data) => {
+          if (data) {
+            this.userService.getUsuarioPorUid(data.uid!).then((usuario) => {
+              this.usuario = usuario!;
+              if (this.usuario.id) {
+                this.cargarUltimoPedido(this.usuario.id);
+              }
+            });
+          }
+        });
+      } else {
+        this.cargarUltimoPedido(this.usuario.id);
+      }
     }
-
-  }
+    
 
   cargarUltimoPedido(id: string): void {
     console.log('id del usuario: ' + id);
     //alert(id);
-    this.pedidoService.getUltimoPedidoUsuario(id).subscribe(
+    this.pedidoService.getPedidoPorId('3WEKFdLXn81Qlql68Jx9').subscribe(
       (pedido) => {
         //this.pedido = pedido;
-        console.log('Último pedido:', this.pedido);
-        this.pedido = pedido.sort((a, b)=>{return a.fecha! > b.fecha! ? -1 : 1})[0];
+        this.pedido = pedido;
 
-        this.mesaService.getMesaUsuario(this.pedido.idMesa!, this.pedido.idCliente).subscribe( data => {
+       this.mesaService.getMesaUsuario(this.pedido.idMesa!, this.pedido.idCliente).subscribe( data => {
           this.mesa = data;
         });
 
         this.userService.getUsuarioPorId(this.pedido.idCliente).subscribe( data => {
           this.cliente = data;          
         })
+
         this.subtotal = this.pedido.importeTotal;
       }
     );
+
   }
 
   async escanearQRPropina() {

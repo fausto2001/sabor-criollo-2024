@@ -141,9 +141,10 @@ export class EstadoMesasPage implements OnInit {
           pedido.estadoCocinero = 'En proceso';
           //this.pushNotifServ.emitPushNotificationPorRol('Nuevo pedido', "Ver lista de pendientes", 'cocinero');
         }
+        this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo pedido a la espera', '¡Nuevo pedido en Sabor Criollo!', 'samsunga33')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
+
         pedido.estado = 'En proceso';
         this.pedidoService.updatePedido(pedido);
-        this.pushService.sendNotificationtoSpecificDevice('Hay un nuevo pedido a la espera', '¡Nuevo pedido en Sabor Criollo!', 'samsunga33')// ngXfl09St1tkmB48AxYk fausto samsung a 04s
 
 
       }
