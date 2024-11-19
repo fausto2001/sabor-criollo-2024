@@ -65,12 +65,14 @@ export class CuentaPage implements OnInit {
               this.usuario = usuario!;
               if (this.usuario.id) {
                 this.cargarUltimoPedido(this.usuario.id);
+
               }
             });
           }
         });
       } else {
         this.cargarUltimoPedido(this.usuario.id);
+
       }
 
       BarcodeScanner.isSupported().then((result) => {
@@ -122,10 +124,13 @@ export class CuentaPage implements OnInit {
     }
     this.barcodes = []; 
     const { barcodes } = await BarcodeScanner.scan();
+
     this.barcodes.push(...barcodes);
 
     if (this.barcodes.length > 0) {
-      this.propina = Number(this.barcodes[0]);
+      //alert(JSON.stringify(this.barcodes));
+
+      this.propina = Number(this.barcodes[0].rawValue);
       this.pedido.importeTotal = (this.subtotal  * (100 + this.propina))/100
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
