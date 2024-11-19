@@ -19,9 +19,8 @@
             </h3>
           </div>
         </ion-card-content>
-      </ion-card>
-
-      <ion-img class="icon-qr" src="../../assets/qr.png" name="logout" (click)="scan()"></ion-img>
+      </ion-card> 
+      <ion-img class="icon-qr" src="../../assets/botones/propina.png" name="logout" (click)="scan()"></ion-img>
 
       <ion-card class="info-pedido" *ngIf="pedido">
         <ion-card-content>
@@ -38,7 +37,7 @@
       <ion-card class="info-subtotal">
         <ion-card-content>
           <div class="card-btn">
-            <h1>Subtotal: {{pedido.importeTotal}}</h1>
+            <h1>Subtotal: {{subtotal}}</h1>
           </div>
         </ion-card-content>
       </ion-card>

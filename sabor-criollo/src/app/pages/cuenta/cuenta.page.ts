@@ -113,6 +113,9 @@ export class CuentaPage implements OnInit {
   }
 
   async scan(): Promise<void> {
+
+
+
     const granted = await this.requestPermissions();
     if (!granted) {
       return;
@@ -122,14 +125,13 @@ export class CuentaPage implements OnInit {
     this.barcodes.push(...barcodes);
 
     if (this.barcodes.length > 0) {
-      
-      this.total_propina = (this.pedido.importeTotal * (100 + Number(this.barcodes[0])))/100
-      //this.total_propina = (this.pedido.importeTotal * Number(this.barcodes[0])) / 100
-      
-      this.pedido.importeTotal = this.subtotal + this.total_propina;
+      this.propina = Number(this.barcodes[0]);
+      this.pedido.importeTotal = (this.subtotal  * (100 + this.propina))/100
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
     }
+
+
   }
 
   async requestPermissions(): Promise<boolean> {
