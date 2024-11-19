@@ -37,11 +37,6 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ## 📅 Semana 2 (3/11 - 9/11)
 
-### 📓 A Asignar
-
-    -   ❌ Envio de mails
-    -   ❌ Envio de Push Notifications
-
 ### α Fausto Panello (Alfa)
     - ✔️ (nueva) Función de escaneo de DNI (3/11)
     - ✔️ Alta del cliente (atrasado de la semana anterior). (6/11)
@@ -59,13 +54,6 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Consulta al mozo (9/11)
 
 ## 📅 Semana 3 (10/11 - 16/11)
-
-### 📓 A Asignar
-
-    -   ❌ Envio de mails
-    -   ❌ Envio de Push Notifications
-    -   ❌ Alta de encuestas
-    -   ❌ Pagar la cuenta y escaneo QR de descuentos
 
 ### α Fausto Panello (Alfa)
     - ✔️ Alta de encuestas (12/11)
