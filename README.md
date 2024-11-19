@@ -57,34 +57,49 @@ Bienvenido a **Sabor Criollo 2024**.
 
 ### α Fausto Panello (Alfa)
     - ✔️ Alta de encuestas (12/11)
+    - ✔️ Testeo y debugeo en conjunto (14/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (14/11)
     
 ### β Joel Mahafud (Beta)
     - ✔️ Unificado en estilos y lógica de los módulos de alta (11/11)
     - ✔️ Mejoras en mensajes de error y validaciones (13/11)
     - ✔️ Fixes varios, pulido en estilos, mejoras visuales. (14/11)
+    - ✔️ Testeo y debugeo en conjunto (14/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (14/11)
     - ✔️ Rediseño del componente pedido (15/11)
-    - ✔️ 
     
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Bartender/Cocinero/Mozo visualizan sus tareas correspondientes (10/11)
     - ✔️ Graficos de torta y barra (10/11)
     - ✔️ Solicitar mesa y escaneo de la misma (validaciones) (10/11)
-    - ⌛ Más tareas...
+    - ✔️ Testeo y debugeo en conjunto (14/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (14/11)
 
 
 ## 📅 Semana 4 (17/11 - 23/11)
 
 ### α Fausto Panello (Alfa)
     - ✔️ Creación de push notifications. (18/11)
+    - ✔️ Testeo y debugeo en conjunto (18/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (18/11)
+    - ✔️ Testeo y debugeo en conjunto (19/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (19/11)
     
 ### β Joel Mahafud (Beta)
-    - ✔️ Fixes de UI (18/11)
-    - ⌛ Más tareas...
+    - ✔️ Fixes varios de UI (18/11)
+    - ✔️ Correcciones varias, debugeo en conjunto (19/11)
+    - ✔️ Testeo y debugeo en conjunto (18/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (18/11)
+    - ✔️ Testeo y debugeo en conjunto (19/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (19/11)
     
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Push notifications para cada rol (18/11)
     - ✔️ Cliente solicita la cuenta (18/11)
-    - ⌛ Más tareas...
+    - ✔️ Testeo y debugeo en conjunto (18/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (18/11)
+    - ✔️ Testeo y debugeo en conjunto (19/11)
+    - ✔️ Sesión de grabación de demo para pre-entrega (19/11)
 
 
 ## 📜 Módulos de funcionalidades mínimas a realizar
@@ -130,8 +145,7 @@ Bienvenido a **Sabor Criollo 2024**.
 ![](./sabor-criollo/src/assets/readme_fotos/fn9.png)
 
 ### 6 - Al cargar el código QR de la mesa (en el celular del cliente), se permite ver el listado de los productos (comidas, bebidas, postres) con tres imágenes por cada producto, precio, descripción y tiempo estimado de elaboración.
-    Tareas: - Al tener la mesa asignada, se muestra el botón de “consulta al mozo”, que permite hacer una consulta rápida al mozo (con número de mesa, fecha con hora y minutos y la consulta
-a ser realizada).
+    Tareas: - Al tener la mesa asignada, se muestra el botón de “consulta al mozo”, que permite hacer una consulta rápida al mozo (con número de mesa, fecha con hora y minutos y la consulta a ser realizada).
             - Verificar que le llegue a todos los mozos la consulta realizada. (push notification *A)
             - Un mozo responde la consulta con nombre, fecha con hora y minutos (celular 3). Se verifica en el cliente.
 
