@@ -184,22 +184,28 @@ Bienvenido a **Sabor Criollo 2024**.
             - El cliente verifica el cambio de estado en su pedido (escaneando el QR de su mesa).
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder a los juegos*, a la encuesta y a la opción de ‘pedir la cuenta’.
 
-![](./sabor-criollo/src/assets/readme_fotos/fn16.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn16.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn16_1.png)
 
 ### 11 - El cliente accede a la encuesta, en dónde ingresará su opinión sobre diversos temas.
     Tareas: - Verificar que sólo se pueda acceder una vez para poder agregar una encuesta nueva (una por estadía).
             - El cliente, escaneando el QR de su mesa, podrá visualizar los resultados de las encuestas en distintos tipos de gráficos (torta, barra, lineal, etc.).
 
-![](./sabor-criollo/src/assets/readme_fotos/fn17.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn17.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn17_2.png)
 
 ### 12 - El cliente solicita la cuenta al mozo. (push notification *A)
     Tareas: - Se habilita, mediante la lectura del código QR correspondiente, el ingreso de la propina.
             - El detalle de la cuenta tendrá los pedidos realizados (con precios unitarios) con su respectivo importe, los descuentos correspondientes a los juegos* (sólo si gana en el primer intento), el grado de satisfacción del cliente (propina), y el TOTAL a abonar (grande y claro).
             - El cliente tendrá la posibilidad de realizar el pago (simulado) mediante una plataforma de pagos*.       
 
+![](./sabor-criollo/src/assets/readme_fotos/fn18.png)
+
 ### 13 - El mozo confirma el pago y se libera la mesa.
     Tareas: - Verificar que la mesa esté libre nuevamente (haciendo que el cliente vuelva a escanear el QR de la mesa).
             - El cliente, escaneando el QR de la lista de espera, podrá visualizar los resultados de las encuestas en distintos tipos de gráficos (torta, barra, lineal, etc.).
+
+![](./sabor-criollo/src/assets/readme_fotos/fn19.png)
 
 ---
 ![lista-de-espera](https://github.com/user-attachments/assets/956fd3c5-640f-4662-b550-daa7289c86e0)
