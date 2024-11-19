@@ -23,6 +23,8 @@ import { PedidoModel } from 'src/app/models/pedido.component';
 import { PedidoProducto } from 'src/app/models/pedido-producto.component';
 //import { NotificationPushService } from 'src/app/services/notification-push.service';
 import { MesaModel } from 'src/app/models/mesa.component';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -36,7 +38,8 @@ import { MesaModel } from 'src/app/models/mesa.component';
 export class CuentaPage implements OnInit {
   //private pushNotifServ:NotificationPushService = inject(NotificationPushService);
   private qrServ:QrService = inject(QrService);
-  
+  private qrService:QrService = inject(QrService);
+
   usuario!: UsuarioModel;
   pedido!: PedidoModel;
   cliente!: UsuarioModel;
@@ -44,6 +47,9 @@ export class CuentaPage implements OnInit {
   propina:number = 0;
   total_propina = 0;
   subtotal = 0;
+
+  protected isSupported = false;
+  protected barcodes: Barcode[] = [];
 
 
   constructor(private userService: UsuarioService, private productoService: ProductoService, 
@@ -66,6 +72,10 @@ export class CuentaPage implements OnInit {
       } else {
         this.cargarUltimoPedido(this.usuario.id);
       }
+
+      BarcodeScanner.isSupported().then((result) => {
+        this.isSupported = result.supported;
+      });
     }
     
 
@@ -103,6 +113,30 @@ export class CuentaPage implements OnInit {
     }
   }
 
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      return;
+    }
+    this.barcodes = []; 
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
+
+    if (this.barcodes.length > 0) {
+      
+      this.total_propina = (this.pedido.importeTotal * (100 + Number(this.barcodes[0])))/100
+      //this.total_propina = (this.pedido.importeTotal * Number(this.barcodes[0])) / 100
+      
+      this.pedido.importeTotal = this.subtotal + this.total_propina;
+    } else {
+        console.warn('No se encontró ningún código en el escaneo.');
+    }
+  }
+
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
 
 
   async pagar(){
