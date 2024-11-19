@@ -127,11 +127,22 @@ Bienvenido a **Sabor Criollo 2024**.
             - Verificar que no puede tomar una mesa sin estar previamente en la lista de espera.
             - Verificar que solo puede acceder a los resultados de las encuestas previas.
 
+![](./sabor-criollo/src/assets/readme_fotos/QRespera.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn6.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn7.png)
+
 ### 5 - El maître procede a la asignación de una mesa.
     Tareas: - Verificar que el cliente no pueda vincularse con otra mesa (indicar que mesa debe ser).
             - El cliente escanea el código QR de la mesa asignada (celular 2).
             - Al tener la mesa asignada, se verifica que el cliente no se pueda vincular a otra mesa (indicar cuál es su mesa asignada).
             - Al tener la mesa asignada, se verifica que NO se le pueda asignar dicha mesa a otro cliente.
+
+![](./sabor-criollo/src/assets/readme_fotos/QRM1.png)
+![](./sabor-criollo/src/assets/readme_fotos/QRM2.png)
+![](./sabor-criollo/src/assets/readme_fotos/QRM3.png)
+![](./sabor-criollo/src/assets/readme_fotos/QRM4.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn8.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn9.png)
 
 ### 6 - Al cargar el código QR de la mesa (en el celular del cliente), se permite ver el listado de los productos (comidas, bebidas, postres) con tres imágenes por cada producto, precio, descripción y tiempo estimado de elaboración.
     Tareas: - Al tener la mesa asignada, se muestra el botón de “consulta al mozo”, que permite hacer una consulta rápida al mozo (con número de mesa, fecha con hora y minutos y la consulta
@@ -139,28 +150,43 @@ a ser realizada).
             - Verificar que le llegue a todos los mozos la consulta realizada. (push notification *A)
             - Un mozo responde la consulta con nombre, fecha con hora y minutos (celular 3). Se verifica en el cliente.
 
+![](./sabor-criollo/src/assets/readme_fotos/fn11.png)
+
 ### 7 - El cliente procede a realizar el pedido para todos los comensales de la mesa.
     Tareas: - Verificar que en todo momento esté visible (y con buen tamaño) el importe acumulado.
             - Mostrar el tiempo estimado de realización del pedido (completo).
             - Verificar que el pedido no sea derivado a sus respectivos sectores hasta que el mozo no confirme el pedido.
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder al estado de su pedido.
 
+![](./sabor-criollo/src/assets/readme_fotos/fn10.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn12.jpg)
+
+
 ### 8 - El mozo confirma el pedido (celular 3), este es derivado a los sectores correspondientes.
     Tareas: - Verificar que las distintas partes del pedido se visualicen en dichos sectores. (push notification *A)
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder a los juegos*, a la encuesta y al estado de su pedido.
 
+![](./sabor-criollo/src/assets/readme_fotos/fn13.jpg)
+
 ### 9 - Cada sector (cocina y bar) realiza las tareas correspondientes (celular 1) y avisan que los productos están listos para que el mozo los entregue.
     Tareas: - Verificar que cada parte del pedido se visualice en el listado de pedidos pendientes del mozo. (push notification *A)
             - El cliente verifica el cambio de estado en su pedido (escaneando el QR de su mesa).
+
+![](./sabor-criollo/src/assets/readme_fotos/fn14.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn15.jpg)
 
 ### 10 - El mozo entrega el pedido completo (las comidas, bebidas y postres).
     Tareas: - El cliente confirma la recepción de su pedido.
             - El cliente verifica el cambio de estado en su pedido (escaneando el QR de su mesa).
             - El cliente vuelve a escanear el código QR de la mesa y podrá acceder a los juegos*, a la encuesta y a la opción de ‘pedir la cuenta’.
 
+![](./sabor-criollo/src/assets/readme_fotos/fn16.jpg)
+
 ### 11 - El cliente accede a la encuesta, en dónde ingresará su opinión sobre diversos temas.
     Tareas: - Verificar que sólo se pueda acceder una vez para poder agregar una encuesta nueva (una por estadía).
             - El cliente, escaneando el QR de su mesa, podrá visualizar los resultados de las encuestas en distintos tipos de gráficos (torta, barra, lineal, etc.).
+
+![](./sabor-criollo/src/assets/readme_fotos/fn17.jpg)
 
 ### 12 - El cliente solicita la cuenta al mozo. (push notification *A)
     Tareas: - Se habilita, mediante la lectura del código QR correspondiente, el ingreso de la propina.
