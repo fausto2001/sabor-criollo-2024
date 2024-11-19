@@ -115,7 +115,10 @@ Bienvenido a **Sabor Criollo 2024**.
     Tareas: - Verificar la lectura del código QR del D.N.I. (varios formatos).
             - Verificar que el pre-registro se visualice en el listado de clientes pendientes de aprobación del dueño o supervisor (push notification *A)
             - Verificar que no se pueda ingresar a la aplicación sin ser aprobado. Informar lo acontecido con un mensaje alusivo.
-	
+
+![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn1_2.png)  
+![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2_1.png)
+![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2_2.png)  
 ![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2.png)
 ![revision-usuario](./sabor-criollo/src/assets/readme_fotos/fn3.png)
 
