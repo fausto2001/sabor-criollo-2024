@@ -56,7 +56,8 @@ Bienvenido a **Sabor Criollo 2024**.
 ## 📅 Semana 3 (10/11 - 16/11)
 
 ### α Fausto Panello (Alfa)
-    - ✔️ Alta de encuestas (12/11)
+    - ✔️ Alta de encuestas (UI) (11/11)
+    - ✔️ Alta de encuestas. Lógica y BD (13/11)
     - ✔️ Testeo y debugeo en conjunto (14/11)
     - ✔️ Sesión de grabación de demo para pre-entrega (14/11)
     
