@@ -81,6 +81,7 @@ export class LoginComponent  implements OnInit {
           //this.pushNotifServ.promptForNotificationPermission();
           this.error = resultadoLogin;
           if(this.error == ''){
+            this.form.reset();
             //this.router.navigateByUrl('/home');
           }
           /* subs.subscribe( async (data) => {
