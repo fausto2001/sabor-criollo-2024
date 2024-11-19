@@ -109,18 +109,18 @@ Bienvenido a **Sabor Criollo 2024**.
     Tareas: Cargar todos sus datos personales y una foto
     Responsable: Fausto Panello
 	
-![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn1.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn1.png)
 
 ### 2 - Validar todos los campos
     Tareas: - Verificar la lectura del código QR del D.N.I. (varios formatos).
             - Verificar que el pre-registro se visualice en el listado de clientes pendientes de aprobación del dueño o supervisor (push notification *A)
             - Verificar que no se pueda ingresar a la aplicación sin ser aprobado. Informar lo acontecido con un mensaje alusivo.
 
-![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn1_2.png)  
-![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2_1.png)
-![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2_2.png)  
-![alta-cliente](./sabor-criollo/src/assets/readme_fotos/fn2.png)
-![revision-usuario](./sabor-criollo/src/assets/readme_fotos/fn3.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn1_2.png)  
+![](./sabor-criollo/src/assets/readme_fotos/fn2_1.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn2_2.png)  
+![](./sabor-criollo/src/assets/readme_fotos/fn2.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn3.png)
 
 ### 3 - El dueño o supervisor (celular 3) acepta o rechaza al cliente.
     Tareas: - El cliente recibe un correo electrónico informado de la situación de su registro (uno por la aceptación y otro en el caso de rechazo). Los mensajes deben tener el logo de la empresa, mensajes personalizados, fuentes distintas a las que vienen por defecto, etc.
@@ -128,8 +128,8 @@ Bienvenido a **Sabor Criollo 2024**.
             - Verificar que el cliente NO pueda ingresar a la aplicación, si NO es aceptado (con estado ‘pendiente de aprobación’ o ‘rechazado’). Informar lo acontecido con un mensaje alusivo para cada caso.
             - Verificar que el cliente pueda ingresar a la aplicación, si es aceptado.
 			
-![](./sabor-criollo/src/assets/readme_fotos/fn4.jpg)
-![](./sabor-criollo/src/assets/readme_fotos/fn5.jpg)
+![](./sabor-criollo/src/assets/readme_fotos/fn4.png)
+![](./sabor-criollo/src/assets/readme_fotos/fn5.png)
 
 ### 4 - Ingresa un cliente al local como anónimo (celular 2) y escanea el código QR para solicitar mesa (lista de espera).
     Tareas: - Verificar que aparezca en la lista de espera del maître (celular 1). (push notification *A)
