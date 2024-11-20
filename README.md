@@ -93,6 +93,7 @@ Bienvenido a **Sabor Criollo 2024**.
     - ✔️ Sesión de grabación de demo para pre-entrega (18/11)
     - ✔️ Testeo y debugeo en conjunto (19/11)
     - ✔️ Sesión de grabación de demo para pre-entrega (19/11)
+    - ✔️ Modificaciones requeridas por el profesor (20/11)
     
 ### γ Tomas Mastrapasqua (Gamma)
     - ✔️ Push notifications para cada rol (18/11)
