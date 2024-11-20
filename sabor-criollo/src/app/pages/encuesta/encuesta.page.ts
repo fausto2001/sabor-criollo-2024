@@ -30,7 +30,7 @@ export class EncuestaPage {
 
   constructor(private router:Router)
   {
-    addIcons({ //tuve que meterle esto para que funcionen los íconos de ionic
+    addIcons({ 
       'thumbs-up-outline': thumbsUpOutline,
       'thumbs-down-outline': thumbsDownOutline,
       'happy-outline': happyOutline,
@@ -177,7 +177,7 @@ export class EncuestaPage {
           title: "Encuesta generada con éxito",
           toast: true,
           position: 'center',
-          confirmButtonAriaLabel: "Thumbs up, Aceptar",
+          confirmButtonText: 'Aceptar',
         }).then( () => {
           this.form.reset();
           this.router.navigateByUrl('/home');

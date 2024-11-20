@@ -109,7 +109,7 @@ export class HomeClientePage implements OnInit {
             text: 'QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa,
             icon: 'error',
             showConfirmButton: true,
-            confirmButtonAriaLabel: "Thumbs up, Aceptar",
+            confirmButtonText: 'Aceptar',
           });
         //alert('QR incorrecto. Debes escanear la mesa ' + this.usuario?.mesa);
         this.usuario!.enListaDeEspera = false;

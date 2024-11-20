@@ -173,7 +173,7 @@ export class AltaClientePage implements OnInit {
           title: "Alta generada con éxito",
           toast: true,
           position: 'center',
-          confirmButtonAriaLabel: "Thumbs up, Aceptar",
+          confirmButtonText: 'Aceptar'
         }).then(() => {
           this.form.reset();                                                                                                                                                                                
           this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando tu aprobación. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'ngXfl09St1tkmB48AxYk')// ngXfl09St1tkmB48AxYk fausto samsung a 04s

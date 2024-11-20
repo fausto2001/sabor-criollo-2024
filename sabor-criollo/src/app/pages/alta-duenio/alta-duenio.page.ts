@@ -134,7 +134,7 @@ export class AltaDuenioPage implements OnInit {
           title: "Alta generada con éxito",
           toast: true,
           position: 'center',
-          confirmButtonAriaLabel: "Thumbs up, Aceptar",
+          confirmButtonText: 'Aceptar',
         }).then( () => {
           this.form.reset();
           this.router.navigateByUrl('/home');
