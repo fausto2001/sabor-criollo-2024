@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonInputPasswordToggle, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel, IonList, IonApp } from '@ionic/angular/standalone';
+import { IonHeader, IonTitle, IonToolbar, IonImg, IonApp } from '@ionic/angular/standalone';
 import { HomeBartenderPage } from '../home-bartender/home-bartender.page';
 import { HomeClientePage } from '../home-cliente/home-cliente.page';
 import { HomeCocineroPage } from '../home-cocinero/home-cocinero.page';
@@ -14,16 +14,13 @@ import { AuthService } from 'src/app/services/auth.service';
 import { OnesignalService } from 'src/app/services/onesignal.service';
 import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular/standalone';
-import { lastValueFrom } from 'rxjs';
-import { Preferences } from '@capacitor/preferences';
-import { PushService } from 'src/app/services/push.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonSelect, IonSelectOption, IonInputPasswordToggle, IonIcon, IonFabList, IonItem, IonButton, IonInput, IonLabel, IonList, IonRow, IonCol, IonImg, IonFabButton, IonFab, IonApp, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HomeBartenderPage, HomeClientePage, HomeCocineroPage, HomeDuenioPage, HomeMetrePage, HomeMozoPage, HomeSupervisorPage]
+  imports: [ IonImg, IonApp, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HomeBartenderPage, HomeClientePage, HomeCocineroPage, HomeDuenioPage, HomeMetrePage, HomeMozoPage, HomeSupervisorPage]
 })
 export class HomePage implements OnInit {
 
@@ -32,7 +29,6 @@ export class HomePage implements OnInit {
   private authService: AuthService = inject(AuthService);
   private onesignalService = inject(OnesignalService);
   private platform = inject(Platform);
-  private pushService: PushService = inject(PushService);
 
 
   constructor() { 

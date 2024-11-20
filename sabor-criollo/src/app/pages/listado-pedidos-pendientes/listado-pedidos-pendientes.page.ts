@@ -1,55 +1,40 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonImg, IonSelectOption, IonRow, IonButton, IonCol, IonInput, IonLabel, IonItem, IonGrid, IonRadioGroup, IonRadio, IonBackButton, IonFabButton, IonFab, IonFabList, IonCardContent, IonCard, IonCardHeader } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonImg, IonRow, IonButton, IonGrid, IonCardContent, IonCard } from '@ionic/angular/standalone';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MesaModel } from "../../models/mesa.component";
 import { MesaService } from 'src/app/services/mesa.service';
 import { PedidoModel } from "../../models/pedido.component";
 import { PedidoService } from 'src/app/services/pedido.service';
-import { ProductoService } from 'src/app/services/producto.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
-//import { Roles } from "../../models/types.component";
-import { CamaraService } from 'src/app/services/camara.service';
-import { QrService } from 'src/app/services/qr.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PushService } from 'src/app/services/push.service';
-//import { confirmarClaveValidator } from '../../Validators/password.validator';
-//import { NotificationPushService } from 'src/app/services/notification-push.service';
 
 @Component({
   selector: 'app-listado-pedidos-pendientes',
   templateUrl: './listado-pedidos-pendientes.page.html',
   styleUrls: ['./listado-pedidos-pendientes.page.scss'],
   standalone: true,
-  imports: [IonCardHeader, IonImg, IonButton, IonGrid, IonBackButton, IonCardContent, IonButtons, IonRow, IonCard, IonContent, IonFab, IonFabButton, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [ IonImg, IonButton, IonGrid, IonCardContent, IonRow, IonCard, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule ]
 })
 export class ListadoPedidosPendientesPage implements OnInit {
   private authServ:AuthService = inject(AuthService)
-  private usuarioServ:UsuarioService = inject(UsuarioService); 
-  private qrServ:QrService = inject(QrService);
   private pushService: PushService = inject(PushService); 
-  //private pushNotifServ:NotificationPushService = inject(NotificationPushService);
 
   usuario!: UsuarioModel;
   mesas!: MesaModel[];
   hayMesas: boolean = true;
-  pedidos: PedidoModel[] = []; // Inicializa como un array vacío
+  pedidos: PedidoModel[] = []; 
   ultimoPedidos!: PedidoModel[];
   pedido!: PedidoModel;
 
   constructor(
     private userService: UsuarioService,
-    private productoService: ProductoService,
     private pedidoService: PedidoService,
     private router: Router,
-    private authService: AuthService,
-    private toastService: ToastService,
     private mesaService: MesaService
   ) {}
 
@@ -106,7 +91,6 @@ export class ListadoPedidosPendientesPage implements OnInit {
       });
     } else {
       return;
-      //pedidoText = 'No hay productos en el pedido.';
     }
 
     Swal.fire({

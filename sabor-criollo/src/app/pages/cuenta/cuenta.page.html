@@ -25,10 +25,11 @@
       <ion-card class="info-pedido" *ngIf="pedido">
         <ion-card-content>
           <div class="card-btn">
+            <div class="line"></div>
             <div *ngFor="let producto of pedido.pedidos">
+              <h3>{{producto.producto.nombre}} x {{producto.cantidad}}</h3>
+              <h2> Subtotal: ${{producto.cantidad * producto.producto.precio}}</h2>
               <div class="line"></div>
-              <h2>{{producto.producto.nombre}} x {{producto.cantidad}}</h2>
-              <h1>TOTAL: {{producto.cantidad * producto.producto.precio}}</h1>
             </div>
           </div>
         </ion-card-content>
@@ -37,7 +38,7 @@
       <ion-card class="info-subtotal">
         <ion-card-content>
           <div class="card-btn">
-            <h1>Subtotal: {{subtotal}}</h1>
+            <h2>Subtotal: ${{subtotal}}</h2>
           </div>
         </ion-card-content>
       </ion-card>
@@ -45,7 +46,7 @@
       <ion-card class="info-propina">
         <ion-card-content>
           <div class="card-btn">
-            <h1>PROPINA %{{propina}}</h1>
+            <h2>Propina {{propina}}%</h2>
           </div>
         </ion-card-content>
       </ion-card>
@@ -53,7 +54,7 @@
       <ion-card class="info-total">
         <ion-card-content>
           <div class="card-btn">
-            <h1>TOTAL: {{pedido.importeTotal}}</h1>
+            <h1>TOTAL: ${{pedido.importeTotal}}</h1>
           </div>
         </ion-card-content>
       </ion-card>

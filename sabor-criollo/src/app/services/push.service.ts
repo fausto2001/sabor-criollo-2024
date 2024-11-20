@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Component, OnInit, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular/standalone';
 import { lastValueFrom } from 'rxjs';
@@ -7,7 +7,6 @@ import { Preferences } from '@capacitor/preferences';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { OnesignalService } from 'src/app/services/onesignal.service';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonCol, IonRow, IonImg } from '@ionic/angular/standalone';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 @Injectable({
@@ -16,7 +15,6 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class PushService {
 
   protected error: string = '';
-  private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private onesignal = inject(OnesignalService);
   private platform = inject(Platform);
@@ -31,7 +29,6 @@ export class PushService {
     this.platform.ready().then(() => {
       if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
     });
-    /*this.usuario = this.usuarioService.personaLogeada;*/
 
     this.usuario = this.authServ.usuario;
     this.authServ.user$.subscribe((data) => {
@@ -41,13 +38,10 @@ export class PushService {
         });
       }
     });
-
-    //if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
   }
 
   ngOnInit() {
     console.log('ngoninit');
-    //this.onesignal.OneSignalIOSPermission();
     if(Capacitor.getPlatform() != 'web') this.oneSignal();
   }
 
@@ -217,19 +211,16 @@ export class PushService {
   getStorage(key: string) {
     return Preferences.get({ key: key });
   }
-//mensaje, titulo, dispositivo
   async sendNotificationtoSpecificDevice(mensaje: string, titulo: string, dispositivo: any) {
     try {
       const data = await this.getStorage('auth');
-      // alert del data.value
       if (data?.value) {
         await lastValueFrom(
           this.onesignal.sendNotification(
             mensaje,
             titulo,
             { type: 'user1' },
-           // [data.value]//aca va el id del usuario
-           [dispositivo],//BLZ3xKG0QgwxiXqJzX2k
+           [dispositivo],
           )
         );
       }
@@ -250,8 +241,7 @@ export class PushService {
             titulo,
             mensaje,
             { type: 'user1' },
-           // [data.value]//aca va el id del usuario
-           [dispositivo]//BLZ3xKG0QgwxiXqJzX2k
+           [dispositivo]
           )
         );
       }

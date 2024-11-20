@@ -10,15 +10,14 @@ import { LegendPosition, NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class VerticalBarChartComponent  implements OnInit {
 
-  // options
   showXAxis = true;
   showYAxis = true;
-  gradient = false; // hace un degradado si esta en true
-  showLegend = true; //Cartel a la derecha
+  gradient = false; 
+  showLegend = true; 
   showXAxisLabel = true;
-  xAxisLabel = 'Calificación de la Carta';//'Country';
-  showYAxisLabel = true; // es el titulo horizontal en nuestro caso Tipo de Clientes
-  yAxisLabel = 'Cantidad'; //'Population';
+  xAxisLabel = 'Calificación de la Carta';
+  showYAxisLabel = true; 
+  yAxisLabel = 'Cantidad'; 
 
   @Input() view:any;
   @Input() legendPosition = LegendPosition.Below;
@@ -30,14 +29,10 @@ export class VerticalBarChartComponent  implements OnInit {
     domain: ['#5AA454', '#C7B42C', '#FE0000','#A10A28', '#AAAAAA']
   };
   single: any[] = [];
-  //cantidadBuena:number=15;
-  //cantidadRegular:number=4;
-  //cantidadMala:number=2;
 
   constructor() { }
 
   ngOnInit() {
-    //console.log('this.encuestasMalas: ',this.encuestasMalas);
     this.single = [
       {
         "name":"Buena",

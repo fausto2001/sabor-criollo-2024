@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { UsuarioService } from './usuario.service';
 import { UsuarioModel } from '../models/usuario.component';
 import { firstValueFrom } from 'rxjs';
-import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'

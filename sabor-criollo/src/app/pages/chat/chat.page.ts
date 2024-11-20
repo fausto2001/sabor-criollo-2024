@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonFooter, IonInput, IonImg, IonFab, IonFabButton, IonIcon, IonCard, IonCardContent, IonCardSubtitle, IonCardHeader, IonCardTitle, IonText, IonTextarea, IonRow } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonFooter, IonImg, IonFabButton, IonCard, IonCardContent, IonCardSubtitle, IonCardHeader, IonTextarea } from '@ionic/angular/standalone';
 import { ChatService } from 'src/app/services/chat.service';
 import { Chat } from 'src/app/models/chat.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -9,10 +9,6 @@ import { UsuarioModel } from 'src/app/models/usuario.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TStoDatePipe } from "../../pipes/tsto-date.pipe";
-//import { NotificationPushService } from 'src/app/services/notification-push.service';
-import { Platform } from '@ionic/angular/standalone';
-import { lastValueFrom } from 'rxjs';
-import { Preferences } from '@capacitor/preferences';
 import { PushService } from 'src/app/services/push.service';
 
 @Component({
@@ -20,18 +16,15 @@ import { PushService } from 'src/app/services/push.service';
     templateUrl: './chat.page.html',
     styleUrls: ['./chat.page.scss'],
     standalone: true,
-    imports: [IonRow, IonText, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCardContent, IonCard, IonIcon, IonFabButton, IonFab, IonImg, IonInput, IonFooter, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonTextarea, TStoDatePipe]
+    imports: [ IonCardHeader, IonCardSubtitle, IonCardContent, IonCard, IonFabButton, IonImg, IonFooter, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonTextarea, TStoDatePipe]
 })
 export class ChatPage implements OnInit, AfterViewInit {
   private chatServ:ChatService = inject(ChatService);
   private authServ:AuthService = inject(AuthService);
   private userServ:UsuarioService = inject(UsuarioService);
-  //private pushNotifServ:NotificationPushService = inject(NotificationPushService)
   private actRoute:ActivatedRoute = inject(ActivatedRoute);
   private router:Router = inject(Router);
-  private platform = inject(Platform);
   private pushService: PushService = inject(PushService);
-
 
   mensajes:Chat[] = [];
   usuario!:UsuarioModel | null;
@@ -47,9 +40,7 @@ export class ChatPage implements OnInit, AfterViewInit {
       this.mensajes = data;
       this.scrollToBottom();
     });
-  
-    
-    //this.usuario = this.authService.usuario!;
+
     if (!this.usuario) {
       this.authServ.user$.subscribe((data) => {
         if (data) {

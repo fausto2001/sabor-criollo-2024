@@ -6,14 +6,13 @@ import { Storage, getDownloadURL, ref, uploadBytesResumable, uploadString } from
 })
 export class StorageService {
   private storage:Storage = inject(Storage)
-  // private dirUsers:string = 'users/'
 
   constructor() { }
 
   getFormattedDate(): string {
     const date = new Date();
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript son de 0 a 11
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
@@ -27,8 +26,7 @@ export class StorageService {
     const fileref = ref(this.storage, filepath);
   
     let url: string = '';
-  
-    // Ensure that the foto is a File or Blob
+
     if (foto instanceof Blob || foto instanceof File) {
       await uploadBytesResumable(fileref, foto).then(async () => {
         url = await getDownloadURL(fileref);
@@ -55,6 +53,4 @@ export class StorageService {
 
     return url;
   }
-
-
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {LegendPosition, NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-torta-chart',
@@ -10,16 +10,13 @@ import {LegendPosition, NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class TortaChartComponent  implements OnInit {
 
-  // options
   gradient: boolean = true;
-  showLegend: boolean = false; //Titulo a la derecha arriba
+  showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
   legendPosition: string = 'below';
 
-
   @Input() view:any;
-  //@Input() legendPosition = LegendPosition.Below;
   @Input() encuestasMalas!: number;
   @Input() encuestasRegular!: number;
   @Input() encuestasBuenas!: number;
@@ -29,8 +26,6 @@ export class TortaChartComponent  implements OnInit {
   };
 
   single: any[] = [];
-  //cantidadRegistrado:number=20;
-  //cantidadAnonimo:number=50;
 
   constructor() { }
 
@@ -50,5 +45,4 @@ export class TortaChartComponent  implements OnInit {
       }
     ];
   }
-
 }

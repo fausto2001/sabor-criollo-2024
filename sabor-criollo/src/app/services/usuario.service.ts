@@ -3,7 +3,6 @@ import { CollectionReference, Firestore, onSnapshot, collection, deleteDoc, getD
 import { map, take, from, Observable } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.component';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -84,104 +83,78 @@ export class UsuarioService {
     }
   }
 
-/*
-    async getUsuariosNoAdmitidos(): Promise<UsuarioModel[]> {
-      const userQuery = query(collection(this.db, 'usuarios'), where('admitido', '==', null));
-      const querySnapshot = await getDocs(userQuery);
-    
+  getUsuariosNoAdmitidos(): Observable<UsuarioModel[]> {
+    return new Observable<UsuarioModel[]>(observer => {
+    const userQuery = query(collection(this.db, 'usuarios'), where('admitido', '==', null));
+
+    const unsubscribe = onSnapshot(userQuery, (querySnapshot) => {
       const usuarios: UsuarioModel[] = [];
-      
-      if (!querySnapshot.empty) {
-        querySnapshot.forEach(doc => {
-          const userData = doc.data() as UsuarioModel;
-          usuarios.push(userData);
-        });
-      }
-      
-      return usuarios;
-    }*/
+      querySnapshot.forEach(doc => {
+        usuarios.push(doc.data() as UsuarioModel);
+      });
+      observer.next(usuarios);
+    }, (error) => {
+      observer.error(error);
+    });
+
+    return () => unsubscribe();
+  });
+}
+
+getUsuariosEnListaDeEspera(): Observable<UsuarioModel[]> {
+  let qry = query(
+    this.usuariosCollection,
+    where('rol', '==', 'cliente'),
+    where('enListaDeEspera', '==', true),
+  );
+  return collectionData(qry).pipe(
+    map(usuarios => usuarios as UsuarioModel[])
+  );
+
+}
 
 
-      getUsuariosNoAdmitidos(): Observable<UsuarioModel[]> {
-        return new Observable<UsuarioModel[]>(observer => {
-          const userQuery = query(collection(this.db, 'usuarios'), where('admitido', '==', null));
-      
-          const unsubscribe = onSnapshot(userQuery, (querySnapshot) => {
-            const usuarios: UsuarioModel[] = [];
-            querySnapshot.forEach(doc => {
-              usuarios.push(doc.data() as UsuarioModel);
-            });
-            observer.next(usuarios);
-          }, (error) => {
-            observer.error(error);
-          });
-      
-          return () => unsubscribe();
-        });
-      }
-    
+updateUsuario(usuario: UsuarioModel): Promise<void> {
+  const registro = doc(this.usuariosCollection, usuario.id!);
+  return setDoc(registro, usuario);
+}
 
-  getUsuariosEnListaDeEspera(): Observable<UsuarioModel[]> {
-    let qry = query(
-      this.usuariosCollection,
-      where('rol', '==', 'cliente'),
-      where('enListaDeEspera', '==', true),
-    );
-    return collectionData(qry).pipe(
-      map(usuarios => usuarios as UsuarioModel[])
-    );
 
+updateUsuarioAdmitido(usuario: UsuarioModel, admitido: string): Promise<void> {
+  const registro = doc(this.usuariosCollection, usuario.id!);
+  return updateDoc(registro, { admitido: usuario.admitido });
+}
+
+deleteUsuario(id: string): Promise<void> {
+  const registro = doc(this.usuariosCollection, id);
+  return deleteDoc(registro);
+}
+
+getUsuarioPorId(id:string){
+  let qry = query(
+    this.usuariosCollection,
+    where('id', '==', id)
+  );
+  return collectionData(qry).pipe( take(1),
+    map( usuarios => usuarios[0] as UsuarioModel ));
+}
+
+async documentoYaRegistrado(nroDocumento: string)
+{
+  const userQuery = query(collection(this.db, 'usuarios'), where('dni', '==', nroDocumento));
+  const querySnapshot = await getDocs(userQuery);
+
+  if (!querySnapshot.empty) {
+    return true;
   }
+  return false;
+}
 
+usuarioActivo(): boolean {
+  return this.personaLogeada.admitido;
+}
 
-  updateUsuario(usuario: UsuarioModel): Promise<void> {
-    const registro = doc(this.usuariosCollection, usuario.id!);
-    return setDoc(registro, usuario);
-  }
-  
-  
-  updateUsuarioAdmitido(usuario: UsuarioModel, admitido: string): Promise<void> {
-    const registro = doc(this.usuariosCollection, usuario.id!);
-    return updateDoc(registro, { admitido: usuario.admitido });
-  }
-
-  deleteUsuario(id: string): Promise<void> {
-    const registro = doc(this.usuariosCollection, id);
-    return deleteDoc(registro);
-  }
-
-  getUsuarioPorId(id:string){
-    let qry = query(
-      this.usuariosCollection,
-      where('id', '==', id)
-    );
-    return collectionData(qry).pipe( take(1),
-      map( usuarios => usuarios[0] as UsuarioModel ));
-  }
-
-/*
-  deleteUsuarioPorEmail(usuario: UsuarioModel): Promise<void> {
-    const registro = doc(this.usuariosCollection, usuario.id!);
-    return deleteDoc(registro, { usuario.email });
-  }*/
- 
-  async documentoYaRegistrado(nroDocumento: string)
-  {
-    const userQuery = query(collection(this.db, 'usuarios'), where('dni', '==', nroDocumento));
-    const querySnapshot = await getDocs(userQuery);
-
-    if (!querySnapshot.empty) {
-      return true;
-    }
-    return false;
-  }
-
-  usuarioActivo(): boolean {
-    return this.personaLogeada.admitido;
-  }
-
-  borrarPersonaLogeada() {
-    this.personaLogeada = null;
-  }
-
+borrarPersonaLogeada() {
+  this.personaLogeada = null;
+}
 }

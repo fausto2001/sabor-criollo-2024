@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { thumbsUpOutline, thumbsDownOutline, sadOutline, happyOutline, helpOutline, alertCircleOutline } from 'ionicons/icons';
+import { thumbsUpOutline, thumbsDownOutline, sadOutline, happyOutline, alertCircleOutline } from 'ionicons/icons';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonRow, IonCol, IonItem, IonCardHeader, IonCard, IonLabel, IonCardTitle, IonCardContent, IonIcon, IonList, IonRadio, IonRadioGroup, IonTextarea, IonButton, IonCheckbox } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
@@ -30,7 +30,6 @@ export class EncuestaPage {
 
   constructor(private router:Router)
   {
-
     addIcons({ //tuve que meterle esto para que funcionen los íconos de ionic
       'thumbs-up-outline': thumbsUpOutline,
       'thumbs-down-outline': thumbsDownOutline,
@@ -177,7 +176,8 @@ export class EncuestaPage {
           icon: 'success',
           title: "Encuesta generada con éxito",
           toast: true,
-          position: 'center'
+          position: 'center',
+          confirmButtonAriaLabel: "Thumbs up, Aceptar",
         }).then( () => {
           this.form.reset();
           this.router.navigateByUrl('/home');
@@ -185,5 +185,4 @@ export class EncuestaPage {
       });
     }
   }
-  
 }

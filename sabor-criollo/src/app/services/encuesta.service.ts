@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { CollectionReference, Firestore, collection, collectionData, doc, query, setDoc, where } from '@angular/fire/firestore';
 import { EncuestaModel } from '../models/encuestas.component';
-import { Observable, map, take } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ import { Observable, map, take } from 'rxjs';
 export class EncuestaService {
   private db:Firestore = inject(Firestore);
   private encuestaCollection!:CollectionReference;
-  private productoCollection!:CollectionReference;   // Después sacar
+  private productoCollection!:CollectionReference;  
 
   constructor() {
     this.encuestaCollection = collection(this.db,'encuestas');
-    this.productoCollection = collection(this.db,'productos'); // Después sacar
+    this.productoCollection = collection(this.db,'productos'); 
   }
 
   async setEncuesta(encuesta:EncuestaModel){

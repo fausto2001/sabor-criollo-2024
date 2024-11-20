@@ -1,30 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-//import OneSignal from 'onesignal-cordova-plugin';
-
 import { Capacitor } from '@capacitor/core';
 import OneSignal, { OSNotificationPermission } from 'onesignal-cordova-plugin';
-import { AlertController } from '@ionic/angular/standalone';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 
-import { Platform } from '@ionic/angular/standalone';
-import { lastValueFrom } from 'rxjs';
-import { Preferences } from '@capacitor/preferences';
 @Injectable({
   providedIn: 'root'
 })
 export class OnesignalService {
-  constructor(private alertCtrl: AlertController, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   OneSignalInit() {
-    // Uncomment to set OneSignal device logging to VERBOSE
-    // OneSignal.Debug.setLogLevel(6);
-
-    // Uncomment to set OneSignal visual logging to VERBOSE
-    // OneSignal.Debug.setAlertLevel(6);
-
-    // NOTE: Update the init value below with your OneSignal AppId.
     OneSignal.initialize(environment.onesignal.appId);
 
     let myClickListener = async (event: any) => {
@@ -34,7 +21,6 @@ export class OnesignalService {
     OneSignal.Notifications.addEventListener('click', myClickListener);
   }
 
-  // onesignal notification permission
   async OneSignalIOSPermission() {
     try {
       if (Capacitor.getPlatform() == 'ios') {
@@ -45,7 +31,6 @@ export class OnesignalService {
           this.requestPermission();
         }
       } else {
-        // for android
         this.OneSignalPermission();
       }
     } catch (e) {
@@ -53,15 +38,12 @@ export class OnesignalService {
     }
   }
 
-  // Call this function when your app starts
   async OneSignalPermission(msg: string = '') {
     try {
       const hasPermission = OneSignal.Notifications.hasPermission();
       console.log('hasPermission: ', hasPermission);
       if (!hasPermission) {
-        // show prompt
         this.showAlert(msg);
-        //this.requestPermission();
       }
     } catch (e) {
       throw e;

@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -11,11 +11,6 @@ import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { OnesignalService } from 'src/app/services/onesignal.service';
-import { Capacitor } from '@capacitor/core';
-import { Platform } from '@ionic/angular/standalone';
-import { lastValueFrom } from 'rxjs';
-import { Preferences } from '@capacitor/preferences';
 import { PushService } from 'src/app/services/push.service';
 
 @Component({
@@ -23,7 +18,7 @@ import { PushService } from 'src/app/services/push.service';
   templateUrl: './alta-cliente.page.html',
   styleUrls: ['./alta-cliente.page.scss'],
   standalone: true,
-  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [ IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ]
 })
 export class AltaClientePage implements OnInit {
 
@@ -33,8 +28,6 @@ export class AltaClientePage implements OnInit {
   private storageService: StorageService = inject(StorageService);
   private qrService:QrService = inject(QrService);
   private camaraService:CamaraService = inject(CamaraService);
-  private onesignalService = inject(OnesignalService);
-  private platform = inject(Platform);
   private pushService: PushService = inject(PushService);
 
   protected fotoSubida: string = 'false';  
@@ -49,7 +42,6 @@ export class AltaClientePage implements OnInit {
 
   protected isSupported = false;
   protected barcodes: Barcode[] = [];
-  private anonimo: boolean = false;
 
   constructor() {
     this.form = new FormGroup ({
@@ -180,7 +172,8 @@ export class AltaClientePage implements OnInit {
           icon: 'success',
           title: "Alta generada con éxito",
           toast: true,
-          position: 'center'
+          position: 'center',
+          confirmButtonAriaLabel: "Thumbs up, Aceptar",
         }).then(() => {
           this.form.reset();                                                                                                                                                                                
           this.pushService.sendNotificationtoSpecificDevice('Un cliente está esperando tu aprobación. ¡Atiende la solicitud ahora!', '¡Nueva solicitud en Sabor Criollo!', 'ngXfl09St1tkmB48AxYk')// ngXfl09St1tkmB48AxYk fausto samsung a 04s

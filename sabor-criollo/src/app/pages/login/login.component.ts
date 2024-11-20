@@ -1,74 +1,35 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonIcon, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFabList, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { OnesignalService } from 'src/app/services/onesignal.service';
-import { Capacitor } from '@capacitor/core';
-import { Platform } from '@ionic/angular/standalone';
-import { lastValueFrom } from 'rxjs';
-import { Preferences } from '@capacitor/preferences';
-import { PushComponent } from 'src/app/components/push/push.component';
-
-
-//import { PushNotificationService } from 'src/app/services/push-notification.service';
-//import Swal from 'sweetalert2';
-//import { ToastService } from 'src/app/services/toast.service';
-//import { NotificationPushService } from 'src/app/services/notification-push.service';
-
-//import { UsuarioService } from '../../services//usuario.service';
-//import { UsuarioModel } from '../../models/usuario.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonIcon, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [IonInput, IonCol, IonButton, IonItem, IonRow, IonFab, IonFabList, IonFabButton, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ]
 })
 export class LoginComponent  implements OnInit {
 
-  //private usuarioServ:UsuarioService = inject(UsuarioService);
-
   protected error: string = '';
-  //private toastService: ToastService = inject(ToastService);
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
-  private onesignal = inject(OnesignalService);
-  private platform = inject(Platform);
-  //private pushComponent: PushComponent = inject(PushComponent);
-
-  //private pushNotifServ: PushNotificationService = inject(PushNotificationService);
 
   protected form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)/*Validators.pattern()*/]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   constructor() {
     
-    //Prepara y configura OneSignal para recibir notificaciones si la plataforma no es 
-   /* this.platform.ready().then(() => {
-      if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
-    });*/
   }
 
   ngOnInit() {
-    //console.log('ngoninit');
 
-    //this.onesignal.OneSignalIOSPermission();
-    //if(Capacitor.getPlatform() != 'web') this.oneSignal();
   }
-
- /* async oneSignal() {
-    try {
-      await this.onesignal.OneSignalIOSPermission();
-    } catch(e) {
-      console.log(e);
-    }
-  }*/
-
 
   async ingresar(){
 
@@ -78,22 +39,10 @@ export class LoginComponent  implements OnInit {
 
       await this.authService.login(email, password)
         .then( (resultadoLogin) => {
-          //this.pushNotifServ.promptForNotificationPermission();
           this.error = resultadoLogin;
           if(this.error == ''){
             this.form.reset();
-            //this.router.navigateByUrl('/home');
-          }
-          /* subs.subscribe( async (data) => {
-            if(data){
-              this.authServ.usuario = data;
-              // await this.pushNotifServ.registerNotifications();
-              this.router.navigateByUrl('/home');
-
-            }
-          }) */
-
-            
+          }           
         })
         .catch((error) => {
           console.error(error);

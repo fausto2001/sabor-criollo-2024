@@ -1,12 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput, IonLabel, IonRadio, IonList  } from '@ionic/angular/standalone';
+import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
-//import { QrService } from 'src/app/services/qr.service';
 import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
@@ -16,7 +15,7 @@ import { UsuarioModel } from 'src/app/models/usuario.component';
   templateUrl: './alta-empleado.page.html',
   styleUrls: ['./alta-empleado.page.scss'],
   standalone: true,
-  imports: [ IonList, IonSelect, IonRadio, IonLabel, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ]
 })
 export class AltaEmpleadoPage implements OnInit {
 
@@ -24,7 +23,6 @@ export class AltaEmpleadoPage implements OnInit {
   private authService:AuthService = inject(AuthService);
   private router:Router = inject(Router);
   private storageServ: StorageService = inject(StorageService);
-  //private qrServ:QrService = inject(QrService);
   private camaraServ:CamaraService = inject(CamaraService);
   protected fotoSubida: string = 'false';
 
@@ -118,7 +116,8 @@ export class AltaEmpleadoPage implements OnInit {
           icon: 'success',
           title: "Alta generada con éxito",
           toast: true,
-          position: 'center'
+          position: 'center',
+          confirmButtonAriaLabel: "Thumbs up, Aceptar",
         }).then( () => {
           this.form.reset();
           this.router.navigateByUrl('/home');

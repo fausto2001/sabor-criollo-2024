@@ -1,29 +1,20 @@
-import { CommonModule, formatDate } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonImg, IonRow, IonButton, IonCol, IonInput, IonLabel, IonItem, IonGrid, IonRadioGroup, IonRadio, IonBackButton, IonFabButton, IonFab, IonFabList, IonCardContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonText } from '@ionic/angular/standalone';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonImg, IonRow, IonButton, IonGrid, IonFabButton, IonFab, IonCardContent, IonCard, IonCardHeader, IonCardSubtitle, IonText } from '@ionic/angular/standalone';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoModel } from "../../models/producto.component";
-import { Component, inject, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { PedidoService } from 'src/app/services/pedido.service';
-
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { AlertController } from '@ionic/angular';
-import { Roles } from "src/app/models/type.component";
-import { CamaraService } from 'src/app/services/camara.service';
-import { QrService } from 'src/app/services/qr.service';
-import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PedidoModel } from 'src/app/models/pedido.component';
 import { PedidoProducto } from 'src/app/models/pedido-producto.component';
-
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle'
 register();
-
 
 @Component({
   selector: 'app-pedido',
@@ -31,10 +22,7 @@ register();
   styleUrls: ['./pedido.page.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [ IonText, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonCardContent, IonFabList, IonFab, IonFabButton, IonBackButton, 
-    IonRadio, IonRadioGroup, IonGrid, IonItem, IonLabel, IonInput, IonCol, 
-    IonButton, IonImg, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, 
-    IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule, ],
+  imports: [ IonText, IonCardSubtitle, IonCardHeader, IonCard, IonCardContent, IonFab, IonFabButton, IonGrid, IonButton, IonImg, IonHeader, IonToolbar, IonTitle, IonContent, IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ],
 })
 export class PedidoPage implements OnInit {
   productos: ProductoModel[] = [];
@@ -59,8 +47,8 @@ export class PedidoPage implements OnInit {
 
   constructor(private userService: UsuarioService, private productoService: ProductoService, 
     private pedidoService: PedidoService, private router: Router,
-    private authService: AuthService, private toastService: ToastService) { }
-    //private productosPedidos: ProductoModel[] = [];
+    private authService: AuthService) { }
+
 
     ngOnInit() {
       this.usuario = this.authService.usuario!;
@@ -215,7 +203,6 @@ mostrarPedido() {
     title: "Tu Pedido",
     html: pedidoText,
     icon: 'info',
-    // Configuración para cuando hay productos
     showCancelButton: true,
     confirmButtonText: 'Confirmar Pedido',
     cancelButtonText: 'Cancelar',
@@ -250,7 +237,7 @@ mostrarPedido() {
       title: "Tu Pedido",
       html: 'No hay productos en el pedido.',
       icon: 'info',
-      confirmButtonText: 'OK',
+      confirmButtonText: 'Aceptar',
       toast: true,
       position: 'center'
     });

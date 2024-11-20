@@ -1,16 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonImg, IonCard, IonText, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonCard, IonText, IonCardContent } from '@ionic/angular/standalone';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MesaService } from 'src/app/services/mesa.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { Observable } from 'rxjs';
-//import { EmailService } from 'src/app/services/email.service';
 import Swal from 'sweetalert2';
-import { MesaModel } from 'src/app/models/mesa.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,18 +14,15 @@ import { Router } from '@angular/router';
   templateUrl: './lista-espera.page.html',
   styleUrls: ['./lista-espera.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonText, IonCard, IonImg, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [ IonCardContent, IonText, IonCard, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule ]
 })
 export class ListaEsperaPage implements OnInit {
-  //private toast2Serv:Toast2Service = inject(Toast2Service);
   usuariosNoAdmitidos: UsuarioModel[] = [];
   hayUsuarios: boolean = true;
   mesaAsignada: boolean = false;
   router: Router = inject(Router);
 
-  constructor(private userService: UsuarioService, private authService: AuthService, 
-    private toastServ: ToastService/*, private emailService: EmailService*/,
-    private mesaService: MesaService) { }
+  constructor(private userService: UsuarioService, private toastServ: ToastService, private mesaService: MesaService) { }
 
   ngOnInit() {
 
@@ -45,7 +38,6 @@ export class ListaEsperaPage implements OnInit {
   }
 
   async aceptarUsuario(uid: string, enListaDeEspera: boolean, nombre: string) {
-    //debugger;
     this.mesaAsignada = false;
     this.userService.getUsuarioPor_Uid(uid).subscribe(async (user: UsuarioModel) => {
       if (user) {

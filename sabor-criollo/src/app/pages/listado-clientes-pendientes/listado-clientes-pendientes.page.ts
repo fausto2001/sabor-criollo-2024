@@ -1,13 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonImg, IonText, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { EmailService } from 'src/app/services/email.service';
-//import { Toast2Service } from 'src/app/services/toast2.service';
 import { UsuarioModel } from 'src/app/models/usuario.component';
 import { Router } from '@angular/router';
 
@@ -16,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './listado-clientes-pendientes.page.html',
   styleUrls: ['./listado-clientes-pendientes.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCard, IonText, IonImg, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule ]
+  imports: [IonCardContent, IonCard, IonText, IonImg, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule ]
 })
 export class ListadoClientesPendientesPage implements OnInit {
   private emailService:EmailService = inject(EmailService);
@@ -28,8 +25,7 @@ export class ListadoClientesPendientesPage implements OnInit {
 
   router: Router = inject(Router);
 
-  constructor(private userService: UsuarioService, private authService: AuthService, 
-    private toastService: ToastService/*, private emailService: EmailService*/) { }
+  constructor(private userService: UsuarioService) { }
 
 
   async ngOnInit() {

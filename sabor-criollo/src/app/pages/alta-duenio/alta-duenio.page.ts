@@ -17,7 +17,7 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
   templateUrl: './alta-duenio.page.html',
   styleUrls: ['./alta-duenio.page.scss'],
   standalone: true,
-  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ]
 })
 export class AltaDuenioPage implements OnInit {
 
@@ -133,7 +133,8 @@ export class AltaDuenioPage implements OnInit {
           icon: 'success',
           title: "Alta generada con éxito",
           toast: true,
-          position: 'center'
+          position: 'center',
+          confirmButtonAriaLabel: "Thumbs up, Aceptar",
         }).then( () => {
           this.form.reset();
           this.router.navigateByUrl('/home');

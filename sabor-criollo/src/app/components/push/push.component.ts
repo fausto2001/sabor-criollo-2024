@@ -22,7 +22,6 @@ export class PushComponent  implements OnInit {
 
   
   protected error: string = '';
-  private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private onesignal = inject(OnesignalService);
   private platform = inject(Platform);
@@ -31,14 +30,12 @@ export class PushComponent  implements OnInit {
 
 
   private usuario: UsuarioModel | null;
-  private id_notificacion: any;
 
   constructor() {
 
     this.platform.ready().then(() => {
       if(Capacitor.getPlatform() != 'web') this.onesignal.OneSignalInit();
     });
-    /*this.usuario = this.usuarioService.personaLogeada;*/
 
     this.usuario = this.authServ.usuario;
     this.authServ.user$.subscribe((data) => {

@@ -43,14 +43,9 @@ export class GraficosPage implements OnInit {
         }).length;
 
         this.ok=true;
-        //console.log(this.encuentasMalas);
       }
     });
-    //this.encuestaSer.cargarEncuestasDePrueba();
-
   }
-
-
 
   ngOnInit() {
   }

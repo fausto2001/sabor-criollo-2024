@@ -1,27 +1,14 @@
-import { CommonModule, formatDate } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonImg, IonRow, IonButton, IonCol, IonInput, IonLabel, IonItem, IonGrid, IonRadioGroup, IonRadio, IonBackButton, IonFabButton, IonFab, IonFabList, IonCardContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonText } from '@ionic/angular/standalone';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProductoModel } from "../../models/producto.component";
-import { Component, inject, OnInit, ViewChild  } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonImg, IonRow, IonButton, IonGrid, IonCardContent, IonCard } from '@ionic/angular/standalone';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from "../../models/usuario.component";
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MesaService } from 'src/app/services/mesa.service';
-
-import { ProductoService } from 'src/app/services/producto.service';
 import { PedidoService } from 'src/app/services/pedido.service';
-
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { AlertController } from '@ionic/angular';
-import { Roles } from "../../models/type.component";
-import { CamaraService } from 'src/app/services/camara.service';
-import { QrService } from 'src/app/services/qr.service';
-import { StorageService } from 'src/app/services/storage.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PedidoModel } from 'src/app/models/pedido.component';
-import { PedidoProducto } from 'src/app/models/pedido-producto.component';
-//import { NotificationPushService } from 'src/app/services/notification-push.service';
 import { MesaModel } from 'src/app/models/mesa.component';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
@@ -30,15 +17,10 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
   templateUrl: './cuenta.page.html',
   styleUrls: ['./cuenta.page.scss'],
   standalone: true,
-  imports: [IonText, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonCardContent, IonFabList, IonFab, IonFabButton, IonBackButton, 
-    IonRadio, IonRadioGroup, IonGrid, IonItem, IonLabel, IonInput, IonCol, 
-    IonButton, IonImg, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, 
-    IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule],})
+  imports: [ IonCard, IonCardContent, IonGrid, IonButton, IonImg, IonHeader, IonToolbar, IonTitle, IonContent, IonRow, CommonModule, FormsModule, CommonModule, ReactiveFormsModule ],
+})
 
 export class CuentaPage implements OnInit {
-  //private pushNotifServ:NotificationPushService = inject(NotificationPushService);
-  private qrServ:QrService = inject(QrService);
-  private qrService:QrService = inject(QrService);
 
   usuario!: UsuarioModel;
   pedido!: PedidoModel;
@@ -51,10 +33,7 @@ export class CuentaPage implements OnInit {
   protected isSupported = false;
   protected barcodes: Barcode[] = [];
 
-
-  constructor(private userService: UsuarioService, private productoService: ProductoService, 
-    private pedidoService: PedidoService, private router: Router,
-    private authService: AuthService, private toastService: ToastService, private mesaService: MesaService) { }
+  constructor(private userService: UsuarioService, private pedidoService: PedidoService, private router: Router, private authService: AuthService, private mesaService: MesaService) { }
 
     ngOnInit() {
       this.usuario = this.authService.usuario!;
@@ -72,9 +51,7 @@ export class CuentaPage implements OnInit {
         });
       } else {
         this.cargarUltimoPedido(this.usuario.id);
-
       }
-
       BarcodeScanner.isSupported().then((result) => {
         this.isSupported = result.supported;
 
@@ -83,10 +60,8 @@ export class CuentaPage implements OnInit {
 
   cargarUltimoPedido(id: string): void {
     console.log('id del usuario: ' + id);
-    //alert(id);
     this.pedidoService.getUltimoPedidoUsuario(id).subscribe(
       (pedido) => {
-        //this.pedido = pedido;
         console.log('Último pedido:', this.pedido);
         this.pedido = pedido.sort((a, b)=>{return a.fecha! > b.fecha! ? -1 : 1})[0];
 
@@ -104,7 +79,6 @@ export class CuentaPage implements OnInit {
 
   async escanearQRPropina() {
     try {
-     // this.propina = Number.parseInt(await this.qrServ.escanearQR());
       this.total_propina = (this.pedido.importeTotal * this.propina) / 100
       
       this.pedido.importeTotal = this.subtotal + this.total_propina;
@@ -113,10 +87,7 @@ export class CuentaPage implements OnInit {
       console.error('Error al escanear el QR:', error);
     }
   }
-
   async scan(): Promise<void> {
-
-
 
     const granted = await this.requestPermissions();
     if (!granted) {
@@ -128,15 +99,12 @@ export class CuentaPage implements OnInit {
     this.barcodes.push(...barcodes);
 
     if (this.barcodes.length > 0) {
-      //alert(JSON.stringify(this.barcodes));
 
       this.propina = Number(this.barcodes[0].rawValue);
       this.pedido.importeTotal = (this.subtotal  * (100 + this.propina))/100
     } else {
         console.warn('No se encontró ningún código en el escaneo.');
     }
-
-
   }
 
   async requestPermissions(): Promise<boolean> {
@@ -156,5 +124,4 @@ export class CuentaPage implements OnInit {
   goHome(){
     this.router.navigateByUrl('/home');
   }
-
 }

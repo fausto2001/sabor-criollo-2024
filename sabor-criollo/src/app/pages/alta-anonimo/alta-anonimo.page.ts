@@ -1,15 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonSelect, IonSelectOption, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonFabButton, IonFab, IonRow, IonItem, IonButton, IonCol, IonInput } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import Swal from 'sweetalert2';
 import { QrService } from 'src/app/services/qr.service';
 import { CamaraService } from 'src/app/services/camara.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { UsuarioModel } from 'src/app/models/usuario.component';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
@@ -17,11 +14,10 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
   templateUrl: './alta-anonimo.page.html',
   styleUrls: ['./alta-anonimo.page.scss'],
   standalone: true,
-  imports: [ IonSelect, IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonSelectOption, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
+  imports: [ IonImg, IonFabButton, IonFab, IonButton, IonRow, IonItem, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, IonInput, CommonModule, FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class AltaAnonimoPage implements OnInit {
 
-  private usuarioService:UsuarioService = inject(UsuarioService);
   private authService:AuthService = inject(AuthService);
   private router:Router = inject(Router);
   private storageService: StorageService = inject(StorageService);
@@ -39,7 +35,6 @@ export class AltaAnonimoPage implements OnInit {
 
   protected isSupported = false;
   protected barcodes: Barcode[] = [];
-  private anonimo: boolean = false;
 
   constructor() {
     this.form = new FormGroup ({
@@ -61,7 +56,6 @@ export class AltaAnonimoPage implements OnInit {
     });
   }
 
- 
   get nombre(){
     return this.form.get('nombre')?.value;
   }
@@ -228,10 +222,4 @@ export class AltaAnonimoPage implements OnInit {
   entrarAnonimo(){
     this.router.navigateByUrl('/home-cliente');
   }
-
-
-
-
-
-
 }
