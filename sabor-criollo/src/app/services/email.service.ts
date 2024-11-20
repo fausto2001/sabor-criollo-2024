@@ -20,7 +20,7 @@ export class EmailService {
       message: mensajeCliente,
       to_email: emailCliente,
       from_email: 'saborcriollo486@gmail.com',
-      reply_to: 'saborcriollo486@gmail.com',
+      reply_to: 'saborcriollo@gmail.com',
     };
     return await this.sendEmail(templateParams);
   }
